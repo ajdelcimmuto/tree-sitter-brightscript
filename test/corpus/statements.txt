@@ -1,0 +1,69 @@
+==================
+Print statement without params
+==================
+
+sub x()
+    print("hi")
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (print_statement
+        (parenthesized_expression
+            (literal
+                (string)))))))
+
+
+==================
+Print statements with params
+==================
+
+sub x(y as string)
+    print(y)
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_specifier)
+      )
+    )
+    (block
+     (print_statement
+      (parenthesized_expression
+       (identifier))))))
+
+==================
+Print statements with comma sep params
+==================
+
+sub x(y as string, x as string)
+    print(x)
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_specifier)
+      )
+      (parameter
+        (identifier)
+        (type_specifier)
+      )
+    )
+    (block
+     (print_statement
+      (parenthesized_expression
+       (identifier))))))
