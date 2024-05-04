@@ -38,7 +38,11 @@
   "tree-sitter": [
     {
       "scope": "source.brightscript",
-      "injection-regex": "^brightscript$"
+      "file-types": [
+        "brs"
+      ],
+      "injection-regex": "^brightscript$",
+      "highlights": "queries/highlights.scm"
     }
   ]
 }

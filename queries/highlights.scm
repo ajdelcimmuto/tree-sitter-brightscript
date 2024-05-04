@@ -1,12 +1,40 @@
-(function_definition
-  name: (identifier) @function)
+; Keywords
+[
+  "function"
+  "sub"
+  "end function"
+  "end sub"
+  "return"
+  "print"
+  "as"
+] @keyword
 
-(sub_definition
-  name: (identifier) @function)
+; Types
+[
+  "boolean"
+  "integer"
+  "float"
+  "double"
+  "string"
+  "object"
+  "dynamic"
+  "void"
+] @type
 
-(parameter
-  name: (identifier) @parameter)
-
+; Literals
+(boolean) @boolean
+(number) @number
 (string) @string
 
-(comment) @comment
+; Identifiers
+(identifier) @variable
+
+; Function and sub definitions
+(function_definition
+  (identifier) @function)
+(sub_definition
+  (identifier) @function)
+
+; Parameters
+(parameter
+  (identifier) @parameter)
