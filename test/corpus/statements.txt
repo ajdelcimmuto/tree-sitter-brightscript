@@ -67,3 +67,24 @@ end sub
      (print_statement
       (parenthesized_expression
        (identifier))))))
+
+
+==================
+function return type string
+==================
+
+function x() as string
+    return "hi"
+end function
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_specifier))
+    (block
+     (return_statement
+      (literal
+       (string))))))

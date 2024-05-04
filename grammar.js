@@ -5,11 +5,14 @@ module.exports = grammar({
     source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
-      $.sub_definition
+      $.sub_definition,
+      $.function_definition
     ),
 
     _statement: $ => choice(
-      $.print_statement
+      $.print_statement,
+      $.return_statement,
+      $.newline
     ),
 
     _expression: $ => choice(
@@ -22,6 +25,12 @@ module.exports = grammar({
     // Statements
     function_definition: $ => seq(
       // Define function declaration rule
+      'function',
+      $.identifier,
+      $.parameter_list,
+      $.return_type,
+      $.block,
+      'end function'
     ),
 
     sub_definition: $ => seq(
@@ -52,6 +61,8 @@ module.exports = grammar({
 
     return_statement: $ => seq(
       // Define return statement rule
+      'return',
+      $._expression
     ),
 
     assignment_statement: $ => seq(
@@ -77,6 +88,11 @@ module.exports = grammar({
           $.type_specifier
         )
       )
+    ),
+
+    return_type: $ => seq(
+      'as',
+      $.type_specifier
     ),
 
     type_specifier: $ => choice(
@@ -125,6 +141,8 @@ module.exports = grammar({
     number: $ => /\d+(\.\d+)?/,
 
     string: $ => /"[^"]*"/,
+
+    newline: $ => /\r?\n/,
 
     // Miscellaneous
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,

@@ -14,6 +14,10 @@
         {
           "type": "SYMBOL",
           "name": "sub_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_definition"
         }
       ]
     },
@@ -23,6 +27,14 @@
         {
           "type": "SYMBOL",
           "name": "print_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "return_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "newline"
         }
       ]
     },
@@ -45,7 +57,32 @@
     },
     "function_definition": {
       "type": "SEQ",
-      "members": []
+      "members": [
+        {
+          "type": "STRING",
+          "value": "function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "return_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        },
+        {
+          "type": "STRING",
+          "value": "end function"
+        }
+      ]
     },
     "sub_definition": {
       "type": "SEQ",
@@ -99,7 +136,16 @@
     },
     "return_statement": {
       "type": "SEQ",
-      "members": []
+      "members": [
+        {
+          "type": "STRING",
+          "value": "return"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
     },
     "assignment_statement": {
       "type": "SEQ",
@@ -194,6 +240,19 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "return_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "as"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type_specifier"
         }
       ]
     },
@@ -300,6 +359,10 @@
     "string": {
       "type": "PATTERN",
       "value": "\"[^\"]*\""
+    },
+    "newline": {
+      "type": "PATTERN",
+      "value": "\\r?\\n"
     },
     "identifier": {
       "type": "PATTERN",
