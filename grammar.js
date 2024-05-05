@@ -87,7 +87,10 @@ module.exports = grammar({
 
     assignment_statement: $ => seq(
       // Define assignment statement rule
-      $.identifier,
+      choice(
+        $.identifier,
+        $.property_access_expression
+      ),
       '=',
       $._expression
     ),
@@ -146,9 +149,17 @@ module.exports = grammar({
 
     parenthesized_expression: $ => seq(
       '(',
-      $._expression,
+      optional($._expression),
       ')'
     ),
+
+    property_access_expression: $ => seq(
+      $.identifier,
+      '.',
+      $.identifier
+    ),
+
+    m_identifier: $ => 'm',
 
     // Literals
     literal: $ => choice(

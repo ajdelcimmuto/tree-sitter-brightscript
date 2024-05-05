@@ -26,6 +26,10 @@
 (number) @number
 (string) @string
 
+; Property access expression
+(property_access_expression
+  (m_scope) @keyword)
+
 ; Identifiers
 (identifier) @variable
 
@@ -36,10 +40,10 @@
   (identifier) @function)
 
 (function_definition_empty
-  (identifier) @function)
+  (identifier) @function.builtin)
 (sub_definition_empty
-  (identifier) @function)
+  (identifier) @function.builtin)
 
 ; Parameters
 (parameter
-  (identifier) @parameter)
+  (identifier) @variable_parameter)

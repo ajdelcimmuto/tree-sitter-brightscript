@@ -17,3 +17,45 @@ end sub
         (literal
           (string))))))
 
+
+==================
+property_access_expression
+==================
+
+sub init()
+    m.b = "y"
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (property_access_expression
+          (identifier)
+          (identifier))
+        (literal
+          (string))))))
+
+==================
+property_access_expression recursive
+==================
+
+sub init()
+    m.b.c = "y"
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (property_access_expression
+          (identifier)
+          (identifier))
+        (literal
+          (string))))))

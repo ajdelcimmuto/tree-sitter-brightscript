@@ -22,6 +22,10 @@
         {
           "type": "parenthesized_expression",
           "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
         }
       ]
     }
@@ -186,7 +190,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "call_expression",
@@ -229,6 +233,21 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "property_access_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -360,6 +379,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
