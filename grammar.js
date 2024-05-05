@@ -6,20 +6,23 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.sub_definition,
-      $.function_definition
+      $.function_definition,
+      $.sub_definition_empty,
+      $.function_definition_empty
     ),
 
     _statement: $ => choice(
       $.print_statement,
       $.return_statement,
-      $.newline
+      $.assignment_statement
     ),
 
     _expression: $ => choice(
       // Add expression rules here
       $.parenthesized_expression,
       $.identifier,
-      $.literal
+      $.literal,
+      $.call_expression
     ),
 
     // Statements
@@ -39,6 +42,23 @@ module.exports = grammar({
       $.identifier,
       $.parameter_list,
       $.block,
+      'end sub'
+    ),
+
+    function_definition_empty: $ => seq(
+      // Define function declaration rule
+      'function',
+      $.identifier,
+      $.parameter_list,
+      $.return_type,
+      'end function'
+    ),
+
+    sub_definition_empty: $ => seq(
+      // Define sub declaration rule
+      'sub',
+      $.identifier,
+      $.parameter_list,
       'end sub'
     ),
 
@@ -67,11 +87,14 @@ module.exports = grammar({
 
     assignment_statement: $ => seq(
       // Define assignment statement rule
+      $.identifier,
+      '=',
+      $._expression
     ),
 
     block: $ => seq(
       $._statement,
-      repeat($._statement)
+      repeat($._statement),
     ),
 
     parameter_list: $ => seq(
@@ -109,6 +132,8 @@ module.exports = grammar({
     // Expressions
     call_expression: $ => seq(
       // Define call expression rule
+      $.identifier,
+      $.parenthesized_expression
     ),
 
     binary_expression: $ => seq(

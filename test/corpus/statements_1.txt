@@ -1,0 +1,19 @@
+==================
+assignment statement
+==================
+
+sub init()
+    x = "bruh"
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (string))))))
+

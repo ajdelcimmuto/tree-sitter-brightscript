@@ -88,3 +88,17 @@ end function
      (return_statement
       (literal
        (string))))))
+
+==================
+empty sub
+==================
+
+sub init()
+end sub
+---
+
+(source_file
+  (sub_definition_empty
+    (identifier)
+    (parameter_list)))
+

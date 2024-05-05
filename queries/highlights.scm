@@ -35,6 +35,11 @@
 (sub_definition
   (identifier) @function)
 
+(function_definition_empty
+  (identifier) @function)
+(sub_definition_empty
+  (identifier) @function)
+
 ; Parameters
 (parameter
   (identifier) @parameter)
