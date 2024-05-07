@@ -55,7 +55,9 @@ end sub
     (block
       (assignment_statement
         (property_access_expression
+         (property_access_expression
           (identifier)
           (identifier))
+         (identifier))
         (literal
           (string))))))

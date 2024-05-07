@@ -5,7 +5,6 @@
   "end function"
   "end sub"
   "return"
-  "print"
   "as"
 ] @keyword
 
@@ -21,23 +20,22 @@
   "void"
 ] @type
 
+(comment) @comment
+
 ; Literals
 (boolean) @boolean
 (number) @number
 (string) @string
 
-; Property access expression
-(property_access_expression
-  (m_scope) @keyword)
-
 ; Identifiers
-(identifier) @variable
-
+; (identifier) @variable
+(call_expression
+  (identifier) @function)
 ; Function and sub definitions
 (function_definition
-  (identifier) @function)
+  (identifier) @function.builtin)
 (sub_definition
-  (identifier) @function)
+  (identifier) @function.builtin)
 
 (function_definition_empty
   (identifier) @function.builtin)

@@ -12,7 +12,8 @@ end sub
     (identifier)
     (parameter_list)
     (block
-      (print_statement
+      (call_expression
+        (identifier)
         (parenthesized_expression
             (literal
                 (string)))))))
@@ -37,7 +38,8 @@ end sub
       )
     )
     (block
-     (print_statement
+     (call_expression
+       (identifier)
       (parenthesized_expression
        (identifier))))))
 
@@ -51,22 +53,23 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+ (sub_definition
+  (identifier)
+  (parameter_list
+   (parameter
     (identifier)
-    (parameter_list
-      (parameter
-        (identifier)
-        (type_specifier)
-      )
-      (parameter
-        (identifier)
-        (type_specifier)
-      )
-    )
-    (block
-     (print_statement
-      (parenthesized_expression
-       (identifier))))))
+    (type_specifier)
+   )
+   (parameter
+    (identifier)
+    (type_specifier)
+   )
+  )
+  (block
+   (call_expression
+    (identifier)
+    (parenthesized_expression
+     (identifier))))))
 
 
 ==================

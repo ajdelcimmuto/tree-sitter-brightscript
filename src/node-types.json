@@ -43,7 +43,23 @@
           "named": true
         },
         {
-          "type": "print_statement",
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
           "named": true
         },
         {
@@ -76,6 +92,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "function_definition",
@@ -189,7 +210,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -207,32 +228,9 @@
         {
           "type": "parenthesized_expression",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "print_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "call_expression",
-          "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
+          "type": "property_access_expression",
           "named": true
         }
       ]
@@ -248,6 +246,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
           "named": true
         }
       ]
@@ -275,6 +277,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
           "named": true
         }
       ]
@@ -370,6 +376,10 @@
     "fields": {}
   },
   {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -439,10 +449,6 @@
   },
   {
     "type": "object",
-    "named": false
-  },
-  {
-    "type": "print",
     "named": false
   },
   {

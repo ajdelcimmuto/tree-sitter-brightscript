@@ -1,6 +1,11 @@
 module.exports = grammar({
   name: 'brightscript',
 
+  extras: $ => [
+    /\s/,
+    $.comment,
+  ],
+
   rules: {
     source_file: $ => repeat($._definition),
 
@@ -12,7 +17,6 @@ module.exports = grammar({
     ),
 
     _statement: $ => choice(
-      $.print_statement,
       $.return_statement,
       $.assignment_statement
     ),
@@ -22,7 +26,8 @@ module.exports = grammar({
       $.parenthesized_expression,
       $.identifier,
       $.literal,
-      $.call_expression
+      $.call_expression,
+      $.property_access_expression
     ),
 
     // Statements
@@ -74,11 +79,6 @@ module.exports = grammar({
       // Define while statement rule
     ),
 
-    print_statement: $ => seq(
-      'print',
-      $._expression
-    ),
-
     return_statement: $ => seq(
       // Define return statement rule
       'return',
@@ -95,10 +95,10 @@ module.exports = grammar({
       $._expression
     ),
 
-    block: $ => seq(
+    block: $ => repeat1(choice(
       $._statement,
-      repeat($._statement),
-    ),
+      $._expression
+    )),
 
     parameter_list: $ => seq(
       '(',
@@ -133,11 +133,11 @@ module.exports = grammar({
     ),
 
     // Expressions
-    call_expression: $ => seq(
+    call_expression: $ => prec(1, seq(
       // Define call expression rule
       $.identifier,
       $.parenthesized_expression
-    ),
+    )),
 
     binary_expression: $ => seq(
       // Define binary expression rule
@@ -149,15 +149,20 @@ module.exports = grammar({
 
     parenthesized_expression: $ => seq(
       '(',
-      optional($._expression),
+      commaSep($._expression),
       ')'
     ),
 
     property_access_expression: $ => seq(
-      $.identifier,
+      choice(
+        $.identifier,
+        $.property_access_expression
+      ),
       '.',
       $.identifier
     ),
+
+    comment: $ => seq("'", /.*/),
 
     m_identifier: $ => 'm',
 
