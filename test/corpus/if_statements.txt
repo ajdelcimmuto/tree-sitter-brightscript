@@ -1,0 +1,28 @@
+==================
+property_access_expression recursive
+==================
+
+sub init()
+    if 5=5 then
+        y=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (comparison_expression
+          (literal
+            (number))
+          (literal
+            (number))))
+      (block
+        (assignment_statement
+          (identifier)
+          (literal
+            (number))))))))

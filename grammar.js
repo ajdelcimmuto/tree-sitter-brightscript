@@ -18,7 +18,8 @@ module.exports = grammar({
 
     _statement: $ => choice(
       $.return_statement,
-      $.assignment_statement
+      $.assignment_statement,
+      $.if_statement
     ),
 
     _expression: $ => choice(
@@ -27,7 +28,13 @@ module.exports = grammar({
       $.identifier,
       $.literal,
       $.call_expression,
-      $.property_access_expression
+      $.property_access_expression,
+      $.binary_expression,
+      $.unary_expression,
+      $.arithmetic_expression,
+      $.comparison_expression,
+      $.logical_expression,
+      $.logical_not_expression,
     ),
 
     // Statements
@@ -68,7 +75,25 @@ module.exports = grammar({
     ),
 
     if_statement: $ => seq(
-      // Define if statement rule
+      'if',
+      $._expression,
+      optional('then'),
+      $.block,
+      optional($.else_if_clause),
+      optional($.else_clause),
+      'end if'
+    ),
+
+    else_if_clause: $ => seq(
+      'else if',
+      $._expression,
+      optional('then'),
+      $.block
+    ),
+
+    else_clause: $ => seq(
+      'else',
+      $.block
     ),
 
     for_statement: $ => seq(
@@ -85,7 +110,8 @@ module.exports = grammar({
       $._expression
     ),
 
-    assignment_statement: $ => seq(
+    // Prec assignment 2 avoiding conflict with comparison_expression
+    assignment_statement: $ => prec(2, seq(
       // Define assignment statement rule
       choice(
         $.identifier,
@@ -93,7 +119,7 @@ module.exports = grammar({
       ),
       '=',
       $._expression
-    ),
+    )),
 
     block: $ => repeat1(choice(
       $._statement,
@@ -139,13 +165,45 @@ module.exports = grammar({
       $.parenthesized_expression
     )),
 
-    binary_expression: $ => seq(
+    binary_expression: $ => prec(1, seq(
       // Define binary expression rule
-    ),
+      choice(
+        $.arithmetic_expression,
+        $.comparison_expression,
+        $.logical_expression
+      )
+    )),
 
-    unary_expression: $ => seq(
-      // Define unary expression rule
-    ),
+    arithmetic_expression: $ => prec.left(choice(
+      seq($._expression, '+', $._expression),
+      seq($._expression, '-', $._expression),
+      seq($._expression, '*', $._expression),
+      seq($._expression, '/', $._expression),
+      seq($._expression, 'MOD', $._expression)
+    )),
+
+    comparison_expression: $ => prec.left(choice(
+      seq($._expression, '=', $._expression),
+      seq($._expression, '<>', $._expression),
+      seq($._expression, '<', $._expression),
+      seq($._expression, '<=', $._expression),
+      seq($._expression, '>', $._expression),
+      seq($._expression, '>=', $._expression),
+    )),
+
+    logical_expression: $ => prec(2, prec.left(choice(
+      seq($._expression, 'AND', $._expression),
+      seq($._expression, 'OR', $._expression)
+    ))),
+
+    unary_expression: $ => prec(1, choice(
+      $.logical_not_expression,
+    )),
+
+    logical_not_expression: $ => prec(3, seq(
+      'NOT',
+      $._expression
+    )),
 
     parenthesized_expression: $ => seq(
       '(',
@@ -153,14 +211,18 @@ module.exports = grammar({
       ')'
     ),
 
-    property_access_expression: $ => seq(
+    property_access_expression: $ => prec.left(seq(
       choice(
         $.identifier,
-        $.property_access_expression
+        $.property_access_expression,
+        $.call_expression
       ),
       '.',
-      $.identifier
-    ),
+      choice(
+        $.identifier,
+        $.call_expression
+      )
+    )),
 
     comment: $ => seq("'", /.*/),
 
