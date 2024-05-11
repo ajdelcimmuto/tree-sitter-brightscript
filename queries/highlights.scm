@@ -1,8 +1,18 @@
 ; Keywords
 [
+  "if"
+  "elseif"
+  "else if"
+  "else"
+  "then"
+  "end if"
+  "while"
+  "end while"
+ ; "for"
+  ; "end for"
   "function"
-  "sub"
   "end function"
+  "sub"
   "end sub"
   "return"
   "as"
@@ -20,28 +30,64 @@
   "void"
 ] @type
 
-(comment) @comment
-
 ; Literals
-(boolean) @boolean
-(number) @number
-(string) @string
+(literal
+  (boolean) @boolean)
+(literal
+  (number) @number)
+(literal
+  (string) @string)
 
 ; Identifiers
-; (identifier) @variable
-(call_expression
-  (identifier) @function)
-; Function and sub definitions
+(identifier) @variable
+
+; Function and Sub declarations
 (function_definition
-  (identifier) @function.builtin)
+  (identifier) @function)
 (sub_definition
-  (identifier) @function.builtin)
+  (identifier) @function)
 
-(function_definition_empty
-  (identifier) @function.builtin)
-(sub_definition_empty
-  (identifier) @function.builtin)
+; Function and Sub calls
+(call_expression
+  (identifier) @function.call)
 
-; Parameters
-(parameter
-  (identifier) @variable_parameter)
+; Property access
+(property_access_expression
+  (identifier) @property)
+
+; Operators
+[
+  "="
+  "<>"
+  "<"
+  ">"
+  "<="
+  ">="
+  "+"
+  "-"
+  "*"
+  "/"
+  "MOD"
+] @operator
+
+; Logical operators
+(logical_expression
+  (identifier) @operator
+  (#match? @operator "^(?i)(and|or)$")
+)
+(logical_not_expression
+  (identifier) @operator
+  (#match? @operator "^(?i)not$")
+)
+
+; Comments
+(comment) @comment
+
+; Punctuation
+[
+  "("
+  ")"
+  "."
+  ","
+] @punctuation
+

@@ -19,22 +19,22 @@ module.exports = grammar({
     _statement: $ => choice(
       $.return_statement,
       $.assignment_statement,
-      $.if_statement
+      $.if_statement,
+      $.while_statement
     ),
 
     _expression: $ => choice(
-      // Add expression rules here
-      $.parenthesized_expression,
-      $.identifier,
-      $.literal,
-      $.call_expression,
-      $.property_access_expression,
       $.binary_expression,
       $.unary_expression,
       $.arithmetic_expression,
       $.comparison_expression,
       $.logical_expression,
       $.logical_not_expression,
+      $.call_expression,
+      $.property_access_expression,
+      $.parenthesized_expression,
+      $.identifier,
+      $.literal
     ),
 
     // Statements
@@ -85,7 +85,7 @@ module.exports = grammar({
     ),
 
     else_if_clause: $ => seq(
-      'else if',
+      choice('else if', 'elseif'),
       $._expression,
       optional('then'),
       $.block
@@ -102,6 +102,10 @@ module.exports = grammar({
 
     while_statement: $ => seq(
       // Define while statement rule
+      'while',
+      $._expression,
+      $.block,
+      'end while'
     ),
 
     return_statement: $ => seq(
@@ -174,34 +178,34 @@ module.exports = grammar({
       )
     )),
 
-    arithmetic_expression: $ => prec.left(choice(
+    arithmetic_expression: $ => prec(3, prec.left(choice(
       seq($._expression, '+', $._expression),
       seq($._expression, '-', $._expression),
       seq($._expression, '*', $._expression),
       seq($._expression, '/', $._expression),
       seq($._expression, 'MOD', $._expression)
-    )),
+    ))),
 
-    comparison_expression: $ => prec.left(choice(
+    comparison_expression: $ => prec(2, prec.left(choice(
       seq($._expression, '=', $._expression),
       seq($._expression, '<>', $._expression),
       seq($._expression, '<', $._expression),
       seq($._expression, '<=', $._expression),
       seq($._expression, '>', $._expression),
       seq($._expression, '>=', $._expression),
-    )),
-
-    logical_expression: $ => prec(2, prec.left(choice(
-      seq($._expression, 'AND', $._expression),
-      seq($._expression, 'OR', $._expression)
     ))),
+
+    logical_expression: $ => prec.left(1, choice(
+      seq($._expression, /and/i, $._expression),
+      seq($._expression, /or/i, $._expression)
+    )),
 
     unary_expression: $ => prec(1, choice(
       $.logical_not_expression,
     )),
 
-    logical_not_expression: $ => prec(3, seq(
-      'NOT',
+    logical_not_expression: $ => prec(4, seq(
+      /not/i,
       $._expression
     )),
 
@@ -237,11 +241,11 @@ module.exports = grammar({
     ),
 
     boolean: $ => choice(
-      'true',
-      'false'
+      /true/i,
+      /true/i
     ),
 
-    number: $ => /\d+(\.\d+)?/,
+    number: $ => /-?\d+(\.\d+)?/,
 
     string: $ => /"[^"]*"/,
 
@@ -278,3 +282,4 @@ function commaSep(rule) {
 function commaSep1(rule) {
   return seq(rule, repeat(seq(',', rule)));
 }
+

@@ -195,6 +195,10 @@
         {
           "type": "unary_expression",
           "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
         }
       ]
     }
@@ -879,6 +883,65 @@
     }
   },
   {
+    "type": "while_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -939,19 +1002,7 @@
     "named": false
   },
   {
-    "type": "AND",
-    "named": false
-  },
-  {
     "type": "MOD",
-    "named": false
-  },
-  {
-    "type": "NOT",
-    "named": false
-  },
-  {
-    "type": "OR",
     "named": false
   },
   {
@@ -979,6 +1030,10 @@
     "named": false
   },
   {
+    "type": "elseif",
+    "named": false
+  },
+  {
     "type": "end function",
     "named": false
   },
@@ -991,7 +1046,7 @@
     "named": false
   },
   {
-    "type": "false",
+    "type": "end while",
     "named": false
   },
   {
@@ -1043,11 +1098,11 @@
     "named": false
   },
   {
-    "type": "true",
+    "type": "void",
     "named": false
   },
   {
-    "type": "void",
+    "type": "while",
     "named": false
   }
 ]

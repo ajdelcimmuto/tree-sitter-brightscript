@@ -1,5 +1,5 @@
 ==================
-property_access_expression recursive
+basic if statement
 ==================
 
 sub init()
@@ -26,3 +26,45 @@ end sub
           (identifier)
           (literal
             (number))))))))
+
+==================
+complex if statement
+==================
+
+sub init()
+    if 5=5 and 4+5 >= 10 then
+        y=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (logical_expression
+          (binary_expression
+           (comparison_expression
+            (literal
+             (number))
+            (literal
+             (number))))
+          (binary_expression
+            (comparison_expression
+              (binary_expression
+               (arithmetic_expression
+                (literal
+                 (number))
+                (literal
+                 (number))))
+              (literal
+                (number))))))
+      (block
+        (assignment_statement
+          (identifier)
+          (literal
+            (number))))))))
+

@@ -1,0 +1,76 @@
+==================
+while statement
+==================
+
+sub init()
+    y = 0
+    while true
+        y = y + 1
+    end while
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (assignment_statement
+      (identifier)
+      (literal
+        (number)))
+    (while_statement
+      (literal
+        (boolean))
+      (block
+        (assignment_statement
+          (identifier)
+          (binary_expression
+           (arithmetic_expression
+            (identifier)
+            (literal
+             (number))))))))))
+
+==================
+while statement more complex expression
+==================
+
+sub init()
+    y = 0
+    while y < 10 and y >= -1
+        y = y + 1
+    end while
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (assignment_statement
+      (identifier)
+      (literal
+        (number)))
+    (while_statement
+      (binary_expression
+       (logical_expression
+        (binary_expression
+         (comparison_expression
+          (identifier)
+          (literal
+           (number))))
+        (binary_expression
+         (comparison_expression
+          (identifier)
+          (literal
+           (number))))))
+      (block
+        (assignment_statement
+          (identifier)
+          (binary_expression
+           (arithmetic_expression
+            (identifier)
+            (literal
+             (number))))))))))
+
