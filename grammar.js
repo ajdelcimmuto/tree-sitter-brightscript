@@ -183,7 +183,7 @@ module.exports = grammar({
       seq($._expression, '-', $._expression),
       seq($._expression, '*', $._expression),
       seq($._expression, '/', $._expression),
-      seq($._expression, 'MOD', $._expression)
+      seq($._expression, /mod/i, $._expression)
     ))),
 
     comparison_expression: $ => prec(2, prec.left(choice(
