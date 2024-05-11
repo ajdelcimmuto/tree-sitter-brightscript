@@ -68,3 +68,139 @@ end sub
           (literal
             (number))))))))
 
+==================
+if statement with else clause
+==================
+
+sub init()
+    if 5 = 6 then
+        x = 10
+    else
+        x = 20
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (literal
+              (number))
+            (literal
+              (number))))
+        (block
+          (assignment_statement
+            (identifier)
+            (literal
+              (number))))
+        (else_clause
+          (block
+            (assignment_statement
+              (identifier)
+              (literal
+                (number)))))))))
+
+==================
+if statement with else if clause
+==================
+
+sub init()
+    if x > 10 then
+        print "Greater than 10"
+    else if x > 5 then
+        print "Greater than 5"
+    else
+        print "Less than or equal to 5"
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (identifier)
+            (literal
+              (number))))
+        (block
+          (print_statement
+            (literal
+              (string))))
+        (else_if_clause
+          (binary_expression
+            (comparison_expression
+              (identifier)
+              (literal
+                (number))))
+          (block
+            (print_statement
+              (literal
+                (string)))))
+        (else_clause
+          (block
+            (print_statement
+              (literal
+                (string)))))))))
+
+==================
+if statement with nested if
+==================
+
+sub init()
+    if x > 10 then
+        if y > 5 then
+            print "x > 10 and y > 5"
+        else
+            print "x > 10 and y <= 5"
+        end if
+    else
+        print "x <= 10"
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (identifier)
+            (literal
+              (number))))
+        (block
+          (if_statement
+            (binary_expression
+              (comparison_expression
+                (identifier)
+                (literal
+                  (number))))
+            (block
+              (print_statement
+                (literal
+                  (string))))
+            (else_clause
+              (block
+                (print_statement
+                  (literal
+                    (string)))))))
+        (else_clause
+          (block
+            (print_statement
+              (literal
+                (string)))))))))
+

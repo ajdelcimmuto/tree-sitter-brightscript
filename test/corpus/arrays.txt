@@ -1,0 +1,339 @@
+==================
+array test 1
+==================
+
+sub TestEmptyArray()
+    emptyArray = []
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array))))))
+
+==================
+array test 2
+==================
+
+sub TestArrayWithElements()
+    myArray = [1, 2, 3, 4, 5]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))))))))
+
+==================
+array test 3
+==================
+
+sub TestArrayElementAccess()
+    myArray = [1, 2, 3, 4, 5]
+    print myArray[1]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number)))))
+      (print_statement
+       (array_access_expression
+        (identifier)
+        (literal
+         (number)))))))
+
+==================
+array test 4
+==================
+
+sub TestArrayElementModification()
+    myArray = [1, 2, 3, 4, 5]
+    myArray[1] = 10
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number)))))
+      (assignment_statement
+        (array_access_expression
+          (identifier)
+          (literal
+            (number)))
+        (literal
+          (number))))))
+
+==================
+array test 5
+==================
+
+sub TestMixedTypeArray()
+    mixedArray = ["hello", 42, true, 3.14]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (string))
+            (literal
+              (number))
+            (literal
+              (boolean))
+            (literal
+              (number))))))))
+
+==================
+array test 6
+==================
+
+sub TestArrayWithExpressions()
+    expressionArray = [1 + 2, 3 * 4, 5 - 1]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+           (binary_expression
+            (arithmetic_expression
+             (literal
+              (number))
+             (literal
+              (number))))
+           (binary_expression
+            (arithmetic_expression
+             (literal
+              (number))
+             (literal
+              (number))))
+           (binary_expression
+            (arithmetic_expression
+             (literal
+              (number))
+             (literal
+              (number))))))))))
+
+==================
+array test 7
+==================
+
+sub TestNestedArrays()
+    nestedArray = [[1, 2], [3, 4], [5, 6]]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (array
+                (literal
+                  (number))
+                (literal
+                  (number))))
+            (literal
+              (array
+                (literal
+                  (number))
+                (literal
+                  (number))))
+            (literal
+              (array
+                (literal
+                  (number))
+                (literal
+                  (number))))))))))
+
+==================
+array test 8
+==================
+
+sub TestArrayWithFunctionCalls()
+    functionArray = [Upper("hello"), Len("world")]
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (call_expression
+              (identifier)
+              (parenthesized_expression
+                (literal
+                  (string))))
+            (call_expression
+              (identifier)
+              (parenthesized_expression
+                (literal
+                  (string))))))))))
+
+==================
+array test 9
+==================
+
+sub TestArrayAssignment()
+    myArray = [1, 2, 3, 4, 5]
+    assignedArray = myArray
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number)))))
+      (assignment_statement
+        (identifier)
+        (identifier)))))
+
+==================
+array test 10
+==================
+
+sub TestArrayAsArgument()
+    myArray = [1, 2, 3, 4, 5]
+    PrintArray(myArray)
+end sub
+
+sub PrintArray(arr)
+    print arr
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number)))))
+      (call_expression
+        (identifier)
+        (parenthesized_expression
+          (identifier)))))
+  (sub_definition
+    (identifier)
+    (parameter_list
+      (parameter
+        (identifier)))
+    (block
+      (print_statement
+        (identifier)))))
+

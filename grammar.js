@@ -20,7 +20,9 @@ module.exports = grammar({
       $.return_statement,
       $.assignment_statement,
       $.if_statement,
-      $.while_statement
+      $.while_statement,
+      $.for_statement,
+      $.print_statement
     ),
 
     _expression: $ => choice(
@@ -32,6 +34,7 @@ module.exports = grammar({
       $.logical_not_expression,
       $.call_expression,
       $.property_access_expression,
+      $.array_access_expression,
       $.parenthesized_expression,
       $.identifier,
       $.literal
@@ -78,7 +81,7 @@ module.exports = grammar({
       'if',
       $._expression,
       optional('then'),
-      $.block,
+      optional($.block),
       optional($.else_if_clause),
       optional($.else_clause),
       'end if'
@@ -98,13 +101,31 @@ module.exports = grammar({
 
     for_statement: $ => seq(
       // Define for statement rule
+      'for',
+      choice(
+        seq(
+          $.assignment_statement,
+          /to/i,
+          $._expression,
+          optional(seq(/step/i, $._expression))
+        ),
+        seq(
+          /each/i,
+          $._expression,
+          /in/i,
+          $._expression
+        )
+
+      ),
+      optional($.block),
+      'end for'
     ),
 
     while_statement: $ => seq(
       // Define while statement rule
       'while',
       $._expression,
-      $.block,
+      optional($.block),
       'end while'
     ),
 
@@ -119,11 +140,17 @@ module.exports = grammar({
       // Define assignment statement rule
       choice(
         $.identifier,
-        $.property_access_expression
+        $.property_access_expression,
+        $.array_access_expression
       ),
       '=',
       $._expression
     )),
+
+    print_statement: $ => seq(
+      'print',
+      $._expression
+    ),
 
     block: $ => repeat1(choice(
       $._statement,
@@ -228,6 +255,18 @@ module.exports = grammar({
       )
     )),
 
+    array_access_expression: $ => prec(1, seq(
+      choice(
+        $.identifier,
+        $.array_access_expression,
+        $.call_expression,
+        $.array
+      ),
+      '[',
+      $._expression,
+      ']'
+    )),
+
     comment: $ => seq("'", /.*/),
 
     m_identifier: $ => 'm',
@@ -237,7 +276,9 @@ module.exports = grammar({
       // Add literal rules here
       $.boolean,
       $.number,
-      $.string
+      $.string,
+      $.array,
+      $.assoc_array
     ),
 
     boolean: $ => choice(
@@ -248,6 +289,27 @@ module.exports = grammar({
     number: $ => /-?\d+(\.\d+)?/,
 
     string: $ => /"[^"]*"/,
+
+    array: $ => seq(
+      '[',
+      optional(commaSep($._expression)),
+      ']'
+    ),
+
+    assoc_array: $ => seq(
+      '{',
+      optional(commaSep($.assoc_array_element)),
+      '}'
+    ),
+
+    assoc_array_element: $ => seq(
+      choice(
+        $.identifier,
+        $.string
+      ),
+      ':',
+      $._expression
+    ),
 
     newline: $ => /\r?\n/,
 

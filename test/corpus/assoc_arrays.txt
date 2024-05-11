@@ -1,0 +1,179 @@
+==================
+assocarray test 1
+==================
+
+sub TestEmptyAssocArray()
+    emptyAssocArray = {}
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array))))))
+
+==================
+assocarray test 2
+==================
+
+sub TestAssocArrayWithElements()
+    person = {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+    }
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (string)
+              (literal
+                (string)))
+            (assoc_array_element
+              (string)
+              (literal
+                (number)))
+            (assoc_array_element
+              (string)
+              (literal
+                (string)))))))))
+
+==================
+assocarray test 3
+==================
+
+sub TestAssocArrayElementAccess()
+    person = {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+    }
+    print person.name
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (string)
+              (literal
+                (string)))
+            (assoc_array_element
+              (string)
+              (literal
+                (number)))
+            (assoc_array_element
+              (string)
+              (literal
+                (string))))))
+      (print_statement
+        (property_access_expression
+          (identifier)
+          (identifier))))))
+
+==================
+assocarray test 4
+==================
+
+sub TestAssocArrayElementModification()
+    person = {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+    }
+    person.age = 31
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (string)
+              (literal
+                (string)))
+            (assoc_array_element
+              (string)
+              (literal
+                (number)))
+            (assoc_array_element
+              (string)
+              (literal
+                (string))))))
+      (assignment_statement
+        (property_access_expression
+          (identifier)
+          (identifier))
+        (literal
+          (number))))))
+
+==================
+assocarray test 5
+==================
+
+sub TestAssocArrayWithExpressions()
+    values = {
+        "sum": 10 + 20,
+        "product": 5 * 6
+    }
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (string)
+              (binary_expression
+               (arithmetic_expression
+                (literal
+                 (number))
+                (literal
+                 (number)))))
+            (assoc_array_element
+              (string)
+              (binary_expression
+               (arithmetic_expression
+                (literal
+                 (number))
+                (literal
+                 (number)))))))))))
+

@@ -67,7 +67,6 @@
   "-"
   "*"
   "/"
-  "MOD"
 ] @operator
 
 ; Logical operators
@@ -78,6 +77,10 @@
 (logical_not_expression
   (identifier) @operator
   (#match? @operator "^(?i)not$")
+)
+(arithmetic_expression
+  (identifier) @operator
+  (#match? @operator "^(?i)mod$")
 )
 
 ; Comments

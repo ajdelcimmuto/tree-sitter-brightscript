@@ -12,6 +12,132 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_access_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -67,6 +193,10 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -100,6 +230,84 @@
         },
         {
           "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assoc_array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assoc_array_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assoc_array_element",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -145,6 +353,10 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "assignment_statement",
           "named": true
         },
@@ -158,6 +370,10 @@
         },
         {
           "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "for_statement",
           "named": true
         },
         {
@@ -182,6 +398,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "print_statement",
           "named": true
         },
         {
@@ -242,6 +462,10 @@
       "types": [
         {
           "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
           "named": true
         },
         {
@@ -312,6 +536,77 @@
       "types": [
         {
           "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "for_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "assignment_statement",
           "named": true
         },
         {
@@ -424,6 +719,10 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -487,6 +786,14 @@
       "required": true,
       "types": [
         {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "assoc_array",
+          "named": true
+        },
+        {
           "type": "boolean",
           "named": true
         },
@@ -511,6 +818,10 @@
       "types": [
         {
           "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
           "named": true
         },
         {
@@ -566,6 +877,10 @@
       "types": [
         {
           "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
           "named": true
         },
         {
@@ -658,6 +973,69 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "logical_expression",
+          "named": true
+        },
+        {
+          "type": "logical_not_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "property_access_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "print_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -733,6 +1111,10 @@
       "types": [
         {
           "type": "arithmetic_expression",
+          "named": true
+        },
+        {
+          "type": "array_access_expression",
           "named": true
         },
         {
@@ -895,6 +1277,10 @@
           "named": true
         },
         {
+          "type": "array_access_expression",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -978,6 +1364,10 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -999,6 +1389,14 @@
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -1030,6 +1428,10 @@
     "named": false
   },
   {
+    "type": "end for",
+    "named": false
+  },
+  {
     "type": "end function",
     "named": false
   },
@@ -1047,6 +1449,10 @@
   },
   {
     "type": "float",
+    "named": false
+  },
+  {
+    "type": "for",
     "named": false
   },
   {
@@ -1071,6 +1477,10 @@
   },
   {
     "type": "object",
+    "named": false
+  },
+  {
+    "type": "print",
     "named": false
   },
   {
@@ -1099,6 +1509,14 @@
   },
   {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]
