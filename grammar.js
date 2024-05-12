@@ -77,15 +77,23 @@ module.exports = grammar({
       /end sub/i
     ),
 
-    if_statement: $ => seq(
-      /if/,
-      $._expression,
-      optional(/then/i),
-      optional($.block),
-      optional($.else_if_clause),
-      optional($.else_clause),
-      choice(/end if/i, /endif/i)
-    ),
+    if_statement: $ => prec(1, choice(
+      seq(
+        /if/i,
+        $._expression,
+        optional(/then/i),
+        optional($.block),
+        optional($.else_if_clause),
+        optional($.else_clause),
+        /end if/i
+      ),
+      seq(
+        /if/i,
+        $._expression,
+        /then/i,
+        $._expression
+      )
+    )),
 
     else_if_clause: $ => seq(
       choice(/else if/i, /elseif/i),
@@ -248,7 +256,7 @@ module.exports = grammar({
         $.property_access_expression,
         $.call_expression
       ),
-      '.',
+      choice('.', '?.'),
       choice(
         $.identifier,
         $.call_expression

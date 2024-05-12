@@ -6,6 +6,8 @@ sub init()
     ' This is a line
     ' Another one
     print(str(m.b.c))
+    if true
+    end if
 end sub
 
 ' A line
@@ -29,14 +31,23 @@ function x(y as integer) as integer
     for each element in x
         if element = 1 then
             m.top.callFunc("brotherWeNeedToCall", { x: element })
-            if true then
-            end if
         end if
     end for
 
     return y
 end function
 
-sub aSub(x as object, y as integer)
+sub playPlutoMediaResourceConfig(plutoMediaResourceConfigAA as object)
+	if not utils_isValid(plutoMediaResourceConfigAA?.plutoMediaResourceConfig) or plutoMediaResourceConfigAA.plutoMediaResourceConfig.subtype() <> "PlutoMediaResourceConfig" then return
+
+	setupObservers()
+
+	m._resourceConfig = createResourceConfig(plutoMediaResourceConfigAA.plutoMediaResourceConfig)
+
+	if utils_isValid(plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig) and plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig.subtype() = "PlutoSessionTrackingResourceConfig" then
+		setVideoSessionTrackingParams(plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig)
+	end if
+
+	addAndPlayResources()
 end sub
 

@@ -204,3 +204,45 @@ end sub
               (literal
                 (string)))))))))
 
+==================
+empty if statement
+==================
+
+sub init()
+    if 5=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (comparison_expression
+          (literal
+            (number))
+          (literal
+            (number))))))))
+
+==================
+empty if statement with boolean
+==================
+
+sub init()
+    if true
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (literal
+        (boolean))))))
+
