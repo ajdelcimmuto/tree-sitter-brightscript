@@ -1,34 +1,16 @@
 ; Keywords
 [
-  "if"
-  "elseif"
-  "else if"
-  "else"
-  "then"
-  "end if"
-  "while"
-  "end while"
- ; "for"
-  ; "end for"
-  "function"
-  "end function"
-  "sub"
-  "end sub"
-  "return"
-  "as"
+  (function_definition)
+  (sub_definition)
+  (if_statement)
+  (else_if_clause)
+  (else_clause)
+  (for_statement)
+  (while_statement)
 ] @keyword
 
 ; Types
-[
-  "boolean"
-  "integer"
-  "float"
-  "double"
-  "string"
-  "object"
-  "dynamic"
-  "void"
-] @type
+(type_specifier) @type
 
 ; Literals
 (literal
@@ -71,17 +53,11 @@
 
 ; Logical operators
 (logical_expression
-  (identifier) @operator
-  (#match? @operator "^(?i)(and|or)$")
-)
+  (identifier) @operator)
 (logical_not_expression
-  (identifier) @operator
-  (#match? @operator "^(?i)not$")
-)
+  (identifier) @operator)
 (arithmetic_expression
-  (identifier) @operator
-  (#match? @operator "^(?i)mod$")
-)
+  (identifier) @operator)
 
 ; Comments
 (comment) @comment

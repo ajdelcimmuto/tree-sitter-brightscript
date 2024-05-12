@@ -1404,112 +1404,16 @@
     "named": false
   },
   {
-    "type": "boolean",
-    "named": false
-  },
-  {
-    "type": "double",
-    "named": false
-  },
-  {
-    "type": "dynamic",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
-    "type": "else if",
-    "named": false
-  },
-  {
-    "type": "elseif",
-    "named": false
-  },
-  {
-    "type": "end for",
-    "named": false
-  },
-  {
-    "type": "end function",
-    "named": false
-  },
-  {
-    "type": "end if",
-    "named": false
-  },
-  {
-    "type": "end sub",
-    "named": false
-  },
-  {
-    "type": "end while",
-    "named": false
-  },
-  {
-    "type": "float",
-    "named": false
-  },
-  {
-    "type": "for",
-    "named": false
-  },
-  {
-    "type": "function",
-    "named": false
-  },
-  {
     "type": "identifier",
     "named": true
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "integer",
-    "named": false
   },
   {
     "type": "number",
     "named": true
   },
   {
-    "type": "object",
-    "named": false
-  },
-  {
-    "type": "print",
-    "named": false
-  },
-  {
-    "type": "return",
-    "named": false
-  },
-  {
-    "type": "string",
-    "named": false
-  },
-  {
     "type": "string",
     "named": true
-  },
-  {
-    "type": "sub",
-    "named": false
-  },
-  {
-    "type": "then",
-    "named": false
-  },
-  {
-    "type": "void",
-    "named": false
-  },
-  {
-    "type": "while",
-    "named": false
   },
   {
     "type": "{",

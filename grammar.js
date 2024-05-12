@@ -43,65 +43,65 @@ module.exports = grammar({
     // Statements
     function_definition: $ => seq(
       // Define function declaration rule
-      'function',
+      /function/i,
       $.identifier,
       $.parameter_list,
       $.return_type,
       $.block,
-      'end function'
+      /end function/i
     ),
 
     sub_definition: $ => seq(
       // Define sub declaration rule
-      'sub',
+      /sub/i,
       $.identifier,
       $.parameter_list,
       $.block,
-      'end sub'
+      /end sub/i
     ),
 
     function_definition_empty: $ => seq(
       // Define function declaration rule
-      'function',
+      /function/i,
       $.identifier,
       $.parameter_list,
       $.return_type,
-      'end function'
+      /end function/i
     ),
 
     sub_definition_empty: $ => seq(
       // Define sub declaration rule
-      'sub',
+      /sub/i,
       $.identifier,
       $.parameter_list,
-      'end sub'
+      /end sub/i
     ),
 
     if_statement: $ => seq(
-      'if',
+      /if/,
       $._expression,
-      optional('then'),
+      optional(/then/i),
       optional($.block),
       optional($.else_if_clause),
       optional($.else_clause),
-      'end if'
+      choice(/end if/i, /endif/i)
     ),
 
     else_if_clause: $ => seq(
-      choice('else if', 'elseif'),
+      choice(/else if/i, /elseif/i),
       $._expression,
-      optional('then'),
+      optional(/then/i),
       $.block
     ),
 
     else_clause: $ => seq(
-      'else',
+      /else/i,
       $.block
     ),
 
     for_statement: $ => seq(
       // Define for statement rule
-      'for',
+      /for/i,
       choice(
         seq(
           $.assignment_statement,
@@ -118,20 +118,20 @@ module.exports = grammar({
 
       ),
       optional($.block),
-      'end for'
+      /end for/i
     ),
 
     while_statement: $ => seq(
       // Define while statement rule
-      'while',
+      /while/i,
       $._expression,
       optional($.block),
-      'end while'
+      /end while/i
     ),
 
     return_statement: $ => seq(
       // Define return statement rule
-      'return',
+      /return/i,
       $._expression
     ),
 
@@ -148,7 +148,7 @@ module.exports = grammar({
     )),
 
     print_statement: $ => seq(
-      'print',
+      /print/i,
       $._expression
     ),
 
@@ -179,14 +179,14 @@ module.exports = grammar({
     ),
 
     type_specifier: $ => choice(
-      'boolean',
-      'integer',
-      'float',
-      'double',
-      'string',
-      'object',
-      'dynamic',
-      'void'
+      /boolean/i,
+      /integer/i,
+      /float/i,
+      /double/i,
+      /string/i,
+      /object/i,
+      /dynamic/i,
+      /void/i
     ),
 
     // Expressions

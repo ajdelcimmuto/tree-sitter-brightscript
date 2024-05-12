@@ -24,6 +24,19 @@ function x(y as integer) as integer
         end while
     end if
 
+    x = [1,2,3,4,5]
+    y = {y: 4, b: 3}
+    for each element in x
+        if element = 1 then
+            m.top.callFunc("brotherWeNeedToCall", { x: element })
+            if true then
+            end if
+        end if
+    end for
+
     return y
 end function
+
+sub aSub(x as object, y as integer)
+end sub
 
