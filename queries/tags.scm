@@ -1,24 +1,40 @@
 (function_definition
-    (identifier) @function.definition
+    (identifier) @definition.function
 )
 
 (sub_definition
-   (identifier) @function.definition
+    (identifier) @definition.function
 )
 
 (parameter
-  (identifier) @parameter.definition
+  (identifier) @definition.parameter
 )
 
 (assignment_statement
-  (identifier) @variable.definition
+  (identifier) @definition.variable
 )
 
 (call_expression
-  (identifier) @function.call
+  (identifier) @reference.call
 )
 
 (property_access_expression
-  (identifier) @property.access
+  (identifier) @reference.property
 )
+
+; (parameter
+;   (identifier) @parameter.definition
+; )
+
+; (assignment_statement
+;   (identifier) @variable.definition
+; )
+
+; (call_expression
+;   (identifier) @function.call
+; )
+
+; (property_access_expression
+;   (identifier) @property.access
+; )
 
