@@ -25,6 +25,7 @@ module.exports = grammar({
       $.exit_while_statement,
       $.for_statement,
       $.exit_for_statement,
+      $.try_statement,
       $.print_statement
     ),
 
@@ -183,6 +184,30 @@ module.exports = grammar({
       $._expression
     ),
 
+    // print_shortcut_statement: $ => prec.right(2, seq(
+    //   '?',
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression)
+    // )),
+
+    try_statement: $ => seq(
+      /try/i,
+      optional($.block),
+      optional($.catch_clause),
+      choice(/endtry/i, /end try/i)
+    ),
+
+    catch_clause: $ => seq(
+      /catch/i,
+      $.identifier,
+      optional($.block)
+    ),
+
     block: $ => repeat1(choice(
       $._statement,
       $._expression
@@ -305,6 +330,7 @@ module.exports = grammar({
     // Literals
     literal: $ => choice(
       // Add literal rules here
+      $.invalid,
       $.boolean,
       $.number,
       $.string,
@@ -320,6 +346,8 @@ module.exports = grammar({
     number: $ => /-?\d+(\.\d+)?/,
 
     string: $ => /"[^"]*"/,
+
+    invalid: $ => /invalid/i,
 
     array: $ => seq(
       '[',

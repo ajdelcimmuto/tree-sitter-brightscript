@@ -124,3 +124,55 @@ end sub
             (literal
                 (string)))))))
 
+====================
+invalid return statement
+====================
+function x() as object
+    return invalid
+end function
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_specifier))
+    (block
+      (return_statement
+        (literal
+          (invalid))))))
+
+==================
+print shortcut statement
+:skip
+==================
+
+sub init()
+  x = 5
+  ? "The value of x is:"; x; " and x * 2 is:"; x * 2
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (number)))
+      (print_shortcut_statement
+        (literal
+          (string))
+        (identifier)
+        (literal
+          (string))
+        (binary_expression
+          (arithmetic_expression
+            (identifier)
+            (literal
+              (number))))))))
+

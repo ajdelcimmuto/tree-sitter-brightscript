@@ -417,6 +417,10 @@
           "named": true
         },
         {
+          "type": "try_statement",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
@@ -446,6 +450,25 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "catch_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -790,6 +813,10 @@
           "named": true
         },
         {
+          "type": "try_statement",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
@@ -833,6 +860,10 @@
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "invalid",
           "named": true
         },
         {
@@ -1260,6 +1291,25 @@
     }
   },
   {
+    "type": "try_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "catch_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type_specifier",
     "named": true,
     "fields": {}
@@ -1424,6 +1474,10 @@
   },
   {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "invalid",
     "named": true
   },
   {
