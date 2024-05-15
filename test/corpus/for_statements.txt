@@ -1,0 +1,230 @@
+==================
+empty for statement
+==================
+
+sub init()
+    for x=0 to 10
+    end for
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (for_statement
+     (assignment_statement
+      (identifier)
+      (literal
+       (number)))
+     (literal
+      (number))))))
+
+==================
+for statement
+==================
+
+sub init()
+    for x=0 to 10 step 2
+        print("hi")
+    end for
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (for_statement
+     (assignment_statement
+      (identifier)
+      (literal
+       (number)))
+     (literal
+      (number))
+     (literal
+       (number))
+     (block
+       (print_statement
+          (parenthesized_expression
+           (literal
+            (string)))))))))
+
+==================
+for each statement
+==================
+
+sub init()
+    x = { y: "hello", b: "world" }
+    for each element in x
+        print(element)
+    end for
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (assignment_statement
+      (identifier)
+      (literal
+       (assoc_array
+        (assoc_array_element
+         (identifier)
+         (literal
+          (string)))
+        (assoc_array_element
+         (identifier)
+         (literal
+          (string))))))
+    (for_statement
+      (identifier)
+      (identifier)
+      (block
+        (print_statement
+          (parenthesized_expression
+            (identifier))))))))
+
+==================
+for statement with step
+==================
+
+sub init()
+    for x = 1 to 10 step 2
+        print(x)
+    end for
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (for_statement
+        (assignment_statement
+          (identifier)
+          (literal
+            (number)))
+        (literal
+          (number))
+        (literal
+          (number))
+        (block
+          (print_statement
+            (parenthesized_expression
+              (identifier))))))))
+
+==================
+for each statement with array
+==================
+
+sub init()
+    arr = [1, 2, 3, 4, 5]
+    for each item in arr
+        print(item)
+    end for
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (array
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number))
+            (literal
+              (number)))))
+      (for_statement
+        (identifier)
+        (identifier)
+        (block
+          (print_statement
+            (parenthesized_expression
+              (identifier))))))))
+
+==================
+nested for statements
+==================
+
+sub init()
+    for i = 1 to 5
+        for j = 1 to 3
+            print(i + j)
+        end for
+    end for
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (for_statement
+        (assignment_statement
+          (identifier)
+          (literal
+            (number)))
+        (literal
+          (number))
+        (block
+          (for_statement
+            (assignment_statement
+              (identifier)
+              (literal
+                (number)))
+            (literal
+              (number))
+            (block
+              (print_statement
+                (parenthesized_expression
+                  (binary_expression
+                    (arithmetic_expression
+                      (identifier)
+                      (identifier))))))))))))
+
+==================
+for statement with exit while
+==================
+
+sub init()
+    for x=0 to 10
+        exit for
+    end for
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (for_statement
+      (assignment_statement
+        (identifier)
+        (literal
+          (number)))
+      (literal
+        (number))
+      (block
+        (exit_for_statement))))))
+

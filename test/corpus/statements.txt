@@ -12,8 +12,7 @@ end sub
     (identifier)
     (parameter_list)
     (block
-      (call_expression
-        (identifier)
+      (print_statement
         (parenthesized_expression
             (literal
                 (string)))))))
@@ -38,8 +37,7 @@ end sub
       )
     )
     (block
-     (call_expression
-       (identifier)
+     (print_statement
       (parenthesized_expression
        (identifier))))))
 
@@ -66,8 +64,7 @@ end sub
    )
   )
   (block
-   (call_expression
-    (identifier)
+   (print_statement
     (parenthesized_expression
      (identifier))))))
 
@@ -101,7 +98,29 @@ end sub
 ---
 
 (source_file
-  (sub_definition_empty
+  (sub_definition
     (identifier)
     (parameter_list)))
+
+==================
+Library definition
+==================
+Library "Roku_Ads.brs"
+
+sub x()
+    print("hi")
+end sub
+---
+
+(source_file
+  (library_definition
+    (string))
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (print_statement
+        (parenthesized_expression
+            (literal
+                (string)))))))
 

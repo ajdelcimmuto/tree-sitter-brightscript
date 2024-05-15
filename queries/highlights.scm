@@ -1,47 +1,72 @@
 ; Keywords
 [
-  "function"
-  "sub"
-  "end function"
-  "end sub"
-  "return"
-  "as"
+  (function_definition)
+  (sub_definition)
+  (if_statement)
+  (else_if_clause)
+  (else_clause)
+  (for_statement)
+  (while_statement)
 ] @keyword
 
 ; Types
-[
-  "boolean"
-  "integer"
-  "float"
-  "double"
-  "string"
-  "object"
-  "dynamic"
-  "void"
-] @type
-
-(comment) @comment
+(type_specifier) @type
 
 ; Literals
-(boolean) @boolean
-(number) @number
-(string) @string
+(literal
+  (boolean) @boolean)
+(literal
+  (number) @number)
+(literal
+  (string) @string)
 
 ; Identifiers
-; (identifier) @variable
-(call_expression
-  (identifier) @function)
-; Function and sub definitions
+(identifier) @variable
+
+; Function and Sub declarations
 (function_definition
-  (identifier) @function.builtin)
+  (identifier) @function)
 (sub_definition
-  (identifier) @function.builtin)
+  (identifier) @function)
 
-(function_definition_empty
-  (identifier) @function.builtin)
-(sub_definition_empty
-  (identifier) @function.builtin)
+; Function and Sub calls
+(call_expression
+  (identifier) @function.call)
 
-; Parameters
-(parameter
-  (identifier) @variable_parameter)
+; Property access
+(property_access_expression
+  (identifier) @property)
+
+; Operators
+[
+  "="
+  "<>"
+  "<"
+  ">"
+  "<="
+  ">="
+  "+"
+  "-"
+  "*"
+  "/"
+] @operator
+
+; Logical operators
+(logical_expression
+  (identifier) @operator)
+(logical_not_expression
+  (identifier) @operator)
+(arithmetic_expression
+  (identifier) @operator)
+
+; Comments
+(comment) @comment
+
+; Punctuation
+[
+  "("
+  ")"
+  "."
+  ","
+] @punctuation
+

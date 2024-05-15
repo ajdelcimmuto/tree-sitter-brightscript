@@ -1,0 +1,297 @@
+==================
+basic if statement
+==================
+
+sub init()
+    if 5=5 then
+        y=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (comparison_expression
+          (literal
+            (number))
+          (literal
+            (number))))
+      (block
+        (assignment_statement
+          (identifier)
+          (literal
+            (number))))))))
+
+==================
+complex if statement
+==================
+
+sub init()
+    if 5=5 and 4+5 >= 10 then
+        y=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (logical_expression
+          (binary_expression
+           (comparison_expression
+            (literal
+             (number))
+            (literal
+             (number))))
+          (binary_expression
+            (comparison_expression
+              (binary_expression
+               (arithmetic_expression
+                (literal
+                 (number))
+                (literal
+                 (number))))
+              (literal
+                (number))))))
+      (block
+        (assignment_statement
+          (identifier)
+          (literal
+            (number))))))))
+
+==================
+if statement with else clause
+==================
+
+sub init()
+    if 5 = 6 then
+        x = 10
+    else
+        x = 20
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (literal
+              (number))
+            (literal
+              (number))))
+        (block
+          (assignment_statement
+            (identifier)
+            (literal
+              (number))))
+        (else_clause
+          (block
+            (assignment_statement
+              (identifier)
+              (literal
+                (number)))))))))
+
+==================
+if statement with else if clause
+==================
+
+sub init()
+    if x > 10 then
+        print "Greater than 10"
+    else if x > 5 then
+        print "Greater than 5"
+    else
+        print "Less than or equal to 5"
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (identifier)
+            (literal
+              (number))))
+        (block
+          (print_statement
+            (literal
+              (string))))
+        (else_if_clause
+          (binary_expression
+            (comparison_expression
+              (identifier)
+              (literal
+                (number))))
+          (block
+            (print_statement
+              (literal
+                (string)))))
+        (else_clause
+          (block
+            (print_statement
+              (literal
+                (string)))))))))
+
+==================
+if statement with nested if
+==================
+
+sub init()
+    if x > 10 then
+        if y > 5 then
+            print "x > 10 and y > 5"
+        else
+            print "x > 10 and y <= 5"
+        end if
+    else
+        print "x <= 10"
+    end if
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (identifier)
+            (literal
+              (number))))
+        (block
+          (if_statement
+            (binary_expression
+              (comparison_expression
+                (identifier)
+                (literal
+                  (number))))
+            (block
+              (print_statement
+                (literal
+                  (string))))
+            (else_clause
+              (block
+                (print_statement
+                  (literal
+                    (string)))))))
+        (else_clause
+          (block
+            (print_statement
+              (literal
+                (string)))))))))
+
+==================
+empty if statement
+==================
+
+sub init()
+    if 5=5
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (binary_expression
+        (comparison_expression
+          (literal
+            (number))
+          (literal
+            (number))))))))
+
+==================
+empty if statement with boolean
+==================
+
+sub init()
+    if true
+    end if
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (if_statement
+      (literal
+        (boolean))))))
+
+
+===============
+nested if statements mix between block and no block
+===============
+
+sub init()
+    if true
+        if true then return true else return true
+    else if false
+        print("hi")
+    else
+        print("hi")
+    end if
+end sub
+---
+    (source_file
+      (sub_definition
+        (identifier)
+        (parameter_list)
+        (block
+          (if_statement
+            (literal
+              (boolean))
+            (block
+              (if_statement
+                (literal
+                  (boolean))
+                (return_statement
+                  (literal
+                    (boolean)))
+                (return_statement
+                  (literal
+                    (boolean)))))
+            (else_if_clause
+              (literal
+                (boolean))
+              (block
+                (print_statement
+                  (parenthesized_expression
+                    (literal
+                      (string))))))
+            (else_clause
+              (block
+                (print_statement
+                  (parenthesized_expression
+                    (literal
+                      (string))))))))))
+
+

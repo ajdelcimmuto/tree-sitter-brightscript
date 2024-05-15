@@ -12,86 +12,174 @@ module.exports = grammar({
     _definition: $ => choice(
       $.sub_definition,
       $.function_definition,
-      $.sub_definition_empty,
-      $.function_definition_empty
+      $.library_definition
+      // $.sub_definition_empty
+      // $.function_definition_empty
     ),
 
     _statement: $ => choice(
       $.return_statement,
-      $.assignment_statement
+      $.assignment_statement,
+      $.if_statement,
+      $.while_statement,
+      $.exit_while_statement,
+      $.for_statement,
+      $.exit_for_statement,
+      $.print_statement
     ),
 
     _expression: $ => choice(
-      // Add expression rules here
+      $.binary_expression,
+      $.unary_expression,
+      $.arithmetic_expression,
+      $.comparison_expression,
+      $.logical_expression,
+      $.logical_not_expression,
+      $.call_expression,
+      $.property_access_expression,
+      $.array_access_expression,
       $.parenthesized_expression,
       $.identifier,
-      $.literal,
-      $.call_expression,
-      $.property_access_expression
+      $.literal
+    ),
+
+    library_definition: $ => seq(
+      /library/i,
+      $.string
     ),
 
     // Statements
     function_definition: $ => seq(
       // Define function declaration rule
-      'function',
+      /function/i,
       $.identifier,
       $.parameter_list,
-      $.return_type,
+      optional($.return_type),
       $.block,
-      'end function'
+      /end function/i
     ),
 
     sub_definition: $ => seq(
       // Define sub declaration rule
-      'sub',
+      /sub/i,
       $.identifier,
       $.parameter_list,
-      $.block,
-      'end sub'
+      optional($.block),
+      /end sub/i
     ),
 
     function_definition_empty: $ => seq(
       // Define function declaration rule
-      'function',
+      /function/i,
       $.identifier,
       $.parameter_list,
       $.return_type,
-      'end function'
+      /end function/i
     ),
 
     sub_definition_empty: $ => seq(
       // Define sub declaration rule
-      'sub',
+      /sub/i,
       $.identifier,
       $.parameter_list,
-      'end sub'
+      /end sub/i
     ),
 
-    if_statement: $ => seq(
-      // Define if statement rule
+    if_statement: $ => prec.right(2, seq(
+      /if/i,
+      $._expression,
+      optional(/then/i),
+      choice(
+        seq(
+          $._statement,
+          optional(seq(
+            /else/i,
+            $._statement
+          ))
+        ),
+        seq(
+          /\r?\n/,
+          optional($.block),
+          repeat($.else_if_clause),
+          optional($.else_clause),
+          choice(/end if/i, /endif/i)
+        )
+    ))),
+
+    else_if_clause: $ => seq(
+      choice(/else if/i, /elseif/i),
+      $._expression,
+      optional(/then/i),
+      optional($.block)
+    ),
+
+    else_clause: $ => seq(
+      /else/i,
+      $.block
     ),
 
     for_statement: $ => seq(
       // Define for statement rule
+      /for/i,
+      choice(
+        seq(
+          $.assignment_statement,
+          /to/i,
+          $._expression,
+          optional(seq(/step/i, $._expression))
+        ),
+        seq(
+          /each/i,
+          $._expression,
+          /in/i,
+          $._expression
+        )
+
+      ),
+      optional($.block),
+      /end for/i
     ),
 
     while_statement: $ => seq(
       // Define while statement rule
+      /while/i,
+      $._expression,
+      optional($.block),
+      /end while/i
     ),
 
-    return_statement: $ => seq(
+    exit_while_statement: $ => seq(
+      // Define exit while statement rule
+      /exit/i,
+      /while/i
+    ),
+
+    exit_for_statement: $ => seq(
+      // Define exit for statement rule
+      /exit/i,
+      /for/i
+    ),
+
+    return_statement: $ => prec.right(2, seq(
       // Define return statement rule
-      'return',
-      $._expression
-    ),
+      /return/i,
+      optional($._expression)
+    )),
 
-    assignment_statement: $ => seq(
+    // Prec assignment 2 avoiding conflict with comparison_expression
+    assignment_statement: $ => prec(2, seq(
       // Define assignment statement rule
       choice(
         $.identifier,
-        $.property_access_expression
+        $.property_access_expression,
+        $.array_access_expression
       ),
       '=',
+      $._expression
+    )),
+
+    print_statement: $ => seq(
+      /print/i,
       $._expression
     ),
 
@@ -122,14 +210,14 @@ module.exports = grammar({
     ),
 
     type_specifier: $ => choice(
-      'boolean',
-      'integer',
-      'float',
-      'double',
-      'string',
-      'object',
-      'dynamic',
-      'void'
+      /boolean/i,
+      /integer/i,
+      /float/i,
+      /double/i,
+      /string/i,
+      /object/i,
+      /dynamic/i,
+      /void/i
     ),
 
     // Expressions
@@ -139,13 +227,45 @@ module.exports = grammar({
       $.parenthesized_expression
     )),
 
-    binary_expression: $ => seq(
+    binary_expression: $ => prec(1, seq(
       // Define binary expression rule
-    ),
+      choice(
+        $.arithmetic_expression,
+        $.comparison_expression,
+        $.logical_expression
+      )
+    )),
 
-    unary_expression: $ => seq(
-      // Define unary expression rule
-    ),
+    arithmetic_expression: $ => prec(3, prec.left(choice(
+      seq($._expression, '+', $._expression),
+      seq($._expression, '-', $._expression),
+      seq($._expression, '*', $._expression),
+      seq($._expression, '/', $._expression),
+      seq($._expression, /mod/i, $._expression)
+    ))),
+
+    comparison_expression: $ => prec(2, prec.left(choice(
+      seq($._expression, '=', $._expression),
+      seq($._expression, '<>', $._expression),
+      seq($._expression, '<', $._expression),
+      seq($._expression, '<=', $._expression),
+      seq($._expression, '>', $._expression),
+      seq($._expression, '>=', $._expression),
+    ))),
+
+    logical_expression: $ => prec.left(1, choice(
+      seq($._expression, /and/i, $._expression),
+      seq($._expression, /or/i, $._expression)
+    )),
+
+    unary_expression: $ => prec(1, choice(
+      $.logical_not_expression,
+    )),
+
+    logical_not_expression: $ => prec(4, seq(
+      /not/i,
+      $._expression
+    )),
 
     parenthesized_expression: $ => seq(
       '(',
@@ -153,14 +273,30 @@ module.exports = grammar({
       ')'
     ),
 
-    property_access_expression: $ => seq(
+    property_access_expression: $ => prec.left(seq(
       choice(
         $.identifier,
-        $.property_access_expression
+        $.property_access_expression,
+        $.call_expression
       ),
-      '.',
-      $.identifier
-    ),
+      choice('.', '?.'),
+      choice(
+        $.identifier,
+        $.call_expression
+      )
+    )),
+
+    array_access_expression: $ => prec(1, seq(
+      choice(
+        $.identifier,
+        $.array_access_expression,
+        $.call_expression,
+        // $.array
+      ),
+      '[',
+      $._expression,
+      ']'
+    )),
 
     comment: $ => seq("'", /.*/),
 
@@ -171,19 +307,43 @@ module.exports = grammar({
       // Add literal rules here
       $.boolean,
       $.number,
-      $.string
+      $.string,
+      $.array,
+      $.assoc_array
     ),
 
     boolean: $ => choice(
-      'true',
-      'false'
+      /true/i,
+      /false/i
     ),
 
-    number: $ => /\d+(\.\d+)?/,
+    number: $ => /-?\d+(\.\d+)?/,
 
     string: $ => /"[^"]*"/,
 
-    newline: $ => /\r?\n/,
+    array: $ => seq(
+      '[',
+      optional(commaSep($._expression)),
+      ']'
+    ),
+
+    assoc_array: $ => seq(
+      '{',
+      optional(commaSep($.assoc_array_element)),
+      '}'
+    ),
+
+    assoc_array_element: $ => seq(
+      choice(
+        $.identifier,
+        $.string
+      ),
+      ':',
+      $._expression
+    ),
+
+    new_line: $ => /\r?\n/,
+    // new_line: $ => choice('\n', '\r', '\r\n'),
 
     // Miscellaneous
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
@@ -216,3 +376,4 @@ function commaSep(rule) {
 function commaSep1(rule) {
   return seq(rule, repeat(seq(',', rule)));
 }
+
