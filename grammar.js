@@ -92,7 +92,7 @@ module.exports = grammar({
       optional(/then/i),
       choice(
         seq(
-          $._statement,
+          choice($._statement, $._expression),
           optional(seq(
             /else/i,
             $._statement

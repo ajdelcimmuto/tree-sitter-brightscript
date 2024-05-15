@@ -294,4 +294,30 @@ end sub
                     (literal
                       (string))))))))))
 
+===================
+single line if with multiple property access
+===================
+sub init()
+    if m.sessionToken <> "" then m.addHeader()
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+   (if_statement
+    (binary_expression
+     (comparison_expression
+      (property_access_expression
+       (identifier)
+       (identifier))
+      (literal
+       (string))))
+    (property_access_expression
+     (identifier)
+     (call_expression
+      (identifier)
+      (parenthesized_expression)))))))
 
