@@ -216,3 +216,25 @@ end sub
                 (literal
                   (number))))))))))
 
+==================
+while statement with exit while
+==================
+
+sub init()
+    while true
+        exit while
+    end while
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (while_statement
+      (literal
+        (boolean))
+      (block
+        (exit_while_statement))))))
+

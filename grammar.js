@@ -12,8 +12,9 @@ module.exports = grammar({
     _definition: $ => choice(
       $.sub_definition,
       $.function_definition,
-      $.sub_definition_empty,
-      $.function_definition_empty
+      $.library_definition
+      // $.sub_definition_empty
+      // $.function_definition_empty
     ),
 
     _statement: $ => choice(
@@ -21,7 +22,9 @@ module.exports = grammar({
       $.assignment_statement,
       $.if_statement,
       $.while_statement,
+      $.exit_while_statement,
       $.for_statement,
+      $.exit_for_statement,
       $.print_statement
     ),
 
@@ -40,13 +43,18 @@ module.exports = grammar({
       $.literal
     ),
 
+    library_definition: $ => seq(
+      /library/i,
+      $.string
+    ),
+
     // Statements
     function_definition: $ => seq(
       // Define function declaration rule
       /function/i,
       $.identifier,
       $.parameter_list,
-      $.return_type,
+      optional($.return_type),
       $.block,
       /end function/i
     ),
@@ -56,7 +64,7 @@ module.exports = grammar({
       /sub/i,
       $.identifier,
       $.parameter_list,
-      $.block,
+      optional($.block),
       /end sub/i
     ),
 
@@ -77,29 +85,32 @@ module.exports = grammar({
       /end sub/i
     ),
 
-    if_statement: $ => prec(1, choice(
-      seq(
-        /if/i,
-        $._expression,
-        optional(/then/i),
-        optional($.block),
-        optional($.else_if_clause),
-        optional($.else_clause),
-        /end if/i
-      ),
-      seq(
-        /if/i,
-        $._expression,
-        /then/i,
-        $._expression
-      )
-    )),
+    if_statement: $ => prec.right(2, seq(
+      /if/i,
+      $._expression,
+      optional(/then/i),
+      choice(
+        seq(
+          $._statement,
+          optional(seq(
+            /else/i,
+            $._statement
+          ))
+        ),
+        seq(
+          /\r?\n/,
+          optional($.block),
+          repeat($.else_if_clause),
+          optional($.else_clause),
+          choice(/end if/i, /endif/i)
+        )
+    ))),
 
     else_if_clause: $ => seq(
       choice(/else if/i, /elseif/i),
       $._expression,
       optional(/then/i),
-      $.block
+      optional($.block)
     ),
 
     else_clause: $ => seq(
@@ -137,11 +148,23 @@ module.exports = grammar({
       /end while/i
     ),
 
-    return_statement: $ => seq(
+    exit_while_statement: $ => seq(
+      // Define exit while statement rule
+      /exit/i,
+      /while/i
+    ),
+
+    exit_for_statement: $ => seq(
+      // Define exit for statement rule
+      /exit/i,
+      /for/i
+    ),
+
+    return_statement: $ => prec.right(2, seq(
       // Define return statement rule
       /return/i,
-      $._expression
-    ),
+      optional($._expression)
+    )),
 
     // Prec assignment 2 avoiding conflict with comparison_expression
     assignment_statement: $ => prec(2, seq(
@@ -268,7 +291,7 @@ module.exports = grammar({
         $.identifier,
         $.array_access_expression,
         $.call_expression,
-        $.array
+        // $.array
       ),
       '[',
       $._expression,
@@ -291,7 +314,7 @@ module.exports = grammar({
 
     boolean: $ => choice(
       /true/i,
-      /true/i
+      /false/i
     ),
 
     number: $ => /-?\d+(\.\d+)?/,
@@ -319,7 +342,8 @@ module.exports = grammar({
       $._expression
     ),
 
-    newline: $ => /\r?\n/,
+    new_line: $ => /\r?\n/,
+    // new_line: $ => choice('\n', '\r', '\r\n'),
 
     // Miscellaneous
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,

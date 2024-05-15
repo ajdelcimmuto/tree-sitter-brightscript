@@ -246,3 +246,52 @@ end sub
       (literal
         (boolean))))))
 
+
+===============
+nested if statements mix between block and no block
+===============
+
+sub init()
+    if true
+        if true then return true else return true
+    else if false
+        print("hi")
+    else
+        print("hi")
+    end if
+end sub
+---
+    (source_file
+      (sub_definition
+        (identifier)
+        (parameter_list)
+        (block
+          (if_statement
+            (literal
+              (boolean))
+            (block
+              (if_statement
+                (literal
+                  (boolean))
+                (return_statement
+                  (literal
+                    (boolean)))
+                (return_statement
+                  (literal
+                    (boolean)))))
+            (else_if_clause
+              (literal
+                (boolean))
+              (block
+                (print_statement
+                  (parenthesized_expression
+                    (literal
+                      (string))))))
+            (else_clause
+              (block
+                (print_statement
+                  (parenthesized_expression
+                    (literal
+                      (string))))))))))
+
+

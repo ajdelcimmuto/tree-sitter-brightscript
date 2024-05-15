@@ -202,3 +202,29 @@ end sub
                       (identifier)
                       (identifier))))))))))))
 
+==================
+for statement with exit while
+==================
+
+sub init()
+    for x=0 to 10
+        exit for
+    end for
+end sub
+---
+
+(source_file
+ (sub_definition
+  (identifier)
+  (parameter_list)
+  (block
+    (for_statement
+      (assignment_statement
+        (identifier)
+        (literal
+          (number)))
+      (literal
+        (number))
+      (block
+        (exit_for_statement))))))
+
