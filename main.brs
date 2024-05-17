@@ -6,17 +6,10 @@ sub init()
     ' This is a line
     ' Another one
     print(str(m.b.c))
-    if true
+    if x = invalid then
+        print("hi")
     end if
 end sub
-
-sub bruh()
-
-end sub
-
-function name() as void
-    print("hi")
-end function
 
 ' A line
 function x(y as integer) as integer
