@@ -205,16 +205,6 @@
         }
       ]
     },
-    "if_keyword": {
-      "type": "PATTERN",
-      "value": "if",
-      "flags": "i"
-    },
-    "then_keyword": {
-      "type": "PATTERN",
-      "value": "then",
-      "flags": "i"
-    },
     "if_statement": {
       "type": "PREC_RIGHT",
       "value": 2,
@@ -222,8 +212,9 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "if_keyword"
+            "type": "PATTERN",
+            "value": "if",
+            "flags": "i"
           },
           {
             "type": "SYMBOL",
@@ -233,8 +224,9 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "then_keyword"
+                "type": "PATTERN",
+                "value": "then",
+                "flags": "i"
               },
               {
                 "type": "BLANK"

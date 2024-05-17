@@ -803,10 +803,6 @@
           "named": true
         },
         {
-          "type": "if_keyword",
-          "named": true
-        },
-        {
           "type": "if_statement",
           "named": true
         },
@@ -836,10 +832,6 @@
         },
         {
           "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "then_keyword",
           "named": true
         },
         {
@@ -1325,11 +1317,6 @@
     }
   },
   {
-    "type": "then_keyword",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "try_statement",
     "named": true,
     "fields": {},
@@ -1537,10 +1524,6 @@
   },
   {
     "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "if_keyword",
     "named": true
   },
   {

@@ -15,14 +15,12 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (literal
               (number))
             (literal
               (number))))
-        (then_keyword)
         (block
           (assignment_statement
             (identifier)
@@ -48,7 +46,6 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (logical_expression
             (binary_expression
@@ -67,7 +64,6 @@ end sub
                       (number))))
                 (literal
                   (number))))))
-        (then_keyword)
         (block
           (assignment_statement
             (identifier)
@@ -96,14 +92,12 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (literal
               (number))
             (literal
               (number))))
-        (then_keyword)
         (block
           (assignment_statement
             (identifier)
@@ -140,13 +134,11 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (identifier)
             (literal
               (number))))
-        (then_keyword)
         (block
           (print_statement
             (literal
@@ -193,22 +185,18 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (identifier)
             (literal
               (number))))
-        (then_keyword)
         (block
           (if_statement
-            (if_keyword)
             (binary_expression
               (comparison_expression
                 (identifier)
                 (literal
                   (number))))
-            (then_keyword)
             (block
               (print_statement
                 (literal
@@ -243,7 +231,6 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (literal
@@ -269,7 +256,6 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (literal
           (boolean))
         (end_if)))
@@ -296,15 +282,12 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (literal
           (boolean))
         (block
           (if_statement
-            (if_keyword)
             (literal
               (boolean))
-            (then_keyword)
             (return_statement
               (literal
                 (boolean)))
@@ -342,7 +325,6 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_keyword)
         (binary_expression
           (comparison_expression
             (property_access_expression
@@ -350,7 +332,6 @@ end sub
               (identifier))
             (literal
               (string))))
-        (then_keyword)
         (property_access_expression
           (identifier)
           (call_expression

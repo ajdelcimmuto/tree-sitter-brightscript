@@ -22,9 +22,9 @@
   (catch_clause)
 ] @indent.branch
 
-(ERROR
-  (if_keyword)
-  (_)
-  (then_keyword)
-  (#set! indent.immediate 1)) @indent.begin
+; (ERROR
+;   (if_keyword)
+;   (_)
+;   (then_keyword)
+;   (#set! indent.immediate 1)) @indent.begin
 

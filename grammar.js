@@ -69,12 +69,10 @@ module.exports = grammar({
       $.end_sub
     ),
 
-    if_keyword: $ => /if/i,
-    then_keyword: $ => /then/i,
     if_statement: $ => prec.right(2, seq(
-      $.if_keyword,
+      /if/i,
       $._expression,
-      optional($.then_keyword),
+      optional(/then/i),
       choice(
         seq(
           choice($._statement, $._expression),
