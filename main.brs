@@ -10,6 +10,14 @@ sub init()
     end if
 end sub
 
+sub bruh()
+
+end sub
+
+function name() as void
+    print("hi")
+end function
+
 ' A line
 function x(y as integer) as integer
     if y > 4 then

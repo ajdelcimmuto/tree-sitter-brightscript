@@ -57,7 +57,7 @@ module.exports = grammar({
       $.parameter_list,
       optional($.return_type),
       $.block,
-      /end function/i
+      $.end_function
     ),
 
     sub_definition: $ => seq(
@@ -66,30 +66,15 @@ module.exports = grammar({
       $.identifier,
       $.parameter_list,
       optional($.block),
-      /end sub/i
+      $.end_sub
     ),
 
-    function_definition_empty: $ => seq(
-      // Define function declaration rule
-      /function/i,
-      $.identifier,
-      $.parameter_list,
-      $.return_type,
-      /end function/i
-    ),
-
-    sub_definition_empty: $ => seq(
-      // Define sub declaration rule
-      /sub/i,
-      $.identifier,
-      $.parameter_list,
-      /end sub/i
-    ),
-
+    if_keyword: $ => /if/i,
+    then_keyword: $ => /then/i,
     if_statement: $ => prec.right(2, seq(
-      /if/i,
+      $.if_keyword,
       $._expression,
-      optional(/then/i),
+      optional($.then_keyword),
       choice(
         seq(
           choice($._statement, $._expression),
@@ -103,7 +88,7 @@ module.exports = grammar({
           optional($.block),
           repeat($.else_if_clause),
           optional($.else_clause),
-          choice(/end if/i, /endif/i)
+          $.end_if
         )
     ))),
 
@@ -138,7 +123,7 @@ module.exports = grammar({
 
       ),
       optional($.block),
-      /end for/i
+      $.end_for
     ),
 
     while_statement: $ => seq(
@@ -146,7 +131,7 @@ module.exports = grammar({
       /while/i,
       $._expression,
       optional($.block),
-      /end while/i
+      $.end_while
     ),
 
     exit_while_statement: $ => seq(
@@ -199,7 +184,7 @@ module.exports = grammar({
       /try/i,
       optional($.block),
       optional($.catch_clause),
-      choice(/endtry/i, /end try/i)
+      $.end_try
     ),
 
     catch_clause: $ => seq(
@@ -357,7 +342,7 @@ module.exports = grammar({
 
     assoc_array: $ => seq(
       '{',
-      optional(commaSep($.assoc_array_element)),
+        optional(commaSepNewLine($.assoc_array_element)),
       '}'
     ),
 
@@ -383,6 +368,13 @@ module.exports = grammar({
     unary_operator: $ => choice(
       // Add unary operator rules here
     ),
+
+    end_sub: $ => /end sub/i,
+    end_function: $ => /end function/i,
+    end_if: $ => choice(/end if/i, /endif/i),
+    end_for: $ => /end for/i,
+    end_while: $ => /end while/i,
+    end_try: $ => choice(/end try/i, /endtry/i),
   }
 });
 
@@ -394,6 +386,20 @@ function commaSep(rule) {
       repeat(
         seq(
           ',',
+          rule
+        )
+      )
+    )
+  )
+}
+
+function commaSepNewLine(rule) {
+  return optional(
+    seq(
+      rule,
+      repeat(
+        seq(
+          optional(','),
           rule
         )
       )

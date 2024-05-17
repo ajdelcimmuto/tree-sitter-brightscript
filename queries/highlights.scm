@@ -14,6 +14,8 @@
 
 ; Literals
 (literal
+  (invalid) @boolean)
+(literal
   (boolean) @boolean)
 (literal
   (number) @number)

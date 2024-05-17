@@ -16,7 +16,8 @@ end sub
       (assignment_statement
         (identifier)
         (literal
-          (array))))))
+          (array))))
+    (end_sub)))
 
 ==================
 array test 2
@@ -46,7 +47,8 @@ end sub
             (literal
               (number))
             (literal
-              (number))))))))
+              (number))))))
+    (end_sub)))
 
 ==================
 array test 3
@@ -79,10 +81,11 @@ end sub
             (literal
               (number)))))
       (print_statement
-       (array_access_expression
-        (identifier)
-        (literal
-         (number)))))))
+        (array_access_expression
+          (identifier)
+          (literal
+            (number)))))
+    (end_sub)))
 
 ==================
 array test 4
@@ -120,7 +123,8 @@ end sub
           (literal
             (number)))
         (literal
-          (number))))))
+          (number))))
+    (end_sub)))
 
 ==================
 array test 5
@@ -148,7 +152,8 @@ end sub
             (literal
               (boolean))
             (literal
-              (number))))))))
+              (number))))))
+    (end_sub)))
 
 ==================
 array test 6
@@ -169,24 +174,25 @@ end sub
         (identifier)
         (literal
           (array
-           (binary_expression
-            (arithmetic_expression
-             (literal
-              (number))
-             (literal
-              (number))))
-           (binary_expression
-            (arithmetic_expression
-             (literal
-              (number))
-             (literal
-              (number))))
-           (binary_expression
-            (arithmetic_expression
-             (literal
-              (number))
-             (literal
-              (number))))))))))
+            (binary_expression
+              (arithmetic_expression
+                (literal
+                  (number))
+                (literal
+                  (number))))
+            (binary_expression
+              (arithmetic_expression
+                (literal
+                  (number))
+                (literal
+                  (number))))
+            (binary_expression
+              (arithmetic_expression
+                (literal
+                  (number))
+                (literal
+                  (number))))))))
+    (end_sub)))
 
 ==================
 array test 7
@@ -224,7 +230,8 @@ end sub
                 (literal
                   (number))
                 (literal
-                  (number))))))))))
+                  (number))))))))
+    (end_sub)))
 
 ==================
 array test 8
@@ -254,7 +261,8 @@ end sub
               (identifier)
               (parenthesized_expression
                 (literal
-                  (string))))))))))
+                  (string))))))))
+    (end_sub)))
 
 ==================
 array test 9
@@ -288,7 +296,8 @@ end sub
               (number)))))
       (assignment_statement
         (identifier)
-        (identifier)))))
+        (identifier)))
+    (end_sub)))
 
 ==================
 array test 10
@@ -327,7 +336,8 @@ end sub
       (call_expression
         (identifier)
         (parenthesized_expression
-          (identifier)))))
+          (identifier))))
+    (end_sub))
   (sub_definition
     (identifier)
     (parameter_list
@@ -335,5 +345,5 @@ end sub
         (identifier)))
     (block
       (print_statement
-        (identifier)))))
-
+        (identifier)))
+    (end_sub)))

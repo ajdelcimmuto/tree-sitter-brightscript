@@ -617,6 +617,16 @@
     }
   },
   {
+    "type": "end_if",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "end_try",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "exit_for_statement",
     "named": true,
     "fields": {}
@@ -663,6 +673,10 @@
           "named": true
         },
         {
+          "type": "end_for",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -703,6 +717,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "end_function",
           "named": true
         },
         {
@@ -765,6 +783,10 @@
           "named": true
         },
         {
+          "type": "end_if",
+          "named": true
+        },
+        {
           "type": "exit_for_statement",
           "named": true
         },
@@ -778,6 +800,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_keyword",
           "named": true
         },
         {
@@ -810,6 +836,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "then_keyword",
           "named": true
         },
         {
@@ -1280,6 +1310,10 @@
           "named": true
         },
         {
+          "type": "end_sub",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1291,12 +1325,17 @@
     }
   },
   {
+    "type": "then_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "try_statement",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -1304,6 +1343,10 @@
         },
         {
           "type": "catch_clause",
+          "named": true
+        },
+        {
+          "type": "end_try",
           "named": true
         }
       ]
@@ -1359,6 +1402,10 @@
         },
         {
           "type": "comparison_expression",
+          "named": true
+        },
+        {
+          "type": "end_while",
           "named": true
         },
         {
@@ -1473,7 +1520,27 @@
     "named": false
   },
   {
+    "type": "end_for",
+    "named": true
+  },
+  {
+    "type": "end_function",
+    "named": true
+  },
+  {
+    "type": "end_sub",
+    "named": true
+  },
+  {
+    "type": "end_while",
+    "named": true
+  },
+  {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "if_keyword",
     "named": true
   },
   {

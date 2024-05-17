@@ -11,25 +11,27 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (assignment_statement
-      (identifier)
-      (literal
-        (number)))
-    (while_statement
-      (literal
-        (boolean))
-      (block
-        (assignment_statement
-          (identifier)
-          (binary_expression
-           (arithmetic_expression
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (number)))
+      (while_statement
+        (literal
+          (boolean))
+        (block
+          (assignment_statement
             (identifier)
-            (literal
-             (number))))))))))
+            (binary_expression
+              (arithmetic_expression
+                (identifier)
+                (literal
+                  (number))))))
+        (end_while)))
+    (end_sub)))
 
 ==================
 while statement more complex expression
@@ -44,35 +46,37 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (assignment_statement
-      (identifier)
-      (literal
-        (number)))
-    (while_statement
-      (binary_expression
-       (logical_expression
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (number)))
+      (while_statement
         (binary_expression
-         (comparison_expression
-          (identifier)
-          (literal
-           (number))))
-        (binary_expression
-         (comparison_expression
-          (identifier)
-          (literal
-           (number))))))
-      (block
-        (assignment_statement
-          (identifier)
-          (binary_expression
-           (arithmetic_expression
+          (logical_expression
+            (binary_expression
+              (comparison_expression
+                (identifier)
+                (literal
+                  (number))))
+            (binary_expression
+              (comparison_expression
+                (identifier)
+                (literal
+                  (number))))))
+        (block
+          (assignment_statement
             (identifier)
-            (literal
-             (number))))))))))
+            (binary_expression
+              (arithmetic_expression
+                (identifier)
+                (literal
+                  (number))))))
+        (end_while)))
+    (end_sub)))
 
 ==================
 while statement with function call
@@ -108,7 +112,9 @@ end sub
               (arithmetic_expression
                 (identifier)
                 (literal
-                  (number))))))))))
+                  (number))))))
+        (end_while)))
+    (end_sub)))
 
 ==================
 while statement with not expression
@@ -148,7 +154,9 @@ end sub
               (arithmetic_expression
                 (identifier)
                 (literal
-                  (number))))))))))
+                  (number))))))
+        (end_while)))
+    (end_sub)))
 
 ==================
 nested while statements
@@ -207,14 +215,17 @@ end sub
                   (arithmetic_expression
                     (identifier)
                     (literal
-                      (number)))))))
+                      (number))))))
+            (end_while))
           (assignment_statement
             (identifier)
             (binary_expression
               (arithmetic_expression
                 (identifier)
                 (literal
-                  (number))))))))))
+                  (number))))))
+        (end_while)))
+    (end_sub)))
 
 ==================
 while statement with exit while
@@ -228,13 +239,14 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (while_statement
-      (literal
-        (boolean))
-      (block
-        (exit_while_statement))))))
-
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (while_statement
+        (literal
+          (boolean))
+        (block
+          (exit_while_statement))
+        (end_while)))
+    (end_sub)))
