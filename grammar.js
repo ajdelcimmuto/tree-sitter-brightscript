@@ -285,12 +285,14 @@ module.exports = grammar({
       choice(
         $.identifier,
         $.property_access_expression,
-        $.call_expression
+        $.call_expression,
+        $.array_access_expression
       ),
       choice('.', '?.'),
       choice(
         $.identifier,
-        $.call_expression
+        $.call_expression,
+        $.array_access_expression
       )
     )),
 

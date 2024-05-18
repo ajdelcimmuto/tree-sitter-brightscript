@@ -1229,6 +1229,10 @@
               {
                 "type": "SYMBOL",
                 "name": "call_expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "array_access_expression"
               }
             ]
           },
@@ -1255,6 +1259,10 @@
               {
                 "type": "SYMBOL",
                 "name": "call_expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "array_access_expression"
               }
             ]
           }

@@ -347,3 +347,35 @@ end sub
       (print_statement
         (identifier)))
     (end_sub)))
+
+==================
+property access array
+==================
+
+sub init()
+    if test[3].ads[3] = "test" then
+    end if
+end sub
+---
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (binary_expression
+          (comparison_expression
+            (property_access_expression
+              (array_access_expression
+                (identifier)
+                (literal
+                  (number)))
+              (array_access_expression
+                (identifier)
+                (literal
+                  (number))))
+            (literal
+              (string))))
+        (end_if)))
+    (end_sub)))
+
