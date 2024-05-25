@@ -38,17 +38,14 @@ function x(y as integer) as integer
     return y
 end function
 
-sub playPlutoMediaResourceConfig(plutoMediaResourceConfigAA as object)
-	if not utils_isValid(plutoMediaResourceConfigAA?.plutoMediaResourceConfig) or plutoMediaResourceConfigAA.plutoMediaResourceConfig.subtype() <> "PlutoMediaResourceConfig" then return
+sub bruhFunction()
+    if true then print("NOOO")
 
-	setupObservers()
+    for each m.x in m.y
+        if x = y then return
+        if x = true then
 
-	m._resourceConfig = createResourceConfig(plutoMediaResourceConfigAA.plutoMediaResourceConfig)
-
-	if utils_isValid(plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig) and plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig.subtype() = "PlutoSessionTrackingResourceConfig" then
-		setVideoSessionTrackingParams(plutoMediaResourceConfigAA.plutoSessionTrackingResourceConfig)
-	end if
-
-	addAndPlayResources()
+        end if
+    end for
 end sub
 
