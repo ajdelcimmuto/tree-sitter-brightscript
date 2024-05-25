@@ -14,9 +14,9 @@ end sub
     (block
       (print_statement
         (parenthesized_expression
-            (literal
-                (string)))))))
-
+          (literal
+            (string)))))
+    (end_sub)))
 
 ==================
 Print statements with params
@@ -33,13 +33,12 @@ end sub
     (parameter_list
       (parameter
         (identifier)
-        (type_specifier)
-      )
-    )
+        (type_specifier)))
     (block
-     (print_statement
-      (parenthesized_expression
-       (identifier))))))
+      (print_statement
+        (parenthesized_expression
+          (identifier))))
+    (end_sub)))
 
 ==================
 Print statements with comma sep params
@@ -51,23 +50,20 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list
-   (parameter
+  (sub_definition
     (identifier)
-    (type_specifier)
-   )
-   (parameter
-    (identifier)
-    (type_specifier)
-   )
-  )
-  (block
-   (print_statement
-    (parenthesized_expression
-     (identifier))))))
-
+    (parameter_list
+      (parameter
+        (identifier)
+        (type_specifier))
+      (parameter
+        (identifier)
+        (type_specifier)))
+    (block
+      (print_statement
+        (parenthesized_expression
+          (identifier))))
+    (end_sub)))
 
 ==================
 function return type string
@@ -85,9 +81,10 @@ end function
     (return_type
       (type_specifier))
     (block
-     (return_statement
-      (literal
-       (string))))))
+      (return_statement
+        (literal
+          (string))))
+    (end_function)))
 
 ==================
 empty sub
@@ -100,7 +97,8 @@ end sub
 (source_file
   (sub_definition
     (identifier)
-    (parameter_list)))
+    (parameter_list)
+    (end_sub)))
 
 ==================
 Library definition
@@ -121,6 +119,26 @@ end sub
     (block
       (print_statement
         (parenthesized_expression
-            (literal
-                (string)))))))
+          (literal
+            (string)))))
+    (end_sub)))
 
+====================
+invalid return statement
+====================
+function x() as object
+    return invalid
+end function
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list)
+    (return_type
+      (type_specifier))
+    (block
+      (return_statement
+        (literal
+          (invalid))))
+    (end_function)))

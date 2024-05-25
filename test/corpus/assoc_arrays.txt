@@ -16,7 +16,8 @@ end sub
       (assignment_statement
         (identifier)
         (literal
-          (assoc_array))))))
+          (assoc_array))))
+    (end_sub)))
 
 ==================
 assocarray test 2
@@ -52,7 +53,8 @@ end sub
             (assoc_array_element
               (string)
               (literal
-                (string)))))))))
+                (string)))))))
+    (end_sub)))
 
 ==================
 assocarray test 3
@@ -93,7 +95,8 @@ end sub
       (print_statement
         (property_access_expression
           (identifier)
-          (identifier))))))
+          (identifier))))
+    (end_sub)))
 
 ==================
 assocarray test 4
@@ -136,7 +139,8 @@ end sub
           (identifier)
           (identifier))
         (literal
-          (number))))))
+          (number))))
+    (end_sub)))
 
 ==================
 assocarray test 5
@@ -163,17 +167,92 @@ end sub
             (assoc_array_element
               (string)
               (binary_expression
-               (arithmetic_expression
-                (literal
-                 (number))
-                (literal
-                 (number)))))
+                (arithmetic_expression
+                  (literal
+                    (number))
+                  (literal
+                    (number)))))
             (assoc_array_element
               (string)
               (binary_expression
-               (arithmetic_expression
-                (literal
-                 (number))
-                (literal
-                 (number)))))))))))
+                (arithmetic_expression
+                  (literal
+                    (number))
+                  (literal
+                    (number)))))))))
+    (end_sub)))
+
+==================
+assocarray no comma
+==================
+
+sub TestAssocArrayWithElements()
+    person = {
+        "name": "John"
+        "age": 30
+        "city": invalid
+    }
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (string)
+              (literal
+                (string)))
+            (assoc_array_element
+              (string)
+              (literal
+                (number)))
+            (assoc_array_element
+              (string)
+              (literal
+                (invalid)))))))
+    (end_sub)))
+
+==================
+assocarray no comma and identifier left side
+==================
+
+sub TestAssocArrayWithElements()
+    person = {
+        name: "John"
+        "age": 30
+        "city": invalid
+    }
+end sub
+
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (identifier)
+              (literal
+                (string)))
+            (assoc_array_element
+              (string)
+              (literal
+                (number)))
+            (assoc_array_element
+              (string)
+              (literal
+                (invalid)))))))
+    (end_sub)))
 

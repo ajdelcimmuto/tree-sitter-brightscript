@@ -25,6 +25,7 @@ module.exports = grammar({
       $.exit_while_statement,
       $.for_statement,
       $.exit_for_statement,
+      $.try_statement,
       $.print_statement
     ),
 
@@ -56,7 +57,7 @@ module.exports = grammar({
       $.parameter_list,
       optional($.return_type),
       $.block,
-      /end function/i
+      $.end_function
     ),
 
     sub_definition: $ => seq(
@@ -65,24 +66,7 @@ module.exports = grammar({
       $.identifier,
       $.parameter_list,
       optional($.block),
-      /end sub/i
-    ),
-
-    function_definition_empty: $ => seq(
-      // Define function declaration rule
-      /function/i,
-      $.identifier,
-      $.parameter_list,
-      $.return_type,
-      /end function/i
-    ),
-
-    sub_definition_empty: $ => seq(
-      // Define sub declaration rule
-      /sub/i,
-      $.identifier,
-      $.parameter_list,
-      /end sub/i
+      $.end_sub
     ),
 
     if_statement: $ => prec.right(2, seq(
@@ -91,7 +75,7 @@ module.exports = grammar({
       optional(/then/i),
       choice(
         seq(
-          $._statement,
+          choice($._statement, $._expression),
           optional(seq(
             /else/i,
             $._statement
@@ -102,7 +86,7 @@ module.exports = grammar({
           optional($.block),
           repeat($.else_if_clause),
           optional($.else_clause),
-          choice(/end if/i, /endif/i)
+          $.end_if
         )
     ))),
 
@@ -137,7 +121,7 @@ module.exports = grammar({
 
       ),
       optional($.block),
-      /end for/i
+      $.end_for
     ),
 
     while_statement: $ => seq(
@@ -145,7 +129,7 @@ module.exports = grammar({
       /while/i,
       $._expression,
       optional($.block),
-      /end while/i
+      $.end_while
     ),
 
     exit_while_statement: $ => seq(
@@ -181,6 +165,30 @@ module.exports = grammar({
     print_statement: $ => seq(
       /print/i,
       $._expression
+    ),
+
+    // print_shortcut_statement: $ => prec.right(2, seq(
+    //   '?',
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression),
+    //   optional(/;/),
+    //   optional($._expression)
+    // )),
+
+    try_statement: $ => seq(
+      /try/i,
+      optional($.block),
+      optional($.catch_clause),
+      $.end_try
+    ),
+
+    catch_clause: $ => seq(
+      /catch/i,
+      $.identifier,
+      optional($.block)
     ),
 
     block: $ => repeat1(choice(
@@ -277,12 +285,14 @@ module.exports = grammar({
       choice(
         $.identifier,
         $.property_access_expression,
-        $.call_expression
+        $.call_expression,
+        $.array_access_expression
       ),
       choice('.', '?.'),
       choice(
         $.identifier,
-        $.call_expression
+        $.call_expression,
+        $.array_access_expression
       )
     )),
 
@@ -305,6 +315,7 @@ module.exports = grammar({
     // Literals
     literal: $ => choice(
       // Add literal rules here
+      $.invalid,
       $.boolean,
       $.number,
       $.string,
@@ -321,6 +332,8 @@ module.exports = grammar({
 
     string: $ => /"[^"]*"/,
 
+    invalid: $ => /invalid/i,
+
     array: $ => seq(
       '[',
       optional(commaSep($._expression)),
@@ -329,7 +342,7 @@ module.exports = grammar({
 
     assoc_array: $ => seq(
       '{',
-      optional(commaSep($.assoc_array_element)),
+        optional(commaSepNewLine($.assoc_array_element)),
       '}'
     ),
 
@@ -355,6 +368,13 @@ module.exports = grammar({
     unary_operator: $ => choice(
       // Add unary operator rules here
     ),
+
+    end_sub: $ => /end sub/i,
+    end_function: $ => /end function/i,
+    end_if: $ => choice(/end if/i, /endif/i),
+    end_for: $ => /end for/i,
+    end_while: $ => /end while/i,
+    end_try: $ => choice(/end try/i, /endtry/i),
   }
 });
 
@@ -366,6 +386,20 @@ function commaSep(rule) {
       repeat(
         seq(
           ',',
+          rule
+        )
+      )
+    )
+  )
+}
+
+function commaSepNewLine(rule) {
+  return optional(
+    seq(
+      rule,
+      repeat(
+        seq(
+          optional(','),
           rule
         )
       )

@@ -1,24 +1,26 @@
 [
-  (function_definition)
   (sub_definition)
+  (function_definition)
   (if_statement)
-  (else_if_clause)
-  (else_clause)
   (for_statement)
   (while_statement)
-] @indent
+  (try_statement)
+] @indent.begin
 
 [
-  "end function"
-  "end sub"
-  "end if"
-  "end for"
-  "end while"
-] @outdent
+  (end_sub)
+  (end_function)
+  (end_if)
+  (end_for)
+  (end_while)
+  (end_try)
+] @indent.end
 
 [
-  (block)
-] @indent
+  (else_if_clause)
+  (else_clause)
+  (catch_clause)
+] @indent.branch
 
-(comment) @ignore
+(ERROR) @indent.dedent
 

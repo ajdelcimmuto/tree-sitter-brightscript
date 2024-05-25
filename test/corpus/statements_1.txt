@@ -15,8 +15,8 @@ end sub
       (assignment_statement
         (identifier)
         (literal
-          (string))))))
-
+          (string))))
+    (end_sub)))
 
 ==================
 property_access_expression
@@ -37,7 +37,8 @@ end sub
           (identifier)
           (identifier))
         (literal
-          (string))))))
+          (string))))
+    (end_sub)))
 
 ==================
 property_access_expression recursive
@@ -55,9 +56,11 @@ end sub
     (block
       (assignment_statement
         (property_access_expression
-         (property_access_expression
-          (identifier)
+          (property_access_expression
+            (identifier)
+            (identifier))
           (identifier))
-         (identifier))
         (literal
-          (string))))))
+          (string))))
+    (end_sub)))
+

@@ -9,17 +9,19 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (for_statement
-     (assignment_statement
-      (identifier)
-      (literal
-       (number)))
-     (literal
-      (number))))))
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (for_statement
+        (assignment_statement
+          (identifier)
+          (literal
+            (number)))
+        (literal
+          (number))
+        (end_for)))
+    (end_sub)))
 
 ==================
 for statement
@@ -33,24 +35,26 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (for_statement
-     (assignment_statement
-      (identifier)
-      (literal
-       (number)))
-     (literal
-      (number))
-     (literal
-       (number))
-     (block
-       (print_statement
-          (parenthesized_expression
-           (literal
-            (string)))))))))
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (for_statement
+        (assignment_statement
+          (identifier)
+          (literal
+            (number)))
+        (literal
+          (number))
+        (literal
+          (number))
+        (block
+          (print_statement
+            (parenthesized_expression
+              (literal
+                (string)))))
+        (end_for)))
+    (end_sub)))
 
 ==================
 for each statement
@@ -65,29 +69,31 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (assignment_statement
-      (identifier)
-      (literal
-       (assoc_array
-        (assoc_array_element
-         (identifier)
-         (literal
-          (string)))
-        (assoc_array_element
-         (identifier)
-         (literal
-          (string))))))
-    (for_statement
-      (identifier)
-      (identifier)
-      (block
-        (print_statement
-          (parenthesized_expression
-            (identifier))))))))
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (identifier)
+        (literal
+          (assoc_array
+            (assoc_array_element
+              (identifier)
+              (literal
+                (string)))
+            (assoc_array_element
+              (identifier)
+              (literal
+                (string))))))
+      (for_statement
+        (identifier)
+        (identifier)
+        (block
+          (print_statement
+            (parenthesized_expression
+              (identifier))))
+        (end_for)))
+    (end_sub)))
 
 ==================
 for statement with step
@@ -118,7 +124,9 @@ end sub
         (block
           (print_statement
             (parenthesized_expression
-              (identifier))))))))
+              (identifier))))
+        (end_for)))
+    (end_sub)))
 
 ==================
 for each statement with array
@@ -158,7 +166,9 @@ end sub
         (block
           (print_statement
             (parenthesized_expression
-              (identifier))))))))
+              (identifier))))
+        (end_for)))
+    (end_sub)))
 
 ==================
 nested for statements
@@ -200,7 +210,10 @@ end sub
                   (binary_expression
                     (arithmetic_expression
                       (identifier)
-                      (identifier))))))))))))
+                      (identifier))))))
+            (end_for)))
+        (end_for)))
+    (end_sub)))
 
 ==================
 for statement with exit while
@@ -214,17 +227,18 @@ end sub
 ---
 
 (source_file
- (sub_definition
-  (identifier)
-  (parameter_list)
-  (block
-    (for_statement
-      (assignment_statement
-        (identifier)
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (for_statement
+        (assignment_statement
+          (identifier)
+          (literal
+            (number)))
         (literal
-          (number)))
-      (literal
-        (number))
-      (block
-        (exit_for_statement))))))
-
+          (number))
+        (block
+          (exit_for_statement))
+        (end_for)))
+    (end_sub)))
