@@ -13,8 +13,6 @@ module.exports = grammar({
       $.sub_definition,
       $.function_definition,
       $.library_definition
-      // $.sub_definition_empty
-      // $.function_definition_empty
     ),
 
     _statement: $ => choice(

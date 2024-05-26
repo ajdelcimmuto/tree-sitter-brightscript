@@ -35,6 +35,11 @@ function x(y as integer) as integer
         end if
     end for
 
+    for each x in y
+        if x = y then
+        end if
+    end for
+
     return y
 end function
 
