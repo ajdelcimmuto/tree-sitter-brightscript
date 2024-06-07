@@ -1294,6 +1294,11 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "sub_definition",
     "named": true,
     "fields": {},
@@ -1431,6 +1436,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -1536,10 +1545,6 @@
   },
   {
     "type": "number",
-    "named": true
-  },
-  {
-    "type": "string",
     "named": true
   },
   {

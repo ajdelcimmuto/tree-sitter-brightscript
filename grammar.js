@@ -328,7 +328,11 @@ module.exports = grammar({
 
     number: $ => /-?\d+(\.\d+)?/,
 
-    string: $ => /"[^"]*"/,
+    string: $ => seq(
+      '"',
+      /[^"]*/,
+      '"'
+    ),
 
     invalid: $ => /invalid/i,
 

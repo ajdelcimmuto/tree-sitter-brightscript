@@ -2,7 +2,7 @@
 (function_definition) @function.outer
 
 ; Sub definition
-(sub_definition) @sub.outer
+(sub_definition) @function.outer
 
 ; If statement
 (if_statement) @if.outer
