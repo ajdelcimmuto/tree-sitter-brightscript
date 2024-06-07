@@ -142,7 +142,8 @@ end sub
         (block
           (print_statement
             (literal
-              (string))))
+              (string
+                (string_contents)))))
         (else_if_clause
           (binary_expression
             (comparison_expression
@@ -152,12 +153,14 @@ end sub
           (block
             (print_statement
               (literal
-                (string)))))
+                (string
+                  (string_contents))))))
         (else_clause
           (block
             (print_statement
               (literal
-                (string)))))
+                (string
+                  (string_contents))))))
         (end_if)))
     (end_sub)))
 
@@ -200,18 +203,21 @@ end sub
             (block
               (print_statement
                 (literal
-                  (string))))
+                  (string
+                    (string_contents)))))
             (else_clause
               (block
                 (print_statement
                   (literal
-                    (string)))))
+                    (string
+                      (string_contents))))))
             (end_if)))
         (else_clause
           (block
             (print_statement
               (literal
-                (string)))))
+                (string
+                  (string_contents))))))
         (end_if)))
     (end_sub)))
 
@@ -301,13 +307,15 @@ end sub
             (print_statement
               (parenthesized_expression
                 (literal
-                  (string))))))
+                  (string
+                    (string_contents)))))))
         (else_clause
           (block
             (print_statement
               (parenthesized_expression
                 (literal
-                  (string))))))
+                  (string
+                    (string_contents)))))))
         (end_if)))
     (end_sub)))
 
@@ -331,11 +339,11 @@ end sub
               (identifier)
               (identifier))
             (literal
-              (string))))
+              (string
+                (string_contents)))))
         (property_access_expression
           (identifier)
           (call_expression
             (identifier)
             (parenthesized_expression)))))
     (end_sub)))
-

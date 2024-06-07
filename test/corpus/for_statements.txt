@@ -52,7 +52,8 @@ end sub
           (print_statement
             (parenthesized_expression
               (literal
-                (string)))))
+                (string
+                  (string_contents))))))
         (end_for)))
     (end_sub)))
 
@@ -80,11 +81,13 @@ end sub
             (assoc_array_element
               (identifier)
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
               (identifier)
               (literal
-                (string))))))
+                (string
+                  (string_contents)))))))
       (for_statement
         (identifier)
         (identifier)

@@ -146,7 +146,8 @@ end sub
         (literal
           (array
             (literal
-              (string))
+              (string
+                (string_contents)))
             (literal
               (number))
             (literal
@@ -256,12 +257,14 @@ end sub
               (identifier)
               (parenthesized_expression
                 (literal
-                  (string))))
+                  (string
+                    (string_contents)))))
             (call_expression
               (identifier)
               (parenthesized_expression
                 (literal
-                  (string))))))))
+                  (string
+                    (string_contents)))))))))
     (end_sub)))
 
 ==================
@@ -357,6 +360,7 @@ sub init()
     end if
 end sub
 ---
+
 (source_file
   (sub_definition
     (identifier)
@@ -375,7 +379,7 @@ end sub
                 (literal
                   (number))))
             (literal
-              (string))))
+              (string
+                (string_contents)))))
         (end_if)))
     (end_sub)))
-

@@ -43,17 +43,22 @@ end sub
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))))))
+                (string
+                  (string_contents))))))))
     (end_sub)))
 
 ==================
@@ -81,17 +86,22 @@ end sub
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string))))))
+                (string
+                  (string_contents)))))))
       (print_statement
         (property_access_expression
           (identifier)
@@ -123,17 +133,22 @@ end sub
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string))))))
+                (string
+                  (string_contents)))))))
       (assignment_statement
         (property_access_expression
           (identifier)
@@ -165,7 +180,8 @@ end sub
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (binary_expression
                 (arithmetic_expression
                   (literal
@@ -173,7 +189,8 @@ end sub
                   (literal
                     (number)))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (binary_expression
                 (arithmetic_expression
                   (literal
@@ -206,15 +223,19 @@ end sub
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (invalid)))))))
     (end_sub)))
@@ -245,14 +266,16 @@ end sub
             (assoc_array_element
               (identifier)
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (invalid)))))))
     (end_sub)))
-

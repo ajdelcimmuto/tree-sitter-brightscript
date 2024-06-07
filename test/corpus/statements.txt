@@ -15,7 +15,8 @@ end sub
       (print_statement
         (parenthesized_expression
           (literal
-            (string)))))
+            (string
+              (string_contents))))))
     (end_sub)))
 
 ==================
@@ -83,7 +84,8 @@ end function
     (block
       (return_statement
         (literal
-          (string))))
+          (string
+            (string_contents)))))
     (end_function)))
 
 ==================
@@ -112,7 +114,8 @@ end sub
 
 (source_file
   (library_definition
-    (string))
+    (string
+      (string_contents)))
   (sub_definition
     (identifier)
     (parameter_list)
@@ -120,7 +123,8 @@ end sub
       (print_statement
         (parenthesized_expression
           (literal
-            (string)))))
+            (string
+              (string_contents))))))
     (end_sub)))
 
 ====================

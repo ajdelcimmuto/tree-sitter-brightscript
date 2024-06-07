@@ -1380,14 +1380,18 @@
           "value": "\""
         },
         {
-          "type": "PATTERN",
-          "value": "[^\"]*"
+          "type": "SYMBOL",
+          "name": "string_contents"
         },
         {
           "type": "STRING",
           "value": "\""
         }
       ]
+    },
+    "string_contents": {
+      "type": "PATTERN",
+      "value": "[^\"]*"
     },
     "invalid": {
       "type": "PATTERN",

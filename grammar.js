@@ -330,9 +330,11 @@ module.exports = grammar({
 
     string: $ => seq(
       '"',
-      /[^"]*/,
+      $.string_contents,
       '"'
     ),
+
+    string_contents: $ => /[^"]*/,
 
     invalid: $ => /invalid/i,
 

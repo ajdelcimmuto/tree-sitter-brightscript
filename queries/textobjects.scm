@@ -37,3 +37,7 @@
 ; Comment
 (comment) @comment.outer
 
+; String
+(string_contents) @attribute.inner
+(string) @attribute.outer
+

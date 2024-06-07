@@ -15,7 +15,8 @@ end sub
       (assignment_statement
         (identifier)
         (literal
-          (string))))
+          (string
+            (string_contents)))))
     (end_sub)))
 
 ==================
@@ -37,7 +38,8 @@ end sub
           (identifier)
           (identifier))
         (literal
-          (string))))
+          (string
+            (string_contents)))))
     (end_sub)))
 
 ==================
@@ -61,6 +63,6 @@ end sub
             (identifier))
           (identifier))
         (literal
-          (string))))
+          (string
+            (string_contents)))))
     (end_sub)))
-
