@@ -146,3 +146,25 @@ end function
         (literal
           (invalid))))
     (end_function)))
+
+
+==================
+Print statement as shortcut
+==================
+
+sub x()
+    ?"hi"
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (print_statement
+          (literal
+            (string
+              (string_contents)))))
+    (end_sub)))
+

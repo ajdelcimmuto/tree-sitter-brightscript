@@ -1,11 +1,5 @@
 sub bruh()
-    bruh = "test string"
-end sub
-
-sub bruh()
-    bruh = "test string"
-    if true then
-        print("hi")
-    end if
+    x = { y: "hi", b: "bruh" }
+    ?"bruh:"; x; "lol"; x, "Bruh"
 end sub
 

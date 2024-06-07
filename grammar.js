@@ -161,20 +161,9 @@ module.exports = grammar({
     )),
 
     print_statement: $ => seq(
-      /print/i,
-      $._expression
+      choice(/print/i, '?'),
+      seq($._expression, repeat(seq(choice(',', ';'), $._expression))),
     ),
-
-    // print_shortcut_statement: $ => prec.right(2, seq(
-    //   '?',
-    //   optional($._expression),
-    //   optional(/;/),
-    //   optional($._expression),
-    //   optional(/;/),
-    //   optional($._expression),
-    //   optional(/;/),
-    //   optional($._expression)
-    // )),
 
     try_statement: $ => seq(
       /try/i,
@@ -360,18 +349,9 @@ module.exports = grammar({
     ),
 
     new_line: $ => /\r?\n/,
-    // new_line: $ => choice('\n', '\r', '\r\n'),
 
     // Miscellaneous
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
-
-    binary_operator: $ => choice(
-      // Add binary operator rules here
-    ),
-
-    unary_operator: $ => choice(
-      // Add unary operator rules here
-    ),
 
     end_sub: $ => /end sub/i,
     end_function: $ => /end function/i,
