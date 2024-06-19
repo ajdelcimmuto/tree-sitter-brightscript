@@ -57,137 +57,129 @@ module.exports = grammar({
 
     library_definition: $ => seq(
       /library/i,
-      $.string
+      field('path', $.string)
     ),
 
     // Statements
     function_definition: $ => seq(
-      // Define function declaration rule
       /function/i,
-      $.identifier,
-      $.parameter_list,
-      optional($.return_type),
-      $.block,
+      field('name', $.identifier),
+      field('parameters', $.parameter_list),
+      optional(field('return_type', $.return_type)),
+      field('body', $.block),
       $.end_function
     ),
 
     sub_definition: $ => seq(
-      // Define sub declaration rule
       /sub/i,
-      $.identifier,
-      $.parameter_list,
-      optional($.block),
+      field('name', $.identifier),
+      field('parameters', $.parameter_list),
+      optional(field('body', $.block)),
       $.end_sub
     ),
 
     if_statement: $ => prec.right(PREC.IF, seq(
       /if/i,
-      $._expression,
+      field('condition', $._expression),
       optional(/then/i),
       choice(
         seq(
-          choice($._statement, $._expression),
+          field('consequence', choice($._statement, $._expression)),
           optional(seq(
             /else/i,
-            $._statement
+            field('alternative', $._statement)
           ))
         ),
         seq(
           /\r?\n/,
-          optional($.block),
-          repeat($.else_if_clause),
-          optional($.else_clause),
+          optional(field('consequence', $.block)),
+          repeat(field('alternatives', $.else_if_clause)),
+          optional(field('alternative', $.else_clause)),
           $.end_if
         )
-    ))),
+      )
+    )),
 
     else_if_clause: $ => seq(
       choice(/else if/i, /elseif/i),
-      $._expression,
+      field('condition', $._expression),
       optional(/then/i),
-      optional($.block)
+      optional(field('consequence', $.block))
     ),
 
     else_clause: $ => seq(
       /else/i,
-      $.block
+      field('body', $.block)
     ),
 
     for_statement: $ => seq(
-      // Define for statement rule
       /for/i,
       choice(
         seq(
-          $.assignment_statement,
+          field('initializer', $.assignment_statement),
           /to/i,
-          $._expression,
-          optional(seq(/step/i, $._expression))
+          field('condition', $._expression),
+          optional(seq(/step/i, field('increment', $._expression)))
         ),
         seq(
           /each/i,
-          $._expression,
+          field('variable', $._expression),
           /in/i,
-          $._expression
+          field('collection', $._expression)
         )
-
       ),
-      optional($.block),
+      optional(field('body', $.block)),
       $.end_for
     ),
 
     while_statement: $ => seq(
-      // Define while statement rule
       /while/i,
-      $._expression,
-      optional($.block),
+      field('condition', $._expression),
+      optional(field('body', $.block)),
       $.end_while
     ),
 
     exit_while_statement: $ => seq(
-      // Define exit while statement rule
       /exit/i,
       /while/i
     ),
 
     exit_for_statement: $ => seq(
-      // Define exit for statement rule
       /exit/i,
       /for/i
     ),
 
     return_statement: $ => prec.right(PREC.RETURN, seq(
-      // Define return statement rule
       /return/i,
-      optional($._expression)
+      optional(field('value', $._expression))
     )),
 
     assignment_statement: $ => prec(PREC.ASSIGNMENT, seq(
-      // Define assignment statement rule
-      choice(
+      field('left', choice(
         $.identifier,
         $.property_access_expression,
         $.array_access_expression
-      ),
-      choice('=', '+=', '-=', '*=', '/=', '\\=', '<<=', '>>='),
-      $._expression
+      )),
+      field('operator', choice('=', '+=', '-=', '*=', '/=', '\\=', '<<=', '>>=')),
+      field('right', $._expression)
     )),
 
     print_statement: $ => seq(
       choice(/print/i, '?'),
-      seq($._expression, repeat(seq(choice(',', ';'), $._expression))),
+      field('arguments', seq($._expression, repeat(seq(choice(',', ';'), $._expression)))),
     ),
 
     try_statement: $ => seq(
       /try/i,
-      optional($.block),
-      optional($.catch_clause),
+      optional(field('body', $.block)),
+      optional(field('handler', $.catch_clause)),
       $.end_try
     ),
 
     catch_clause: $ => seq(
       /catch/i,
-      $.identifier,
-      optional($.block)
+      field('exception', $.identifier),
+      optional(field('body', $.block))
     ),
 
     increment_decrement_statement: $ => choice(
@@ -197,10 +189,10 @@ module.exports = grammar({
       $.postfix_decrement_expression,
     ),
 
-    prefix_increment_expression: $ => prec.right(PREC.PREFIX_INCREMENT, seq('++', $._expression)),
-    prefix_decrement_expression: $ => prec.right(PREC.PREFIX_DECREMENT, seq('--', $._expression)),
-    postfix_increment_expression: $ => prec.left(PREC.POSTFIX_INCREMENT, seq($._expression, '++')),
-    postfix_decrement_expression: $ => prec.left(PREC.POSTFIX_DECREMENT, seq($._expression, '--')),
+    prefix_increment_expression: $ => prec.right(PREC.PREFIX_INCREMENT, seq('++', field('argument', $._expression))),
+    prefix_decrement_expression: $ => prec.right(PREC.PREFIX_DECREMENT, seq('--', field('argument', $._expression))),
+    postfix_increment_expression: $ => prec.left(PREC.POSTFIX_INCREMENT, seq(field('argument', $._expression), '++')),
+    postfix_decrement_expression: $ => prec.left(PREC.POSTFIX_DECREMENT, seq(field('argument', $._expression), '--')),
 
     block: $ => repeat1(choice(
       $._statement,
@@ -214,18 +206,16 @@ module.exports = grammar({
     ),
 
     parameter: $ => seq(
-      $.identifier,
-      optional(
-        seq(
-          'as',
-          $.type_specifier
-        )
-      )
+      field('name', $.identifier),
+      optional(seq(
+        'as',
+        field('type', $.type_specifier)
+      ))
     ),
 
     return_type: $ => seq(
       'as',
-      $.type_specifier
+      field('type', $.type_specifier)
     ),
 
     type_specifier: $ => choice(
@@ -241,12 +231,10 @@ module.exports = grammar({
 
     // Expressions
     call_expression: $ => prec(1, seq(
-      // Define call expression rule
-      $.identifier,
-      $.parenthesized_expression
+      field('function', $.identifier),
+      field('arguments', $.parenthesized_expression)
     )),
 
-    // Expressions
     binary_expression: $ => choice(
       $.logical_expression,
       $.comparison_expression,
@@ -254,17 +242,17 @@ module.exports = grammar({
     ),
 
     logical_expression: $ => prec.left(PREC.LOGICAL, choice(
-      seq($._expression, /and/i, $._expression),
-      seq($._expression, /or/i, $._expression)
+      seq(field('left', $._expression), field('operator', /and/i), field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', /or/i),  field('right', $._expression))
     )),
 
     comparison_expression: $ => prec.left(PREC.COMPARISON, choice(
-      seq($._expression, '=', $._expression),
-      seq($._expression, '<>', $._expression),
-      seq($._expression, '<', $._expression),
-      seq($._expression, '<=', $._expression),
-      seq($._expression, '>', $._expression),
-      seq($._expression, '>=', $._expression),
+      seq(field('left', $._expression), field('operator', '='),   field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '<>'),  field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '<'),   field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '<='),  field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '>'),   field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '>='),  field('right', $._expression)),
     )),
 
     arithmetic_expression: $ => choice(
@@ -273,27 +261,23 @@ module.exports = grammar({
     ),
 
     additive_expression: $ => prec.left(PREC.ADDITIVE, choice(
-      seq($._expression, '+', $._expression),
-      seq($._expression, '-', $._expression)
+      seq(field('left', $._expression), field('operator', '+'), field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '-'), field('right', $._expression))
     )),
 
     multiplicative_expression: $ => prec.left(PREC.MULTIPLICATIVE, choice(
-      seq($._expression, '*', $._expression),
-      seq($._expression, '/', $._expression),
-      seq($._expression, /mod/i, $._expression),
+      seq(field('left', $._expression), field('operator', '*'),  field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '/'),  field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', /mod/i), field('right', $._expression))
     )),
 
     unary_expression: $ => prec.right(PREC.UNARY, choice(
       $.logical_not_expression,
-      // $.postfix_increment_expression,
-      // $.postfix_decrement_expression,
-      // $.prefix_increment_expression,
-      // $.prefix_decrement_expression,
     )),
 
     logical_not_expression: $ => prec.right(PREC.LOGICAL_NOT, seq(
       /not/i,
-      $._expression
+      field('argument', $._expression)
     )),
 
     parenthesized_expression: $ => seq(
@@ -303,29 +287,28 @@ module.exports = grammar({
     ),
 
     property_access_expression: $ => prec.left(seq(
-      choice(
+      field('object', choice(
         $.identifier,
         $.property_access_expression,
         $.call_expression,
         $.array_access_expression
-      ),
+      )),
       choice('.', '?.'),
-      choice(
+      field('property', choice(
         $.identifier,
         $.call_expression,
         $.array_access_expression
-      )
+      ))
     )),
 
     array_access_expression: $ => prec(1, seq(
-      choice(
+      field('array', choice(
         $.identifier,
         $.array_access_expression,
-        $.call_expression,
-        // $.array
-      ),
+        $.call_expression
+      )),
       '[',
-      $._expression,
+      field('index', $._expression),
       ']'
     )),
 
@@ -335,7 +318,6 @@ module.exports = grammar({
 
     // Literals
     literal: $ => choice(
-      // Add literal rules here
       $.invalid,
       $.boolean,
       $.number,
@@ -353,7 +335,7 @@ module.exports = grammar({
 
     string: $ => seq(
       '"',
-      $.string_contents,
+      field('value', $.string_contents),
       '"'
     ),
 
@@ -374,12 +356,12 @@ module.exports = grammar({
     ),
 
     assoc_array_element: $ => seq(
-      choice(
+      field('key', choice(
         $.identifier,
         $.string
-      ),
+      )),
       ':',
-      $._expression
+      field('value', $._expression)
     ),
 
     new_line: $ => /\r?\n/,
@@ -397,7 +379,6 @@ module.exports = grammar({
 });
 
 function commaSep(rule) {
-  // return optional(commaSep1(rule));
   return optional(
     seq(
       rule,
