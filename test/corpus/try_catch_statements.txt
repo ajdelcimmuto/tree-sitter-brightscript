@@ -23,21 +23,23 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (literal
-                  (number))
-                (literal
-                  (number))))))
+                (multiplicative_expression
+                  (literal
+                    (number))
+                  (literal
+                    (number)))))))
         (catch_clause
           (identifier)
           (block
             (print_statement
               (binary_expression
                 (arithmetic_expression
-                  (literal
-                    (string
-                      (string_contents)))
-                  (property_access_expression
-                    (identifier)
-                    (identifier)))))))
+                  (additive_expression
+                    (literal
+                      (string
+                        (string_contents)))
+                    (property_access_expression
+                      (identifier)
+                      (identifier))))))))
         (end_try)))
     (end_sub)))

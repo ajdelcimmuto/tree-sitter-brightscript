@@ -27,9 +27,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -72,9 +73,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -110,9 +112,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -152,9 +155,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -207,23 +211,26 @@ end sub
                 (parenthesized_expression
                   (binary_expression
                     (arithmetic_expression
-                      (identifier)
-                      (identifier)))))
+                      (additive_expression
+                        (identifier)
+                        (identifier))))))
               (assignment_statement
                 (identifier)
                 (binary_expression
                   (arithmetic_expression
-                    (identifier)
-                    (literal
-                      (number))))))
+                    (additive_expression
+                      (identifier)
+                      (literal
+                        (number)))))))
             (end_while))
           (assignment_statement
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 

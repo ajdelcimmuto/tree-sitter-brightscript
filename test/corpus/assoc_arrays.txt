@@ -184,19 +184,21 @@ end sub
                 (string_contents))
               (binary_expression
                 (arithmetic_expression
-                  (literal
-                    (number))
-                  (literal
-                    (number)))))
+                  (additive_expression
+                    (literal
+                      (number))
+                    (literal
+                      (number))))))
             (assoc_array_element
               (string
                 (string_contents))
               (binary_expression
                 (arithmetic_expression
-                  (literal
-                    (number))
-                  (literal
-                    (number)))))))))
+                  (multiplicative_expression
+                    (literal
+                      (number))
+                    (literal
+                      (number))))))))))
     (end_sub)))
 
 ==================

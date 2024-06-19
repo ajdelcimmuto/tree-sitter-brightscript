@@ -1,3 +1,19 @@
+const PREC = {
+  ASSIGNMENT: 1,
+  LOGICAL: 2,
+  RETURN: 2,
+  IF: 2,
+  COMPARISON: 3,
+  ADDITIVE: 4,
+  MULTIPLICATIVE: 5,
+  UNARY: 6,
+  LOGICAL_NOT: 7,
+  PREFIX_INCREMENT: 8,
+  PREFIX_DECREMENT: 8,
+  POSTFIX_INCREMENT: 9,
+  POSTFIX_DECREMENT: 9,
+};
+
 module.exports = grammar({
   name: 'brightscript',
 
@@ -24,16 +40,13 @@ module.exports = grammar({
       $.for_statement,
       $.exit_for_statement,
       $.try_statement,
-      $.print_statement
+      $.print_statement,
+      $.increment_decrement_statement
     ),
 
     _expression: $ => choice(
       $.binary_expression,
       $.unary_expression,
-      $.arithmetic_expression,
-      $.comparison_expression,
-      $.logical_expression,
-      $.logical_not_expression,
       $.call_expression,
       $.property_access_expression,
       $.array_access_expression,
@@ -67,7 +80,7 @@ module.exports = grammar({
       $.end_sub
     ),
 
-    if_statement: $ => prec.right(2, seq(
+    if_statement: $ => prec.right(PREC.IF, seq(
       /if/i,
       $._expression,
       optional(/then/i),
@@ -142,21 +155,20 @@ module.exports = grammar({
       /for/i
     ),
 
-    return_statement: $ => prec.right(2, seq(
+    return_statement: $ => prec.right(PREC.RETURN, seq(
       // Define return statement rule
       /return/i,
       optional($._expression)
     )),
 
-    // Prec assignment 2 avoiding conflict with comparison_expression
-    assignment_statement: $ => prec(2, seq(
+    assignment_statement: $ => prec(PREC.ASSIGNMENT, seq(
       // Define assignment statement rule
       choice(
         $.identifier,
         $.property_access_expression,
         $.array_access_expression
       ),
-      '=',
+      choice('=', '+=', '-=', '*=', '/=', '\\=', '<<=', '>>='),
       $._expression
     )),
 
@@ -177,6 +189,18 @@ module.exports = grammar({
       $.identifier,
       optional($.block)
     ),
+
+    increment_decrement_statement: $ => choice(
+      $.prefix_increment_expression,
+      $.prefix_decrement_expression,
+      $.postfix_increment_expression,
+      $.postfix_decrement_expression,
+    ),
+
+    prefix_increment_expression: $ => prec.right(PREC.PREFIX_INCREMENT, seq('++', $._expression)),
+    prefix_decrement_expression: $ => prec.right(PREC.PREFIX_DECREMENT, seq('--', $._expression)),
+    postfix_increment_expression: $ => prec.left(PREC.POSTFIX_INCREMENT, seq($._expression, '++')),
+    postfix_decrement_expression: $ => prec.left(PREC.POSTFIX_DECREMENT, seq($._expression, '--')),
 
     block: $ => repeat1(choice(
       $._statement,
@@ -222,42 +246,52 @@ module.exports = grammar({
       $.parenthesized_expression
     )),
 
-    binary_expression: $ => prec(1, seq(
-      // Define binary expression rule
-      choice(
-        $.arithmetic_expression,
-        $.comparison_expression,
-        $.logical_expression
-      )
+    // Expressions
+    binary_expression: $ => choice(
+      $.logical_expression,
+      $.comparison_expression,
+      $.arithmetic_expression
+    ),
+
+    logical_expression: $ => prec.left(PREC.LOGICAL, choice(
+      seq($._expression, /and/i, $._expression),
+      seq($._expression, /or/i, $._expression)
     )),
 
-    arithmetic_expression: $ => prec(3, prec.left(choice(
-      seq($._expression, '+', $._expression),
-      seq($._expression, '-', $._expression),
-      seq($._expression, '*', $._expression),
-      seq($._expression, '/', $._expression),
-      seq($._expression, /mod/i, $._expression)
-    ))),
-
-    comparison_expression: $ => prec(2, prec.left(choice(
+    comparison_expression: $ => prec.left(PREC.COMPARISON, choice(
       seq($._expression, '=', $._expression),
       seq($._expression, '<>', $._expression),
       seq($._expression, '<', $._expression),
       seq($._expression, '<=', $._expression),
       seq($._expression, '>', $._expression),
       seq($._expression, '>=', $._expression),
-    ))),
-
-    logical_expression: $ => prec.left(1, choice(
-      seq($._expression, /and/i, $._expression),
-      seq($._expression, /or/i, $._expression)
     )),
 
-    unary_expression: $ => prec(1, choice(
+    arithmetic_expression: $ => choice(
+      $.additive_expression,
+      $.multiplicative_expression
+    ),
+
+    additive_expression: $ => prec.left(PREC.ADDITIVE, choice(
+      seq($._expression, '+', $._expression),
+      seq($._expression, '-', $._expression)
+    )),
+
+    multiplicative_expression: $ => prec.left(PREC.MULTIPLICATIVE, choice(
+      seq($._expression, '*', $._expression),
+      seq($._expression, '/', $._expression),
+      seq($._expression, /mod/i, $._expression),
+    )),
+
+    unary_expression: $ => prec.right(PREC.UNARY, choice(
       $.logical_not_expression,
+      // $.postfix_increment_expression,
+      // $.postfix_decrement_expression,
+      // $.prefix_increment_expression,
+      // $.prefix_decrement_expression,
     )),
 
-    logical_not_expression: $ => prec(4, seq(
+    logical_not_expression: $ => prec.right(PREC.LOGICAL_NOT, seq(
       /not/i,
       $._expression
     )),

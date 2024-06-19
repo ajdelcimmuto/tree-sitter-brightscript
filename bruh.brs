@@ -1,5 +1,7 @@
 sub bruh()
-    x = { y: "hi", b: "bruh" }
-    ?"bruh:"; x; "lol"; x, "Bruh"
+    bruh += 5
+    bruh++
+    ++bruh
+    bruh \= 5
 end sub
 

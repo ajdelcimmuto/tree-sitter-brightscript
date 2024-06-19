@@ -212,8 +212,9 @@ end sub
                 (parenthesized_expression
                   (binary_expression
                     (arithmetic_expression
-                      (identifier)
-                      (identifier))))))
+                      (additive_expression
+                        (identifier)
+                        (identifier)))))))
             (end_for)))
         (end_for)))
     (end_sub)))

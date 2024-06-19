@@ -58,10 +58,11 @@ end sub
               (comparison_expression
                 (binary_expression
                   (arithmetic_expression
-                    (literal
-                      (number))
-                    (literal
-                      (number))))
+                    (additive_expression
+                      (literal
+                        (number))
+                      (literal
+                        (number)))))
                 (literal
                   (number))))))
         (block
