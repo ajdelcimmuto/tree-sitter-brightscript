@@ -109,7 +109,7 @@ module.exports = grammar({
 
     else_clause: $ => seq(
       /else/i,
-      field('body', $.block)
+      optional(field('body', $.block))
     ),
 
     for_statement: $ => seq(
