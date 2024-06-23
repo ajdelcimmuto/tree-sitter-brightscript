@@ -82,7 +82,7 @@ module.exports = grammar({
       /sub/i,
       field('name', $.identifier),
       field('parameters', $.parameter_list),
-      field('body', $.block),
+      optional(field('body', $.block)),
       $.end_sub
     ),
 
@@ -105,7 +105,7 @@ module.exports = grammar({
         optional(field('consequence', $.block)),
         repeat($.else_if_clause),
         optional($.else_clause),
-        optional($.end_if)
+        $.end_if
       )
     )),
 
@@ -113,13 +113,13 @@ module.exports = grammar({
       choice(/else if/i, /elseif/i),
       field('condition', $._expression),
       optional(/then/i),
-      field('body', $.block)
+      optional(field('body', $.block))
     ),
 
     else_clause: $ => seq(
       /else/i,
       $._new_line,
-      field('body', $.block)
+      optional(field('body', $.block))
     ),
 
     for_statement: $ => seq(

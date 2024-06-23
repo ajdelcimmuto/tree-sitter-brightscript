@@ -18,19 +18,16 @@
 ] @indent.end
 
 [
-  (else_if_clause)
-  (else_clause)
-  (catch_clause)
   (end_function)
   (end_sub)
   (end_for)
   (end_while)
   (end_try)
   (end_if)
+  (else_if_clause)
+  (else_clause)
+  (catch_clause)
 ] @indent.branch
 
 (comment) @indent.ignore
-
-(ERROR) @indent.dedent
-
 
