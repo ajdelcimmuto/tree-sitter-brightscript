@@ -88,42 +88,42 @@ module.exports = grammar({
 
     if_statement: $ => prec.right(choice(
       seq(
-        /if/i,
+        alias(/if/i, $.if_start),
         field('condition', $._expression),
-        optional(/then/i),
-        optional(field('consequence', $._single_line_statement)),
+        optional(alias(/then/i, $.if_then)),
+        field('consequence', $._single_line_statement),
         optional(seq(
-          /else/i,
+          alias(/else/i, $.if_else),
           field('body', $._single_line_statement)
         )),
       ),
       seq(
-        /if/i,
+        alias(/if/i, $.if_start),
         field('condition', $._expression),
-        optional(/then/i),
+        optional(alias(/then/i, $.if_then)),
         $._new_line,
-        optional(field('consequence', $.block)),
+        field('consequence', $.block),
         repeat($.else_if_clause),
         optional($.else_clause),
-        optional($.end_if)
+        $.end_if
       )
     )),
 
-    else_if_clause: $ => seq(
-      choice(/else if/i, /elseif/i),
+    else_if_clause: $ => prec.right(seq(
+      alias(choice(/else if/i, /elseif/i), $.if_else_if),
       field('condition', $._expression),
       optional(/then/i),
-      field('body', $.block)
-    ),
+      optional(field('body', $.block))
+    )),
 
-    else_clause: $ => seq(
-      /else/i,
+    else_clause: $ => prec.right(seq(
+      alias(/else/i, $.if_else),
       $._new_line,
-      field('body', $.block)
-    ),
+      optional(field('body', $.block))
+    )),
 
     for_statement: $ => seq(
-      /for/i,
+      alias(/for/i, $.for_start),
       choice(
         seq(
           field('initializer', $.assignment_statement),
@@ -138,14 +138,14 @@ module.exports = grammar({
           field('collection', $._expression)
         )
       ),
-      optional(field('body', $.block)),
+      field('body', $.block),
       $.end_for
     ),
 
     while_statement: $ => seq(
-      /while/i,
+      alias(/while/i, $.while_start),
       field('condition', $._expression),
-      optional(field('body', $.block)),
+      field('body', $.block),
       $.end_while
     ),
 
@@ -180,14 +180,14 @@ module.exports = grammar({
     ),
 
     try_statement: $ => seq(
-      /try/i,
+      alias(/try/i, $.try_start),
       optional(field('body', $.block)),
       optional(field('handler', $.catch_clause)),
       $.end_try
     ),
 
     catch_clause: $ => seq(
-      /catch/i,
+      alias(/catch/i, $.try_catch),
       field('exception', $.identifier),
       optional(field('body', $.block))
     ),

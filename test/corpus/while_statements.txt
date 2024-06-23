@@ -20,6 +20,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (literal
           (boolean))
         (block
@@ -56,6 +57,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (binary_expression
           (logical_expression
             (binary_expression
@@ -103,6 +105,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (call_expression
           (identifier)
           (parenthesized_expression
@@ -142,6 +145,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (unary_expression
           (logical_not_expression
             (parenthesized_expression
@@ -194,6 +198,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (binary_expression
           (comparison_expression
             (identifier)
@@ -201,6 +206,7 @@ end sub
               (number))))
         (block
           (while_statement
+            (while_start)
             (binary_expression
               (comparison_expression
                 (identifier)
@@ -251,6 +257,7 @@ end sub
     (parameter_list)
     (block
       (while_statement
+        (while_start)
         (literal
           (boolean))
         (block

@@ -1,29 +1,4 @@
 ==================
-empty for statement
-==================
-
-sub init()
-    for x=0 to 10
-    end for
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (block
-      (for_statement
-        (assignment_statement
-          (identifier)
-          (literal
-            (number)))
-        (literal
-          (number))
-        (end_for)))
-    (end_sub)))
-
-==================
 for statement
 ==================
 
@@ -40,6 +15,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -89,6 +65,7 @@ end sub
                 (string
                   (string_contents)))))))
       (for_statement
+        (for_start)
         (identifier)
         (identifier)
         (block
@@ -116,6 +93,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -164,6 +142,7 @@ end sub
             (literal
               (number)))))
       (for_statement
+        (for_start)
         (identifier)
         (identifier)
         (block
@@ -193,6 +172,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -201,6 +181,7 @@ end sub
           (number))
         (block
           (for_statement
+            (for_start)
             (assignment_statement
               (identifier)
               (literal
@@ -236,6 +217,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal

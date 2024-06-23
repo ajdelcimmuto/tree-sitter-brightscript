@@ -1,36 +1,30 @@
 [
-  (sub_definition)
   (function_definition)
-  (if_statement)
-  (for_statement)
-  (while_statement)
-  (try_statement)
+  (sub_definition)
+  (if_start)
+  (for_start)
+  (while_start)
+  (try_start)
+  (parenthesized_expression)
+  (array)
+  (assoc_array)
 ] @indent.begin
 
-; Handle other "end" statements
 [
   (end_function)
   (end_sub)
+  (end_if)
   (end_for)
   (end_while)
   (end_try)
-  (end_if)
 ] @indent.end
 
 [
   (else_if_clause)
   (else_clause)
   (catch_clause)
-  (end_function)
-  (end_sub)
-  (end_for)
-  (end_while)
-  (end_try)
-  (end_if)
 ] @indent.branch
 
 (comment) @indent.ignore
-
-(ERROR) @indent.dedent
-
+(string) @indent.ignore
 
