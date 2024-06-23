@@ -317,12 +317,20 @@
                         "flags": "i"
                       },
                       {
-                        "type": "FIELD",
-                        "name": "body",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "_single_line_statement"
-                        }
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "FIELD",
+                            "name": "body",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "_single_line_statement"
+                            }
+                          },
+                          {
+                            "type": "BLANK"
+                          }
+                        ]
                       }
                     ]
                   },

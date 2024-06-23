@@ -94,7 +94,7 @@ module.exports = grammar({
         optional(field('consequence', $._single_line_statement)),
         optional(seq(
           /else/i,
-          field('body', $._single_line_statement)
+          optional(field('body', $._single_line_statement))
         )),
       ),
       seq(
