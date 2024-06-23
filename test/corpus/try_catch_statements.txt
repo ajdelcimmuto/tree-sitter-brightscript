@@ -18,7 +18,6 @@ end sub
     (parameter_list)
     (block
       (try_statement
-        (try_start)
         (block
           (assignment_statement
             (identifier)
@@ -30,7 +29,6 @@ end sub
                   (literal
                     (number)))))))
         (catch_clause
-          (try_catch)
           (identifier)
           (block
             (print_statement

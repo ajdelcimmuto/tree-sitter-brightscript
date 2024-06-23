@@ -1,6 +1,4 @@
 sub bruh()
-    if true then
-        print("hi")
-    end if
+    if true then x = y
 end sub
 

@@ -361,7 +361,6 @@ property access array
 
 sub init()
     if test[3].ads[3] = "test" then
-        print("hi")
     end if
 end sub
 ---
@@ -372,7 +371,6 @@ end sub
     (parameter_list)
     (block
       (if_statement
-        (if_start)
         (binary_expression
           (comparison_expression
             (property_access_expression
@@ -387,12 +385,5 @@ end sub
             (literal
               (string
                 (string_contents)))))
-        (if_then)
-        (block
-          (print_statement
-            (parenthesized_expression
-              (literal
-                (string
-                  (string_contents))))))
         (end_if)))
     (end_sub)))
