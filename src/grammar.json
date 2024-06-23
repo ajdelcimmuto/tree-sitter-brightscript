@@ -264,9 +264,14 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "if",
-                "flags": "i"
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "if",
+                  "flags": "i"
+                },
+                "named": true,
+                "value": "if_start"
               },
               {
                 "type": "FIELD",
@@ -280,9 +285,14 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "then",
-                    "flags": "i"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "then",
+                      "flags": "i"
+                    },
+                    "named": true,
+                    "value": "if_then"
                   },
                   {
                     "type": "BLANK"
@@ -312,9 +322,14 @@
                     "type": "SEQ",
                     "members": [
                       {
-                        "type": "PATTERN",
-                        "value": "else",
-                        "flags": "i"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "else",
+                          "flags": "i"
+                        },
+                        "named": true,
+                        "value": "if_else"
                       },
                       {
                         "type": "CHOICE",
@@ -345,9 +360,14 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "if",
-                "flags": "i"
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "if",
+                  "flags": "i"
+                },
+                "named": true,
+                "value": "if_start"
               },
               {
                 "type": "FIELD",
@@ -361,9 +381,14 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "then",
-                    "flags": "i"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "then",
+                      "flags": "i"
+                    },
+                    "named": true,
+                    "value": "if_then"
                   },
                   {
                     "type": "BLANK"
@@ -422,19 +447,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "else if",
-              "flags": "i"
-            },
-            {
-              "type": "PATTERN",
-              "value": "elseif",
-              "flags": "i"
-            }
-          ]
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "else if",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "elseif",
+                "flags": "i"
+              }
+            ]
+          },
+          "named": true,
+          "value": "if_else_if"
         },
         {
           "type": "FIELD",
@@ -448,9 +478,14 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "then",
-              "flags": "i"
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "then",
+                "flags": "i"
+              },
+              "named": true,
+              "value": "if_then"
             },
             {
               "type": "BLANK"
@@ -479,9 +514,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "else",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "else",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "if_else"
         },
         {
           "type": "SYMBOL",
@@ -509,9 +549,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "for",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "for",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "for_start"
         },
         {
           "type": "CHOICE",
@@ -627,9 +672,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "while",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "while",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "while_start"
         },
         {
           "type": "FIELD",
@@ -861,9 +911,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "try",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "try",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "try_start"
         },
         {
           "type": "CHOICE",
@@ -907,9 +962,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "catch",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "catch",
+            "flags": "i"
+          },
+          "named": true,
+          "value": "try_catch"
         },
         {
           "type": "FIELD",

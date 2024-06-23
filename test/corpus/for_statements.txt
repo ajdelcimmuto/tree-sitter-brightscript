@@ -14,6 +14,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -40,6 +41,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -89,6 +91,7 @@ end sub
                 (string
                   (string_contents)))))))
       (for_statement
+        (for_start)
         (identifier)
         (identifier)
         (block
@@ -116,6 +119,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -164,6 +168,7 @@ end sub
             (literal
               (number)))))
       (for_statement
+        (for_start)
         (identifier)
         (identifier)
         (block
@@ -193,6 +198,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal
@@ -201,6 +207,7 @@ end sub
           (number))
         (block
           (for_statement
+            (for_start)
             (assignment_statement
               (identifier)
               (literal
@@ -236,6 +243,7 @@ end sub
     (parameter_list)
     (block
       (for_statement
+        (for_start)
         (assignment_statement
           (identifier)
           (literal

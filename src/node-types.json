@@ -525,6 +525,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "try_catch",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -658,6 +668,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "if_else",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -712,6 +732,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "if_else_if",
+          "named": true
+        },
+        {
+          "type": "if_then",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -955,11 +989,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "end_for",
+          "named": true
+        },
+        {
+          "type": "for_start",
           "named": true
         }
       ]
@@ -1138,7 +1176,7 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "else_clause",
@@ -1150,6 +1188,18 @@
         },
         {
           "type": "end_if",
+          "named": true
+        },
+        {
+          "type": "if_else",
+          "named": true
+        },
+        {
+          "type": "if_start",
+          "named": true
+        },
+        {
+          "type": "if_then",
           "named": true
         }
       ]
@@ -1984,11 +2034,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "end_try",
+          "named": true
+        },
+        {
+          "type": "try_start",
           "named": true
         }
       ]
@@ -2068,11 +2122,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "end_while",
+          "named": true
+        },
+        {
+          "type": "while_start",
           "named": true
         }
       ]
@@ -2223,7 +2281,27 @@
     "named": true
   },
   {
+    "type": "for_start",
+    "named": true
+  },
+  {
     "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "if_else",
+    "named": true
+  },
+  {
+    "type": "if_else_if",
+    "named": true
+  },
+  {
+    "type": "if_start",
+    "named": true
+  },
+  {
+    "type": "if_then",
     "named": true
   },
   {
@@ -2236,6 +2314,18 @@
   },
   {
     "type": "string_contents",
+    "named": true
+  },
+  {
+    "type": "try_catch",
+    "named": true
+  },
+  {
+    "type": "try_start",
+    "named": true
+  },
+  {
+    "type": "while_start",
     "named": true
   },
   {

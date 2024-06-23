@@ -371,6 +371,7 @@ end sub
     (parameter_list)
     (block
       (if_statement
+        (if_start)
         (binary_expression
           (comparison_expression
             (property_access_expression
@@ -385,5 +386,6 @@ end sub
             (literal
               (string
                 (string_contents)))))
+        (if_then)
         (end_if)))
     (end_sub)))
