@@ -9,14 +9,8 @@ sub init()
     if x = invalid then
         print("hi")
     end if
-
-    if true then
-        if true then
-        else
-            print ("hi")
-        end if
-    end if
 end sub
+
 
 ' A line
 function x(y as integer) as integer

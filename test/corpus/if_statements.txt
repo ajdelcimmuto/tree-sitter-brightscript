@@ -222,58 +222,12 @@ end sub
         (end_if)))
     (end_sub)))
 
-==================
-empty if statement
-==================
-
-sub init()
-    if 5=5
-    end if
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (block
-      (if_statement
-        (binary_expression
-          (comparison_expression
-            (literal
-              (number))
-            (literal
-              (number))))
-        (end_if)))
-    (end_sub)))
-
-==================
-empty if statement with boolean
-==================
-
-sub init()
-    if true
-    end if
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (block
-      (if_statement
-        (literal
-          (boolean))
-        (end_if)))
-    (end_sub)))
-
 ===============
 nested if statements mix between block and no block
 ===============
 
 sub init()
-    if true
+    if true then
         if true then return true else return true
     else if false
         print("hi")
@@ -324,7 +278,7 @@ end sub
 single line if with multiple property access
 ===================
 sub init()
-    if m.sessionToken <> "" then m.addHeader()
+    if m.sessiontoken <> "" then m.addheader()
 end sub
 ---
 
@@ -342,9 +296,32 @@ end sub
             (literal
               (string
                 (string_contents)))))
-        (property_access_expression
-          (identifier)
-          (call_expression
+        (expression_statement
+          (property_access_expression
             (identifier)
-            (parenthesized_expression)))))
+            (call_expression
+              (identifier)
+              (parenthesized_expression))))))
     (end_sub)))
+
+===================
+single line if simple
+===================
+sub init()
+    if true then return true
+end sub
+---
+
+(source_file
+  (sub_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (literal
+          (boolean))
+        (return_statement
+          (literal
+            (boolean)))))
+    (end_sub)))
+

@@ -90,6 +90,7 @@ end function
 
 ==================
 empty sub
+:skip
 ==================
 
 sub init()

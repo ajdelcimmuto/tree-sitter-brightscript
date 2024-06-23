@@ -31,18 +31,26 @@ module.exports = grammar({
       $.library_definition
     ),
 
-    _statement: $ => choice(
-      $.return_statement,
-      $.assignment_statement,
+    _statement: $ => prec(1, choice(
       $.if_statement,
       $.while_statement,
-      $.exit_while_statement,
       $.for_statement,
-      $.exit_for_statement,
       $.try_statement,
+      $._single_line_statement,
+      $.expression_statement,
+    )),
+
+    _single_line_statement: $ => prec(2, choice(
+      $.return_statement,
+      $.assignment_statement,
+      $.exit_while_statement,
+      $.exit_for_statement,
       $.print_statement,
-      $.increment_decrement_statement
-    ),
+      $.expression_statement,
+      $.increment_decrement_statement,
+    )),
+
+    expression_statement: $ => $._expression,
 
     _expression: $ => choice(
       $.binary_expression,
@@ -74,29 +82,30 @@ module.exports = grammar({
       /sub/i,
       field('name', $.identifier),
       field('parameters', $.parameter_list),
-      optional(field('body', $.block)),
+      field('body', $.block),
       $.end_sub
     ),
 
-    if_statement: $ => prec.right(PREC.IF, seq(
-      /if/i,
-      field('condition', $._expression),
-      optional(/then/i),
-      choice(
-        seq(
-          field('consequence', choice($._statement, $._expression)),
-          optional(seq(
-            /else/i,
-            field('alternative', $._statement)
-          ))
-        ),
-        seq(
-          /\r?\n/,
-          optional(field('consequence', $.block)),
-          repeat(field('alternatives', $.else_if_clause)),
-          optional(field('alternative', $.else_clause)),
-          $.end_if
-        )
+    if_statement: $ => prec.right(choice(
+      seq(
+        /if/i,
+        field('condition', $._expression),
+        optional(/then/i),
+        optional(field('consequence', $._single_line_statement)),
+        optional(seq(
+          /else/i,
+          field('body', $._single_line_statement)
+        )),
+      ),
+      seq(
+        /if/i,
+        field('condition', $._expression),
+        optional(/then/i),
+        $._new_line,
+        optional(field('consequence', $.block)),
+        repeat($.else_if_clause),
+        optional($.else_clause),
+        optional($.end_if)
       )
     )),
 
@@ -104,12 +113,13 @@ module.exports = grammar({
       choice(/else if/i, /elseif/i),
       field('condition', $._expression),
       optional(/then/i),
-      optional(field('consequence', $.block))
+      field('body', $.block)
     ),
 
     else_clause: $ => seq(
       /else/i,
-      optional(field('body', $.block))
+      $._new_line,
+      field('body', $.block)
     ),
 
     for_statement: $ => seq(
@@ -194,10 +204,7 @@ module.exports = grammar({
     postfix_increment_expression: $ => prec.left(PREC.POSTFIX_INCREMENT, seq(field('argument', $._expression), '++')),
     postfix_decrement_expression: $ => prec.left(PREC.POSTFIX_DECREMENT, seq(field('argument', $._expression), '--')),
 
-    block: $ => repeat1(choice(
-      $._statement,
-      $._expression
-    )),
+    block: $ => prec.left(repeat1($._statement)),
 
     parameter_list: $ => seq(
       '(',
@@ -230,7 +237,7 @@ module.exports = grammar({
     ),
 
     // Expressions
-    call_expression: $ => prec(1, seq(
+    call_expression: $ => prec.left(1, seq(
       field('function', $.identifier),
       field('arguments', $.parenthesized_expression)
     )),
@@ -364,7 +371,7 @@ module.exports = grammar({
       field('value', $._expression)
     ),
 
-    new_line: $ => /\r?\n/,
+    _new_line: $ => /\r?\n/,
 
     // Miscellaneous
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,

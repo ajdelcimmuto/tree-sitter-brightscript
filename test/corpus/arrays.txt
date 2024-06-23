@@ -339,10 +339,11 @@ end sub
               (number))
             (literal
               (number)))))
-      (call_expression
-        (identifier)
-        (parenthesized_expression
-          (identifier))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (parenthesized_expression
+            (identifier)))))
     (end_sub))
   (sub_definition
     (identifier)
