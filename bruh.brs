@@ -1,10 +1,6 @@
-function init() as integer
-    if x.bruh.hello() then
-        print("hi")
-        x = 5
-
-        bruh = { x: 5 }
-        return bruh.x
+sub bruh()
+    if true then
+else
     end if
-end function
+end sub
 

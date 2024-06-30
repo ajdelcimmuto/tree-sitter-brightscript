@@ -535,7 +535,7 @@
     "fields": {
       "consequence": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "assignment_statement",
@@ -625,7 +625,7 @@
       },
       "consequence": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "assignment_statement",

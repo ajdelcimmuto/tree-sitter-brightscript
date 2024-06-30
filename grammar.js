@@ -143,12 +143,12 @@ module.exports = grammar({
       'else if',
       field('condition', $._expression),
       optional(alias(/then/i, $.if_then)),
-      field('consequence', repeat1($._statement))
+      optional(field('consequence', repeat1($._statement)))
     ),
 
     else_clause: $ => seq(
       'else',
-      field('consequence', repeat1($._statement))
+      optional(field('consequence', repeat1($._statement)))
     ),
 
     for_statement: $ => seq(
