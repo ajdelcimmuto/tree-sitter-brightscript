@@ -1,6 +1,9 @@
 sub bruh()
     if true then
-else
+        for each x in y
+            if true then
+
+        end for
     end if
 end sub
 
