@@ -1,8 +1,8 @@
 ; Keywords
 [
-  (function_definition)
-  (sub_definition)
-  (library_definition)
+  (function_statement)
+  (sub_statement)
+  (library_statement)
   (if_statement)
   (else_if_clause)
   (else_clause)
@@ -13,12 +13,8 @@
   (return_statement)
   (print_statement)
   (try_statement)
-  (end_sub)
   (end_function)
-  (end_if)
-  (end_for)
-  (end_while)
-  (end_try)
+  (end_statement)
 ] @keyword
 
 ; Types
@@ -36,14 +32,15 @@
 (identifier) @variable
 
 ; Function and Sub declarations
-(function_definition name: (identifier) @function)
-(sub_definition name: (identifier) @function)
+(function_statement name: (identifier) @function)
+(sub_statement name: (identifier) @function)
 
 ; Function and Sub calls
-(call_expression function: (identifier) @function.call)
+(function_call
+  function: (prefix_exp) @function.call
+  arguments: (parenthesized_expression) @string)
 
 ; Property access
-(property_access_expression property: (identifier) @property)
 
 ; Operators
 [
@@ -85,4 +82,7 @@
   ":"
   ";"
 ] @punctuation
+
+;; Error
+(ERROR) @error
 

@@ -1,6 +1,6 @@
 [
-  (sub_definition)
-  (function_definition)
+  (sub_statement)
+  (function_statement)
   (if_statement)
   (for_statement)
   (while_statement)
@@ -9,8 +9,8 @@
 
 ; Handle other "end" statements
 [
-  (end_function)
   (end_sub)
+  (end_function)
   (end_for)
   (end_while)
   (end_try)
@@ -30,4 +30,6 @@
 ] @indent.branch
 
 (comment) @indent.ignore
+
+; (ERROR) @indent.dedent
 
