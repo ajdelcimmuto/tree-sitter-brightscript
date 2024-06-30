@@ -16,7 +16,7 @@
   (end_for)
   (end_while)
   (end_try)
-] @indent.end @indent.end
+] @indent.branch @indent.end
 
 ; Handle branching constructs
 [
