@@ -7,9 +7,19 @@
 (sub_statement
   name: (identifier) @function)
 
-; Function and sub calls
+; Function calls
 (function_call
-  function: (prefix_exp (identifier) @function.call))
+  function: (prefix_exp
+    (identifier) @function.call))
+
+; Nested function calls in property access
+(function_call
+  function: (prefix_exp
+    (prefix_exp
+      (prefix_exp
+        (identifier) @variable)
+      (identifier) @property)
+    (identifier) @function.call))
 
 ; Parameters
 (parameter
@@ -21,8 +31,10 @@
 ; Variables
 (variable_declarator) @variable
 
-; Properties
+; Property access
 (prefix_exp
+  (prefix_exp
+    (identifier) @variable)
   (identifier) @property)
 
 ; Statements
@@ -71,7 +83,7 @@
 (comment) @comment
 
 ; Punctuation
-["(" ")" "[" "]" "{" "}" "." ","] @punctuation.delimiter
+["(" ")" "[" "]" "{" "}" "." "," "?." "?["] @punctuation.delimiter
 
 ; Special highlights for library statements
 (library_statement) @include
@@ -114,7 +126,7 @@
 ] @keyword
 
 ; Special keywords (these might still need to be strings if not defined as separate nodes)
-; ["each" "in" "to" "step" "mod" "and" "or" "not"] @keyword
+["then" "else" "else if"] @keyword
 
 ; Exit statements
 [

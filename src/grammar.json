@@ -270,6 +270,14 @@
           },
           {
             "type": "SYMBOL",
+            "name": "continue_while_statement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "continue_for_statement"
+          },
+          {
+            "type": "SYMBOL",
             "name": "exit_for_statement"
           },
           {
@@ -322,7 +330,7 @@
       ]
     },
     "single_line_if": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 0,
       "content": {
         "type": "SEQ",
@@ -841,12 +849,42 @@
         }
       ]
     },
+    "continue_while_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "continue",
+          "flags": "i"
+        },
+        {
+          "type": "PATTERN",
+          "value": "while",
+          "flags": "i"
+        }
+      ]
+    },
     "exit_for_statement": {
       "type": "SEQ",
       "members": [
         {
           "type": "PATTERN",
           "value": "exit",
+          "flags": "i"
+        },
+        {
+          "type": "PATTERN",
+          "value": "for",
+          "flags": "i"
+        }
+      ]
+    },
+    "continue_for_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "continue",
           "flags": "i"
         },
         {
@@ -1177,6 +1215,27 @@
             "type": "SYMBOL",
             "name": "identifier"
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "="
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",

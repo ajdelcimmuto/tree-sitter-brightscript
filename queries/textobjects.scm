@@ -1,8 +1,8 @@
 ; Function definition
-(function_definition) @function.outer
+(function_statement) @function.outer
 
 ; Sub definition
-(sub_definition) @function.outer
+(sub_statement) @function.outer
 
 ; If statement
 (if_statement) @if.outer
@@ -20,10 +20,10 @@
 (while_statement) @while.outer
 
 ; Call expression
-(call_expression) @call.outer
+; (call_expression) @call.outer
 
 ; Property access expression
-(property_access_expression) @property.outer
+; (property_access_expression) @property.outer
 
 ; Logical expression
 (logical_expression) @logical.outer

@@ -87,6 +87,8 @@ module.exports = grammar({
       $.return_statement,
       $.assignment_statement,
       $.exit_while_statement,
+      $.continue_while_statement,
+      $.continue_for_statement,
       $.exit_for_statement,
       $.function_call,
       $.print_statement,
@@ -107,7 +109,7 @@ module.exports = grammar({
         $.single_line_if,
       ),
 
-    single_line_if: $ => prec.left(seq(
+    single_line_if: $ => prec.right(seq(
       alias('if', $.if_start),
       $._expression,
       optional('then'),
@@ -196,8 +198,18 @@ module.exports = grammar({
       /while/i
     ),
 
+    continue_while_statement: $ => seq(
+      /continue/i,
+      /while/i
+    ),
+
     exit_for_statement: $ => seq(
       /exit/i,
+      /for/i
+    ),
+
+    continue_for_statement: $ => seq(
+      /continue/i,
       /for/i
     ),
 
@@ -241,6 +253,7 @@ module.exports = grammar({
 
     parameter: $ => seq(
       field('name', $.identifier),
+      optional(seq('=', $._expression)),
       optional(seq(
         'as',
         field('type', $.type_specifier)

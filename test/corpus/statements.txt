@@ -8,16 +8,20 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (print_statement
-        (parenthesized_expression
+        (prefix_exp
+          (left_paren)
           (literal
             (string
-              (string_contents))))))
-    (end_sub)))
+              (string_contents)))
+          (right_paren))))
+    (end_statement
+      (end_sub))))
 
 ==================
 Print statements with params
@@ -29,7 +33,8 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list
       (parameter
@@ -37,9 +42,13 @@ end sub
         (type_specifier)))
     (block
       (print_statement
-        (parenthesized_expression
-          (identifier))))
-    (end_sub)))
+        (prefix_exp
+          (left_paren)
+          (prefix_exp
+            (identifier))
+          (right_paren))))
+    (end_statement
+      (end_sub))))
 
 ==================
 Print statements with comma sep params
@@ -51,7 +60,8 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list
       (parameter
@@ -62,9 +72,13 @@ end sub
         (type_specifier)))
     (block
       (print_statement
-        (parenthesized_expression
-          (identifier))))
-    (end_sub)))
+        (prefix_exp
+          (left_paren)
+          (prefix_exp
+            (identifier))
+          (right_paren))))
+    (end_statement
+      (end_sub))))
 
 ==================
 function return type string
@@ -76,7 +90,8 @@ end function
 ---
 
 (source_file
-  (function_definition
+  (function_statement
+    (function_start)
     (identifier)
     (parameter_list)
     (return_type
@@ -86,22 +101,8 @@ end function
         (literal
           (string
             (string_contents)))))
-    (end_function)))
-
-==================
-empty sub
-:skip
-==================
-
-sub init()
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (end_sub)))
+    (end_statement
+      (end_function))))
 
 ==================
 Library definition
@@ -114,19 +115,23 @@ end sub
 ---
 
 (source_file
-  (library_definition
+  (library_statement
     (string
       (string_contents)))
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (print_statement
-        (parenthesized_expression
+        (prefix_exp
+          (left_paren)
           (literal
             (string
-              (string_contents))))))
-    (end_sub)))
+              (string_contents)))
+          (right_paren))))
+    (end_statement
+      (end_sub))))
 
 ====================
 invalid return statement
@@ -137,7 +142,8 @@ end function
 ---
 
 (source_file
-  (function_definition
+  (function_statement
+    (function_start)
     (identifier)
     (parameter_list)
     (return_type
@@ -146,8 +152,8 @@ end function
       (return_statement
         (literal
           (invalid))))
-    (end_function)))
-
+    (end_statement
+      (end_function))))
 
 ==================
 Print statement as shortcut
@@ -159,13 +165,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (print_statement
-          (literal
-            (string
-              (string_contents)))))
-    (end_sub)))
-
+        (literal
+          (string
+            (string_contents)))))
+    (end_statement
+      (end_sub))))

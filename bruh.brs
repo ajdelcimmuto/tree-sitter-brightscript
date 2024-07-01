@@ -1,4 +1,10 @@
-sub bruh()
-	if not utils_isValid(plutoPlayerResourceConfigAA?.plutoPlayerResourceConfig) or plutoPlayerResourceConfigAA.plutoPlayerResourceConfig.subtype() <> "PlutoPlayerResourceConfig" then return
+sub init()
+    if true then
+        if true then return true else return true
+    else if false
+        print("hi")
+    else
+        print("hi")
+    end if
 end sub
 

@@ -9,15 +9,18 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 2
@@ -34,12 +37,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -59,7 +64,8 @@ end sub
               (literal
                 (string
                   (string_contents))))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 3
@@ -77,12 +83,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -103,10 +111,12 @@ end sub
                 (string
                   (string_contents)))))))
       (print_statement
-        (property_access_expression
-          (identifier)
+        (prefix_exp
+          (prefix_exp
+            (identifier))
           (identifier))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 4
@@ -124,12 +134,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -150,12 +162,14 @@ end sub
                 (string
                   (string_contents)))))))
       (assignment_statement
-        (property_access_expression
-          (identifier)
+        (variable_declarator
+          (prefix_exp
+            (identifier))
           (identifier))
         (literal
           (number))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 5
@@ -171,12 +185,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -199,7 +215,8 @@ end sub
                       (number))
                     (literal
                       (number))))))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray no comma
@@ -216,12 +233,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -240,7 +259,8 @@ end sub
                 (string_contents))
               (literal
                 (invalid)))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray no comma and identifier left side
@@ -257,12 +277,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -280,4 +302,5 @@ end sub
                 (string_contents))
               (literal
                 (invalid)))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))

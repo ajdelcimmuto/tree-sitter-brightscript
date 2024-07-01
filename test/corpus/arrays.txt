@@ -9,15 +9,18 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 2
@@ -30,12 +33,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -48,7 +53,8 @@ end sub
               (number))
             (literal
               (number))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 3
@@ -62,12 +68,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -81,11 +89,13 @@ end sub
             (literal
               (number)))))
       (print_statement
-        (array_access_expression
-          (identifier)
+        (prefix_exp
+          (prefix_exp
+            (identifier))
           (literal
             (number)))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 4
@@ -99,12 +109,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -118,13 +130,15 @@ end sub
             (literal
               (number)))))
       (assignment_statement
-        (array_access_expression
-          (identifier)
+        (variable_declarator
+          (prefix_exp
+            (identifier))
           (literal
             (number)))
         (literal
           (number))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 5
@@ -137,12 +151,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -154,7 +170,8 @@ end sub
               (boolean))
             (literal
               (number))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 6
@@ -167,12 +184,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (binary_expression
@@ -196,7 +215,8 @@ end sub
                     (number))
                   (literal
                     (number)))))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 7
@@ -209,12 +229,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -235,7 +257,8 @@ end sub
                   (number))
                 (literal
                   (number))))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 8
@@ -248,27 +271,34 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
-            (call_expression
-              (identifier)
-              (parenthesized_expression
-                (literal
-                  (string
-                    (string_contents)))))
-            (call_expression
-              (identifier)
-              (parenthesized_expression
-                (literal
-                  (string
-                    (string_contents)))))))))
-    (end_sub)))
+            (prefix_exp
+              (function_call
+                (prefix_exp
+                  (identifier))
+                (parenthesized_expression
+                  (literal
+                    (string
+                      (string_contents))))))
+            (prefix_exp
+              (function_call
+                (prefix_exp
+                  (identifier))
+                (parenthesized_expression
+                  (literal
+                    (string
+                      (string_contents))))))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 9
@@ -282,12 +312,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -301,9 +333,12 @@ end sub
             (literal
               (number)))))
       (assignment_statement
-        (identifier)
-        (identifier)))
-    (end_sub)))
+        (variable_declarator
+          (identifier))
+        (prefix_exp
+          (identifier))))
+    (end_statement
+      (end_sub))))
 
 ==================
 array test 10
@@ -321,12 +356,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -339,21 +376,26 @@ end sub
               (number))
             (literal
               (number)))))
-      (expression_statement
-        (call_expression
-          (identifier)
-          (parenthesized_expression
+      (function_call
+        (prefix_exp
+          (identifier))
+        (parenthesized_expression
+          (prefix_exp
             (identifier)))))
-    (end_sub))
-  (sub_definition
+    (end_statement
+      (end_sub)))
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list
       (parameter
         (identifier)))
     (block
       (print_statement
-        (identifier)))
-    (end_sub)))
+        (prefix_exp
+          (identifier))))
+    (end_statement
+      (end_sub))))
 
 ==================
 property access array
@@ -366,26 +408,31 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (if_start)
-        (binary_expression
-          (comparison_expression
-            (property_access_expression
-              (array_access_expression
-                (identifier)
+        (multi_line_if
+          (if_start)
+          (binary_expression
+            (comparison_expression
+              (prefix_exp
+                (prefix_exp
+                  (prefix_exp
+                    (prefix_exp
+                      (identifier))
+                    (literal
+                      (number)))
+                  (identifier))
                 (literal
                   (number)))
-              (array_access_expression
-                (identifier)
-                (literal
-                  (number))))
-            (literal
-              (string
-                (string_contents)))))
-        (if_then)
-        (end_if)))
-    (end_sub)))
+              (literal
+                (string
+                  (string_contents)))))
+          (if_block
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))

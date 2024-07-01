@@ -9,20 +9,24 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
-          (identifier)
+          (variable_declarator
+            (identifier))
           (literal
             (number)))
         (literal
           (number))
-        (end_for)))
-    (end_sub)))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 for statement
@@ -36,14 +40,16 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
-          (identifier)
+          (variable_declarator
+            (identifier))
           (literal
             (number)))
         (literal
@@ -52,12 +58,16 @@ end sub
           (number))
         (block
           (print_statement
-            (parenthesized_expression
+            (prefix_exp
+              (left_paren)
               (literal
                 (string
-                  (string_contents))))))
-        (end_for)))
-    (end_sub)))
+                  (string_contents)))
+              (right_paren))))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 for each statement
@@ -72,12 +82,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
@@ -92,14 +104,21 @@ end sub
                   (string_contents)))))))
       (for_statement
         (for_start)
-        (identifier)
-        (identifier)
+        (prefix_exp
+          (identifier))
+        (prefix_exp
+          (identifier))
         (block
           (print_statement
-            (parenthesized_expression
-              (identifier))))
-        (end_for)))
-    (end_sub)))
+            (prefix_exp
+              (left_paren)
+              (prefix_exp
+                (identifier))
+              (right_paren))))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 for statement with step
@@ -114,14 +133,16 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
-          (identifier)
+          (variable_declarator
+            (identifier))
           (literal
             (number)))
         (literal
@@ -130,10 +151,15 @@ end sub
           (number))
         (block
           (print_statement
-            (parenthesized_expression
-              (identifier))))
-        (end_for)))
-    (end_sub)))
+            (prefix_exp
+              (left_paren)
+              (prefix_exp
+                (identifier))
+              (right_paren))))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 for each statement with array
@@ -149,12 +175,14 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (array
             (literal
@@ -169,14 +197,21 @@ end sub
               (number)))))
       (for_statement
         (for_start)
-        (identifier)
-        (identifier)
+        (prefix_exp
+          (identifier))
+        (prefix_exp
+          (identifier))
         (block
           (print_statement
-            (parenthesized_expression
-              (identifier))))
-        (end_for)))
-    (end_sub)))
+            (prefix_exp
+              (left_paren)
+              (prefix_exp
+                (identifier))
+              (right_paren))))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 nested for statements
@@ -193,14 +228,16 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
-          (identifier)
+          (variable_declarator
+            (identifier))
           (literal
             (number)))
         (literal
@@ -209,22 +246,30 @@ end sub
           (for_statement
             (for_start)
             (assignment_statement
-              (identifier)
+              (variable_declarator
+                (identifier))
               (literal
                 (number)))
             (literal
               (number))
             (block
               (print_statement
-                (parenthesized_expression
+                (prefix_exp
+                  (left_paren)
                   (binary_expression
                     (arithmetic_expression
                       (additive_expression
-                        (identifier)
-                        (identifier)))))))
-            (end_for)))
-        (end_for)))
-    (end_sub)))
+                        (prefix_exp
+                          (identifier))
+                        (prefix_exp
+                          (identifier)))))
+                  (right_paren))))
+            (end_statement
+              (end_for))))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
 
 ==================
 for statement with exit while
@@ -238,19 +283,23 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
-          (identifier)
+          (variable_declarator
+            (identifier))
           (literal
             (number)))
         (literal
           (number))
         (block
           (exit_for_statement))
-        (end_for)))
-    (end_sub)))
+        (end_statement
+          (end_for))))
+    (end_statement
+      (end_sub))))
