@@ -1,9 +1,4 @@
 sub bruh()
-    if true then
-        for each x in y
-            if true then
-
-        end for
-    end if
+	if not utils_isValid(plutoPlayerResourceConfigAA?.plutoPlayerResourceConfig) or plutoPlayerResourceConfigAA.plutoPlayerResourceConfig.subtype() <> "PlutoPlayerResourceConfig" then return
 end sub
 

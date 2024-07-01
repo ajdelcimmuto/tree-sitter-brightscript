@@ -285,8 +285,8 @@ module.exports = grammar({
     _var: ($) =>
       prec.right(1, choice(
         $.identifier,
-        seq($.prefix_exp, '[', $._expression, ']'),
-        seq($.prefix_exp, ".", $.identifier),
+        seq($.prefix_exp, choice('[', '?['), $._expression, ']'),
+        seq($.prefix_exp, choice('.', '?.'), $.identifier),
       )),
 
     // Expressions

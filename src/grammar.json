@@ -1356,8 +1356,17 @@
                 "name": "prefix_exp"
               },
               {
-                "type": "STRING",
-                "value": "["
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "["
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "?["
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",
@@ -1377,8 +1386,17 @@
                 "name": "prefix_exp"
               },
               {
-                "type": "STRING",
-                "value": "."
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "."
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "?."
+                  }
+                ]
               },
               {
                 "type": "SYMBOL",

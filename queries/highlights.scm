@@ -1,88 +1,124 @@
-; Keywords
-[
-  (function_statement)
-  (sub_statement)
-  (library_statement)
-  (if_statement)
-  (else_if_clause)
-  (else_clause)
-  (for_statement)
-  (while_statement)
-  (exit_while_statement)
-  (exit_for_statement)
-  (return_statement)
-  (print_statement)
-  (try_statement)
-  (end_function)
-  (end_statement)
-] @keyword
+; Identifiers
+(identifier) @variable
+
+; Function and sub declarations
+(function_statement
+  name: (identifier) @function)
+(sub_statement
+  name: (identifier) @function)
+
+; Function and sub calls
+(function_call
+  function: (prefix_exp (identifier) @function.call))
+
+; Parameters
+(parameter
+  name: (identifier) @parameter)
 
 ; Types
 (type_specifier) @type
 
-; Literals
+; Variables
+(variable_declarator) @variable
+
+; Properties
+(prefix_exp
+  (identifier) @property)
+
+; Statements
+(if_statement) @conditional
+(for_statement) @repeat
+(while_statement) @repeat
+(try_statement) @exception
+(return_statement) @keyword.return
+(assignment_statement) @operator
+(print_statement) @function.builtin
+
+; Keywords
 [
-  (invalid)
-  (boolean)
-] @boolean
-(number) @number
-(string) @string
-
-; Identifiers
-(identifier) @variable
-
-; Function and Sub declarations
-(function_statement name: (identifier) @function)
-(sub_statement name: (identifier) @function)
-
-; Function and Sub calls
-(function_call
-  function: (prefix_exp) @function.call
-  arguments: (parenthesized_expression) @string)
-
-; Property access
+  (function_start)
+  (sub_start)
+  (if_start)
+  (if_then)
+  (if_else)
+  (for_start)
+  (while_start)
+  (try_start)
+  (try_catch)
+] @keyword
 
 ; Operators
 [
   "="
   "<>"
   "<"
-  ">"
   "<="
+  ">"
   ">="
   "+"
   "-"
   "*"
   "/"
-  "++"
-  "--"
-  "+="
-  "-="
-  "*="
-  "/="
-  "\\="
-  "<<="
-  ">>="
 ] @operator
+
+; Literals
+(boolean) @boolean
+(number) @number
+(string) @string
+(invalid) @constant.builtin
 
 ; Comments
 (comment) @comment
 
 ; Punctuation
-[
-  "("
-  ")"
-  "."
-  "?"
-  "["
-  "]"
-  "{"
-  "}"
-  ","
-  ":"
-  ";"
-] @punctuation
+["(" ")" "[" "]" "{" "}" "." ","] @punctuation.delimiter
 
-;; Error
-(ERROR) @error
+; Special highlights for library statements
+(library_statement) @include
+(library_statement
+  path: (string) @string.special)
+
+; Array and associative array literals
+(array) @constructor
+(assoc_array) @constructor
+(assoc_array_element
+  key: (identifier) @property)
+
+; Increment/decrement operators
+[
+  (prefix_increment_expression)
+  (prefix_decrement_expression)
+  (postfix_increment_expression)
+  (postfix_decrement_expression)
+] @operator
+
+; Comparison operators
+(comparison_expression
+  [
+    "="
+    "<>"
+    "<"
+    "<="
+    ">"
+    ">="
+  ] @operator)
+
+; End statements
+[
+  (end_sub)
+  (end_function)
+  (end_if)
+  (end_for)
+  (end_while)
+  (end_try)
+] @keyword
+
+; Special keywords (these might still need to be strings if not defined as separate nodes)
+; ["each" "in" "to" "step" "mod" "and" "or" "not"] @keyword
+
+; Exit statements
+[
+  (exit_while_statement)
+  (exit_for_statement)
+] @keyword
 
