@@ -20,6 +20,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (literal
           (boolean))
         (block
@@ -27,9 +28,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -55,6 +57,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (binary_expression
           (logical_expression
             (binary_expression
@@ -72,9 +75,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -101,6 +105,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (call_expression
           (identifier)
           (parenthesized_expression
@@ -110,9 +115,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -139,6 +145,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (unary_expression
           (logical_not_expression
             (parenthesized_expression
@@ -152,9 +159,10 @@ end sub
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -190,6 +198,7 @@ end sub
         (literal
           (number)))
       (while_statement
+        (while_start)
         (binary_expression
           (comparison_expression
             (identifier)
@@ -197,6 +206,7 @@ end sub
               (number))))
         (block
           (while_statement
+            (while_start)
             (binary_expression
               (comparison_expression
                 (identifier)
@@ -207,23 +217,26 @@ end sub
                 (parenthesized_expression
                   (binary_expression
                     (arithmetic_expression
-                      (identifier)
-                      (identifier)))))
+                      (additive_expression
+                        (identifier)
+                        (identifier))))))
               (assignment_statement
                 (identifier)
                 (binary_expression
                   (arithmetic_expression
-                    (identifier)
-                    (literal
-                      (number))))))
+                    (additive_expression
+                      (identifier)
+                      (literal
+                        (number)))))))
             (end_while))
           (assignment_statement
             (identifier)
             (binary_expression
               (arithmetic_expression
-                (identifier)
-                (literal
-                  (number))))))
+                (additive_expression
+                  (identifier)
+                  (literal
+                    (number)))))))
         (end_while)))
     (end_sub)))
 
@@ -244,6 +257,7 @@ end sub
     (parameter_list)
     (block
       (while_statement
+        (while_start)
         (literal
           (boolean))
         (block
