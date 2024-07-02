@@ -8,15 +8,19 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
-          (string))))
-    (end_sub)))
+          (string
+            (string_contents)))))
+    (end_statement
+      (end_sub))))
 
 ==================
 property_access_expression
@@ -28,17 +32,21 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (property_access_expression
-          (identifier)
+        (variable_declarator
+          (prefix_exp
+            (identifier))
           (identifier))
         (literal
-          (string))))
-    (end_sub)))
+          (string
+            (string_contents)))))
+    (end_statement
+      (end_sub))))
 
 ==================
 property_access_expression recursive
@@ -50,17 +58,20 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (property_access_expression
-          (property_access_expression
-            (identifier)
+        (variable_declarator
+          (prefix_exp
+            (prefix_exp
+              (identifier))
             (identifier))
           (identifier))
         (literal
-          (string))))
-    (end_sub)))
-
+          (string
+            (string_contents)))))
+    (end_statement
+      (end_sub))))

@@ -11,6 +11,7 @@ sub init()
     end if
 end sub
 
+
 ' A line
 function x(y as integer) as integer
     if y > 4 then
@@ -32,6 +33,11 @@ function x(y as integer) as integer
     for each element in x
         if element = 1 then
             m.top.callFunc("brotherWeNeedToCall", { x: element })
+        end if
+    end for
+
+    for each x in y
+        if x = y then
         end if
     end for
 

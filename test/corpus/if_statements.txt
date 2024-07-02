@@ -10,24 +10,30 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (comparison_expression
-            (literal
-              (number))
-            (literal
-              (number))))
-        (block
-          (assignment_statement
-            (identifier)
-            (literal
-              (number))))
-        (end_if)))
-    (end_sub)))
+        (multi_line_if
+          (if_start)
+          (binary_expression
+            (comparison_expression
+              (literal
+                (number))
+              (literal
+                (number))))
+          (if_block
+            (assignment_statement
+              (variable_declarator
+                (identifier))
+              (literal
+                (number)))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 complex if statement
@@ -41,36 +47,43 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (logical_expression
-            (binary_expression
-              (comparison_expression
-                (literal
-                  (number))
-                (literal
-                  (number))))
-            (binary_expression
-              (comparison_expression
-                (binary_expression
-                  (arithmetic_expression
-                    (literal
-                      (number))
-                    (literal
-                      (number))))
-                (literal
-                  (number))))))
-        (block
-          (assignment_statement
-            (identifier)
-            (literal
-              (number))))
-        (end_if)))
-    (end_sub)))
+        (multi_line_if
+          (if_start)
+          (binary_expression
+            (logical_expression
+              (binary_expression
+                (comparison_expression
+                  (literal
+                    (number))
+                  (literal
+                    (number))))
+              (binary_expression
+                (comparison_expression
+                  (binary_expression
+                    (arithmetic_expression
+                      (additive_expression
+                        (literal
+                          (number))
+                        (literal
+                          (number)))))
+                  (literal
+                    (number))))))
+          (if_block
+            (assignment_statement
+              (variable_declarator
+                (identifier))
+              (literal
+                (number)))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 if statement with else clause
@@ -87,30 +100,36 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (comparison_expression
-            (literal
-              (number))
-            (literal
-              (number))))
-        (block
-          (assignment_statement
-            (identifier)
-            (literal
-              (number))))
-        (else_clause
-          (block
-            (assignment_statement
-              (identifier)
+        (multi_line_if
+          (if_start)
+          (binary_expression
+            (comparison_expression
               (literal
-                (number)))))
-        (end_if)))
-    (end_sub)))
+                (number))
+              (literal
+                (number))))
+          (if_block
+            (assignment_statement
+              (variable_declarator
+                (identifier))
+              (literal
+                (number)))
+            (else_clause
+              (assignment_statement
+                (variable_declarator
+                  (identifier))
+                (literal
+                  (number))))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 if statement with else if clause
@@ -129,37 +148,46 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (comparison_expression
-            (identifier)
-            (literal
-              (number))))
-        (block
-          (print_statement
-            (literal
-              (string))))
-        (else_if_clause
+        (multi_line_if
+          (if_start)
           (binary_expression
             (comparison_expression
-              (identifier)
+              (prefix_exp
+                (identifier))
               (literal
                 (number))))
-          (block
+          (if_block
             (print_statement
               (literal
-                (string)))))
-        (else_clause
-          (block
-            (print_statement
-              (literal
-                (string)))))
-        (end_if)))
-    (end_sub)))
+                (string
+                  (string_contents))))
+            (else_if_clause
+              (binary_expression
+                (comparison_expression
+                  (prefix_exp
+                    (identifier))
+                  (literal
+                    (number))))
+              (if_then)
+              (print_statement
+                (literal
+                  (string
+                    (string_contents)))))
+            (else_clause
+              (print_statement
+                (literal
+                  (string
+                    (string_contents)))))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 if statement with nested if
@@ -180,93 +208,58 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (comparison_expression
-            (identifier)
-            (literal
-              (number))))
-        (block
-          (if_statement
-            (binary_expression
-              (comparison_expression
-                (identifier)
-                (literal
-                  (number))))
-            (block
+        (multi_line_if
+          (if_start)
+          (binary_expression
+            (comparison_expression
+              (prefix_exp
+                (identifier))
+              (literal
+                (number))))
+          (if_block
+            (if_statement
+              (multi_line_if
+                (if_start)
+                (binary_expression
+                  (comparison_expression
+                    (prefix_exp
+                      (identifier))
+                    (literal
+                      (number))))
+                (if_block
+                  (print_statement
+                    (literal
+                      (string
+                        (string_contents))))
+                  (else_clause
+                    (print_statement
+                      (literal
+                        (string
+                          (string_contents)))))
+                  (end_statement
+                    (end_if)))))
+            (else_clause
               (print_statement
                 (literal
-                  (string))))
-            (else_clause
-              (block
-                (print_statement
-                  (literal
-                    (string)))))
-            (end_if)))
-        (else_clause
-          (block
-            (print_statement
-              (literal
-                (string)))))
-        (end_if)))
-    (end_sub)))
-
-==================
-empty if statement
-==================
-
-sub init()
-    if 5=5
-    end if
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (block
-      (if_statement
-        (binary_expression
-          (comparison_expression
-            (literal
-              (number))
-            (literal
-              (number))))
-        (end_if)))
-    (end_sub)))
-
-==================
-empty if statement with boolean
-==================
-
-sub init()
-    if true
-    end if
-end sub
----
-
-(source_file
-  (sub_definition
-    (identifier)
-    (parameter_list)
-    (block
-      (if_statement
-        (literal
-          (boolean))
-        (end_if)))
-    (end_sub)))
+                  (string
+                    (string_contents)))))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ===============
 nested if statements mix between block and no block
 ===============
 
 sub init()
-    if true
+    if true then
         if true then return true else return true
     else if false
         print("hi")
@@ -277,64 +270,108 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (literal
-          (boolean))
-        (block
-          (if_statement
-            (literal
-              (boolean))
-            (return_statement
-              (literal
-                (boolean)))
-            (return_statement
-              (literal
-                (boolean)))))
-        (else_if_clause
+        (multi_line_if
+          (if_start)
           (literal
             (boolean))
-          (block
-            (print_statement
-              (parenthesized_expression
+          (if_block
+            (if_statement
+              (single_line_if
+                (if_start)
                 (literal
-                  (string))))))
-        (else_clause
-          (block
-            (print_statement
-              (parenthesized_expression
-                (literal
-                  (string))))))
-        (end_if)))
-    (end_sub)))
+                  (boolean))
+                (return_statement
+                  (literal
+                    (boolean)))
+                (if_else)
+                (return_statement
+                  (literal
+                    (boolean)))))
+            (else_if_clause
+              (literal
+                (boolean))
+              (print_statement
+                (prefix_exp
+                  (left_paren)
+                  (literal
+                    (string
+                      (string_contents)))
+                  (right_paren))))
+            (else_clause
+              (print_statement
+                (prefix_exp
+                  (left_paren)
+                  (literal
+                    (string
+                      (string_contents)))
+                  (right_paren))))
+            (end_statement
+              (end_if))))))
+    (end_statement
+      (end_sub))))
 
 ===================
 single line if with multiple property access
 ===================
 sub init()
-    if m.sessionToken <> "" then m.addHeader()
+    if m.sessiontoken <> "" then m.addheader()
 end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (if_statement
-        (binary_expression
-          (comparison_expression
-            (property_access_expression
-              (identifier)
+        (single_line_if
+          (if_start)
+          (binary_expression
+            (comparison_expression
+              (prefix_exp
+                (prefix_exp
+                  (identifier))
+                (identifier))
+              (literal
+                (string
+                  (string_contents)))))
+          (function_call
+            (prefix_exp
+              (prefix_exp
+                (identifier))
               (identifier))
-            (literal
-              (string))))
-        (property_access_expression
-          (identifier)
-          (call_expression
-            (identifier)
             (parenthesized_expression)))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
+
+===================
+single line if simple
+===================
+sub init()
+    if true then return true
+end sub
+---
+
+(source_file
+  (sub_statement
+    (sub_start)
+    (identifier)
+    (parameter_list)
+    (block
+      (if_statement
+        (single_line_if
+          (if_start)
+          (literal
+            (boolean))
+          (return_statement
+            (literal
+              (boolean))))))
+    (end_statement
+      (end_sub))))

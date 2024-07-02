@@ -9,15 +9,18 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 2
@@ -34,27 +37,35 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))))))
-    (end_sub)))
+                (string
+                  (string_contents))))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 3
@@ -72,31 +83,40 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string))))))
+                (string
+                  (string_contents)))))))
       (print_statement
-        (property_access_expression
-          (identifier)
+        (prefix_exp
+          (prefix_exp
+            (identifier))
           (identifier))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 4
@@ -114,33 +134,42 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string))))))
+                (string
+                  (string_contents)))))))
       (assignment_statement
-        (property_access_expression
-          (identifier)
+        (variable_declarator
+          (prefix_exp
+            (identifier))
           (identifier))
         (literal
           (number))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray test 5
@@ -156,31 +185,38 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (binary_expression
                 (arithmetic_expression
-                  (literal
-                    (number))
-                  (literal
-                    (number)))))
+                  (additive_expression
+                    (literal
+                      (number))
+                    (literal
+                      (number))))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (binary_expression
                 (arithmetic_expression
-                  (literal
-                    (number))
-                  (literal
-                    (number)))))))))
-    (end_sub)))
+                  (multiplicative_expression
+                    (literal
+                      (number))
+                    (literal
+                      (number))))))))))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray no comma
@@ -197,27 +233,34 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (invalid)))))))
-    (end_sub)))
+    (end_statement
+      (end_sub))))
 
 ==================
 assocarray no comma and identifier left side
@@ -234,25 +277,30 @@ end sub
 ---
 
 (source_file
-  (sub_definition
+  (sub_statement
+    (sub_start)
     (identifier)
     (parameter_list)
     (block
       (assignment_statement
-        (identifier)
+        (variable_declarator
+          (identifier))
         (literal
           (assoc_array
             (assoc_array_element
               (identifier)
               (literal
-                (string)))
+                (string
+                  (string_contents))))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (number)))
             (assoc_array_element
-              (string)
+              (string
+                (string_contents))
               (literal
                 (invalid)))))))
-    (end_sub)))
-
+    (end_statement
+      (end_sub))))
