@@ -21,6 +21,7 @@ end sub
             (identifier))
           (literal
             (number)))
+        (for_to)
         (literal
           (number))
         (end_statement
@@ -52,8 +53,10 @@ end sub
             (identifier))
           (literal
             (number)))
+        (for_to)
         (literal
           (number))
+        (for_step)
         (literal
           (number))
         (block
@@ -104,8 +107,10 @@ end sub
                   (string_contents)))))))
       (for_statement
         (for_start)
+        (for_each)
         (prefix_exp
           (identifier))
+        (for_in)
         (prefix_exp
           (identifier))
         (block
@@ -145,8 +150,10 @@ end sub
             (identifier))
           (literal
             (number)))
+        (for_to)
         (literal
           (number))
+        (for_step)
         (literal
           (number))
         (block
@@ -197,8 +204,10 @@ end sub
               (number)))))
       (for_statement
         (for_start)
+        (for_each)
         (prefix_exp
           (identifier))
+        (for_in)
         (prefix_exp
           (identifier))
         (block
@@ -240,6 +249,7 @@ end sub
             (identifier))
           (literal
             (number)))
+        (for_to)
         (literal
           (number))
         (block
@@ -250,6 +260,7 @@ end sub
                 (identifier))
               (literal
                 (number)))
+            (for_to)
             (literal
               (number))
             (block
@@ -295,6 +306,7 @@ end sub
             (identifier))
           (literal
             (number)))
+        (for_to)
         (literal
           (number))
         (block

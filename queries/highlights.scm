@@ -13,13 +13,13 @@
     (identifier) @function.call))
 
 ; Nested function calls in property access
-(function_call
-  function: (prefix_exp
-    (prefix_exp
-      (prefix_exp
-        (identifier) @variable)
-      (identifier) @property)
-    (identifier) @function.call))
+; (function_call
+;   function: (prefix_exp
+;     (prefix_exp
+;       (prefix_exp
+;         (identifier) @variable)
+;       (identifier) @property)
+;     (identifier) @function.call))
 
 ; Parameters
 (parameter
@@ -54,6 +54,10 @@
   (if_then)
   (if_else)
   (for_start)
+  (for_to)
+  (for_step)
+  (for_each)
+  (for_in)
   (while_start)
   (try_start)
   (try_catch)

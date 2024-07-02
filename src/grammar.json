@@ -606,9 +606,14 @@
                   }
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "to",
-                  "flags": "i"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "to",
+                    "flags": "i"
+                  },
+                  "named": true,
+                  "value": "for_to"
                 },
                 {
                   "type": "FIELD",
@@ -625,9 +630,14 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "PATTERN",
-                          "value": "step",
-                          "flags": "i"
+                          "type": "ALIAS",
+                          "content": {
+                            "type": "PATTERN",
+                            "value": "step",
+                            "flags": "i"
+                          },
+                          "named": true,
+                          "value": "for_step"
                         },
                         {
                           "type": "FIELD",
@@ -650,9 +660,14 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "PATTERN",
-                  "value": "each",
-                  "flags": "i"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "each",
+                    "flags": "i"
+                  },
+                  "named": true,
+                  "value": "for_each"
                 },
                 {
                   "type": "FIELD",
@@ -663,9 +678,14 @@
                   }
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "in",
-                  "flags": "i"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "in",
+                    "flags": "i"
+                  },
+                  "named": true,
+                  "value": "for_in"
                 },
                 {
                   "type": "FIELD",

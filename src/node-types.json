@@ -898,7 +898,23 @@
           "named": true
         },
         {
+          "type": "for_each",
+          "named": true
+        },
+        {
+          "type": "for_in",
+          "named": true
+        },
+        {
           "type": "for_start",
+          "named": true
+        },
+        {
+          "type": "for_step",
+          "named": true
+        },
+        {
+          "type": "for_to",
           "named": true
         }
       ]
@@ -2256,7 +2272,23 @@
     "named": true
   },
   {
+    "type": "for_each",
+    "named": true
+  },
+  {
+    "type": "for_in",
+    "named": true
+  },
+  {
     "type": "for_start",
+    "named": true
+  },
+  {
+    "type": "for_step",
+    "named": true
+  },
+  {
+    "type": "for_to",
     "named": true
   },
   {

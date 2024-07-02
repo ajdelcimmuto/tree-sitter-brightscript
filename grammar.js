@@ -158,14 +158,14 @@ module.exports = grammar({
       choice(
         seq(
           field('initializer', $.assignment_statement),
-          /to/i,
+          alias(/to/i, $.for_to),
           field('condition', $._expression),
-          optional(seq(/step/i, field('increment', $._expression)))
+          optional(seq(alias(/step/i, $.for_step), field('increment', $._expression)))
         ),
         seq(
-          /each/i,
+          alias(/each/i, $.for_each),
           field('variable', $._expression),
-          /in/i,
+          alias(/in/i, $.for_in),
           field('collection', $._expression)
         )
       ),
