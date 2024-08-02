@@ -2,6 +2,8 @@
 [
   (sub_statement)
   (function_statement)
+  (annonymous_sub)
+  (annonymous_function)
   (if_statement)
   (for_statement)
   (while_statement)
