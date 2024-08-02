@@ -51,6 +51,11 @@ module.exports = grammar({
       $.function_impl
     ),
 
+    annonymous_function: $ => seq(
+      seq($.function_start),
+      $.sub_impl
+    ),
+
     function_impl: $ => seq(
       field('parameters', $.parameter_list),
       optional(field('return_type', $.return_type)),
@@ -62,6 +67,11 @@ module.exports = grammar({
 
     sub_statement: $ => seq(
       seq($.sub_start, /\s*/, field("name", $.identifier)),
+      $.sub_impl
+    ),
+
+    annonymous_sub: $ => seq(
+      seq($.sub_start),
       $.sub_impl
     ),
 
@@ -100,6 +110,8 @@ module.exports = grammar({
       $.literal,
       $.binary_expression,
       $.unary_expression,
+      $.annonymous_sub,
+      $.annonymous_function
     ),
 
     // The main entry point for if statements
