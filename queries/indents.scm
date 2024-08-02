@@ -6,6 +6,8 @@
   (for_statement)
   (while_statement)
   (try_statement)
+  (array)
+  (assoc_array)
 ] @indent.begin
 
 ; End indentation for all end statements
@@ -16,6 +18,8 @@
   (end_for)
   (end_while)
   (end_try)
+  "]"
+  "}"
 ] @indent.branch @indent.end
 
 ; Handle branching constructs
@@ -28,3 +32,5 @@
 ; Ignore comments for indentation
 (comment) @indent.ignore
 
+(array ((_) @indent.align ","? @indent.end) @indent.begin)
+(assoc_array ((assoc_array_element) @indent.align ","? @indent.end) @indent.begin)

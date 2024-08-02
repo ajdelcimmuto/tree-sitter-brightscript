@@ -1,3 +1,7 @@
-sub bruh(bruh = "bruh" as object)
+sub bruh()
+	bruh = [
+		5,
+	    4
+	]
 end sub
 
