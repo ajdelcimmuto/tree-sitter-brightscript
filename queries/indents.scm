@@ -34,5 +34,5 @@
 ; Ignore comments for indentation
 (comment) @indent.ignore
 
-(array ((_) @indent.align ","? @indent.end) @indent.begin)
-(assoc_array ((assoc_array_element) @indent.align ","? @indent.end) @indent.begin)
+;(array ((_) @indent.align ","? @indent.end) @indent.begin)
+;(assoc_array ((assoc_array_element) @indent.align ","? @indent.end) @indent.begin)
