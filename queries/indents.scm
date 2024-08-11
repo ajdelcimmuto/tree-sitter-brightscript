@@ -4,7 +4,7 @@
   (function_statement)
   (annonymous_sub)
   (annonymous_function)
-  (if_statement)
+  (multi_line_if)
   (for_statement)
   (while_statement)
   (try_statement)
