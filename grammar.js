@@ -462,7 +462,7 @@ module.exports = grammar({
 
     end_sub: $ => /end\s+sub/i,
     end_function: $ => /end\s+function/i,
-    end_if: $ => 'endif',
+    end_if: $ => /end\s+if/i,
     end_for: $ => /end\s+for/i,
     end_while: $ => /end\s+while/i,
     end_try: $ => /end\s+try/i,
