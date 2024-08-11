@@ -129,7 +129,12 @@ module.exports = grammar({
       optional(seq(
         alias('else', $.if_else),
         $._single_line_statement
-      ))
+      )),
+      choice(
+        '\n',
+        '\r\n',
+        '\r'
+      )
     )),
 
     // Multi-line if statement
