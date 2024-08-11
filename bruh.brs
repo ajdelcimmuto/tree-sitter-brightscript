@@ -1,3 +1,6 @@
 sub requestBootstrap()
-	if true then
+	if true then return
+	x = {
+		x: 5
+		}
 end sub

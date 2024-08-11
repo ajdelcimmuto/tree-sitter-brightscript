@@ -22,17 +22,10 @@
   (end_try)
   "]"
   "}"
-] @indent.end
+] @indent.branch @indent.end
 
 ; Handle branching constructs
 [
-  (partial_end_statement)
-  (end_sub)
-  (end_function)
-  (end_if)
-  (end_for)
-  (end_while)
-  (end_try)
   (else_if_clause)
   (else_clause)
   (catch_clause)
