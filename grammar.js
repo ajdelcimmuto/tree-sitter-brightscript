@@ -150,8 +150,10 @@ module.exports = grammar({
       repeat($._statement),
       repeat($.else_if_clause),
       optional($.else_clause),
-      $.end_statement
+      choice($.end_statement, $.partial_end_statement)
     ),
+
+    partial_end_statement: $ => seq('end', optional(/\s+/)),
 
     single_line_if_block: $ => seq(
       $._statement,

@@ -1255,6 +1255,10 @@
           "named": true
         },
         {
+          "type": "partial_end_statement",
+          "named": true
+        },
+        {
           "type": "print_statement",
           "named": true
         },
@@ -1709,6 +1713,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "partial_end_statement",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "postfix_decrement_expression",
@@ -2585,6 +2594,10 @@
   },
   {
     "type": "else if",
+    "named": false
+  },
+  {
+    "type": "end",
     "named": false
   },
   {

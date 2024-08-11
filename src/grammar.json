@@ -522,8 +522,38 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "end_statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "end_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "partial_end_statement"
+            }
+          ]
+        }
+      ]
+    },
+    "partial_end_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "end"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\s+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
