@@ -2479,61 +2479,55 @@
       }
     },
     "end_sub": {
-      "type": "PATTERN",
-      "value": "end\\s+sub",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end sub"
     },
     "end_function": {
-      "type": "PATTERN",
-      "value": "end\\s+function",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end function"
     },
     "end_if": {
-      "type": "PATTERN",
-      "value": "end\\s+if",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end if"
     },
     "end_for": {
-      "type": "PATTERN",
-      "value": "end\\s+for",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end for"
     },
     "end_while": {
-      "type": "PATTERN",
-      "value": "end\\s+while",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end while"
     },
     "end_try": {
-      "type": "PATTERN",
-      "value": "end\\s+try",
-      "flags": "i"
+      "type": "STRING",
+      "value": "end try"
     },
     "end_statement": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "end_sub"
+          "type": "STRING",
+          "value": "end sub"
         },
         {
-          "type": "SYMBOL",
-          "name": "end_function"
+          "type": "STRING",
+          "value": "end function"
         },
         {
-          "type": "SYMBOL",
-          "name": "end_if"
+          "type": "STRING",
+          "value": "end if"
         },
         {
-          "type": "SYMBOL",
-          "name": "end_for"
+          "type": "STRING",
+          "value": "end for"
         },
         {
-          "type": "SYMBOL",
-          "name": "end_while"
+          "type": "STRING",
+          "value": "end while"
         },
         {
-          "type": "SYMBOL",
-          "name": "end_try"
+          "type": "STRING",
+          "value": "end try"
         }
       ]
     }

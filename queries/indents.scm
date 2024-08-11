@@ -14,21 +14,27 @@
 
 ; End indentation for all end statements
 [
-  (end_sub)
-  (end_function)
-  (end_if)
-  (end_for)
-  (end_while)
-  (end_try)
+  "end if"
+  "end sub"
+  "end function"
+  "end for"
+  "end while"
+  "end try"
   "]"
   "}"
-] @indent.branch @indent.end
+] @indent.end
 
 ; Handle branching constructs
 [
   (else_if_clause)
   (else_clause)
   (catch_clause)
+  "end if"
+  "end sub"
+  "end function"
+  "end for"
+  "end while"
+  "end try"
 ] @indent.branch
 
 ; Ignore comments for indentation

@@ -460,20 +460,20 @@ module.exports = grammar({
     // Miscellaneous
     identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/)),
 
-    end_sub: $ => /end\s+sub/i,
-    end_function: $ => /end\s+function/i,
-    end_if: $ => /end\s+if/i,
-    end_for: $ => /end\s+for/i,
-    end_while: $ => /end\s+while/i,
-    end_try: $ => /end\s+try/i,
+    end_sub: $ => 'end sub',
+    end_function: $ => 'end function',
+    end_if: $ => 'end if',
+    end_for: $ => 'end for',
+    end_while: $ => 'end while',
+    end_try: $ => 'end try',
 
     end_statement: $ => choice(
-      $.end_sub,
-      $.end_function,
-      $.end_if,
-      $.end_for,
-      $.end_while,
-      $.end_try
+      'end sub',
+      'end function',
+      'end if',
+      'end for',
+      'end while',
+      'end try'
     )
   }
 });
