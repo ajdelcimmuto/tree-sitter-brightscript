@@ -2489,9 +2489,8 @@
       "flags": "i"
     },
     "end_if": {
-      "type": "PATTERN",
-      "value": "end\\s+if",
-      "flags": "i"
+      "type": "STRING",
+      "value": "endif"
     },
     "end_for": {
       "type": "PATTERN",
