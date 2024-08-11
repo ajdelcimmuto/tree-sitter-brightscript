@@ -886,7 +886,37 @@
   {
     "type": "end_statement",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "end_for",
+          "named": true
+        },
+        {
+          "type": "end_function",
+          "named": true
+        },
+        {
+          "type": "end_if",
+          "named": true
+        },
+        {
+          "type": "end_sub",
+          "named": true
+        },
+        {
+          "type": "end_try",
+          "named": true
+        },
+        {
+          "type": "end_while",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "exit_for_statement",
@@ -2558,28 +2588,28 @@
     "named": false
   },
   {
-    "type": "end for",
-    "named": false
+    "type": "end_for",
+    "named": true
   },
   {
-    "type": "end function",
-    "named": false
+    "type": "end_function",
+    "named": true
   },
   {
-    "type": "end if",
-    "named": false
+    "type": "end_if",
+    "named": true
   },
   {
-    "type": "end sub",
-    "named": false
+    "type": "end_sub",
+    "named": true
   },
   {
-    "type": "end try",
-    "named": false
+    "type": "end_try",
+    "named": true
   },
   {
-    "type": "end while",
-    "named": false
+    "type": "end_while",
+    "named": true
   },
   {
     "type": "for_each",
