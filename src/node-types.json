@@ -8,6 +8,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -44,6 +52,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -61,6 +77,86 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "annonymous_function",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "end_statement",
+          "named": true
+        },
+        {
+          "type": "function_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "annonymous_sub",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "end_statement",
+          "named": true
+        },
+        {
+          "type": "sub_start",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -90,6 +186,14 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -135,6 +239,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -212,6 +324,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -268,6 +388,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -466,6 +594,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -517,6 +653,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -631,6 +775,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -795,6 +947,14 @@
         "required": false,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -817,6 +977,14 @@
         "required": false,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -838,6 +1006,14 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -870,6 +1046,14 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1204,6 +1388,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1225,6 +1417,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1254,6 +1454,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1281,6 +1489,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -1317,6 +1533,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1352,6 +1576,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1402,6 +1634,14 @@
       "required": false,
       "types": [
         {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -1444,6 +1684,14 @@
       "required": false,
       "types": [
         {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -1470,6 +1718,14 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1499,6 +1755,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1527,6 +1791,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1554,6 +1826,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -1598,6 +1878,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1632,6 +1920,14 @@
           {
             "type": ";",
             "named": false
+          },
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
           },
           {
             "type": "binary_expression",
@@ -1708,6 +2004,14 @@
         "required": false,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -1756,6 +2060,14 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
         {
           "type": "assignment_statement",
           "named": true
@@ -2029,6 +2341,14 @@
       "required": true,
       "types": [
         {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -2070,6 +2390,14 @@
         "required": true,
         "types": [
           {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
@@ -2105,6 +2433,18 @@
   },
   {
     "type": "\u0000",
+    "named": false
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\r",
+    "named": false
+  },
+  {
+    "type": "\r\n",
     "named": false
   },
   {
