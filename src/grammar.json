@@ -454,8 +454,8 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "#end if"
+          "type": "SYMBOL",
+          "name": "end_statement"
         }
       ]
     },
@@ -2624,6 +2624,11 @@
       "value": "end\\s+try",
       "flags": "i"
     },
+    "conditional_compl_end_if": {
+      "type": "PATTERN",
+      "value": "#end\\s+if",
+      "flags": "i"
+    },
     "end_statement": {
       "type": "CHOICE",
       "members": [
@@ -2638,6 +2643,10 @@
         {
           "type": "SYMBOL",
           "name": "end_if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "conditional_compl_end_if"
         },
         {
           "type": "SYMBOL",

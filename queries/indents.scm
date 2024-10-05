@@ -4,6 +4,7 @@
   (function_statement)
   (annonymous_sub)
   (annonymous_function)
+  (conditional_compl)
   (multi_line_if)
   (for_statement)
   (while_statement)
@@ -20,6 +21,7 @@
   (end_for)
   (end_while)
   (end_try)
+  (conditional_compl_end_if)
   "]"
   "}"
 ] @indent.branch @indent.end

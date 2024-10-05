@@ -730,6 +730,10 @@
           "named": true
         },
         {
+          "type": "end_statement",
+          "named": true
+        },
+        {
           "type": "exit_for_statement",
           "named": true
         },
@@ -1023,6 +1027,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "conditional_compl_end_if",
+          "named": true
+        },
         {
           "type": "end_for",
           "named": true
@@ -2596,10 +2604,6 @@
     "named": false
   },
   {
-    "type": "#end if",
-    "named": false
-  },
-  {
     "type": "'",
     "named": false
   },
@@ -2728,16 +2732,20 @@
     "named": false
   },
   {
+    "type": "conditional_compl_end_if",
+    "named": true
+  },
+  {
     "type": "const",
     "named": false
   },
   {
     "type": "else",
-    "named": true
+    "named": false
   },
   {
     "type": "else",
-    "named": false
+    "named": true
   },
   {
     "type": "else if",

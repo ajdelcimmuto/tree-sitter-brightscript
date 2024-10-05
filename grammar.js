@@ -129,7 +129,7 @@ module.exports = grammar({
         alias('#else', $.else),
         repeat($._statement)
       )),
-      '#end if'
+      $.end_statement
     ),
 
     // The main entry point for if statements
@@ -485,11 +485,13 @@ module.exports = grammar({
     end_for: $ => /end\s+for/i,
     end_while: $ => /end\s+while/i,
     end_try: $ => /end\s+try/i,
+    conditional_compl_end_if: $ => /#end\s+if/i,
 
     end_statement: $ => choice(
       $.end_sub,
       $.end_function,
       $.end_if,
+      $.conditional_compl_end_if,
       $.end_for,
       $.end_while,
       $.end_try

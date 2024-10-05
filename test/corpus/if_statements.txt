@@ -428,6 +428,8 @@ end sub
 			(literal
 			  (string
 				(string_contents)))
-			(right_paren)))))
+			(right_paren)))
+		(end_statement
+		  (conditional_compl_end_if))))
 	(end_statement
 	  (end_sub))))
