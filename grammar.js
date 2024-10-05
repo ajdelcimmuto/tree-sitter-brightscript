@@ -17,7 +17,7 @@ const PREC = {
 module.exports = grammar({
   name: 'brightscript',
 
-  extras: ($) => [/[\n]/, /\s/, $.comment],
+  extras: ($) => [/[\n]/, /\s/, $.comment, $.constant],
 
   inline: ($) => [
     $.function_impl,
@@ -86,6 +86,7 @@ module.exports = grammar({
       $.function_statement,
       $.library_statement,
       $.if_statement,
+      $.conditional_compl,
       $.while_statement,
       $.for_statement,
       $.try_statement,
@@ -112,6 +113,23 @@ module.exports = grammar({
       $.unary_expression,
       $.annonymous_sub,
       $.annonymous_function
+    ),
+
+    conditional_compl: $ => seq(
+      alias('#if', $.if_start),
+      $._expression,
+      $._new_line,
+      repeat($._statement),
+      optional(seq(
+        alias('#else if', $.else_if),
+        $._expression,
+        repeat($._statement)
+      )),
+      optional(seq(
+        alias('#else', $.else),
+        repeat($._statement)
+      )),
+      '#end if'
     ),
 
     // The main entry point for if statements
@@ -406,6 +424,7 @@ module.exports = grammar({
     )),
 
     comment: $ => seq("'", /.*/),
+    constant: $ => seq("#", "const", /.*/),
 
     // Literals
     literal: $ => choice(

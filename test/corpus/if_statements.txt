@@ -375,3 +375,59 @@ end sub
               (boolean))))))
     (end_statement
       (end_sub))))
+
+===================
+conditional compl
+===================
+#const someFlag = true
+
+sub bruh()
+	#if someFlag
+		print("hi")
+	#else if not someFlag
+		print("no")
+	#else
+		print("maybe")
+	#end if
+end sub
+---
+(source_file
+  (constant)
+  (sub_statement
+	(sub_start)
+	(identifier)
+	(parameter_list)
+	(block
+	  (conditional_compl
+		(if_start)
+		(prefix_exp
+		  (identifier))
+		(print_statement
+		  (prefix_exp
+			(left_paren)
+			(literal
+			  (string
+				(string_contents)))
+			(right_paren)))
+		(else_if)
+		(unary_expression
+		  (logical_not_expression
+			(prefix_exp
+			  (identifier))))
+		(print_statement
+		  (prefix_exp
+			(left_paren)
+			(literal
+			  (string
+				(string_contents)))
+			(right_paren)))
+		(else)
+		(print_statement
+		  (prefix_exp
+			(left_paren)
+			(literal
+			  (string
+				(string_contents)))
+			(right_paren)))))
+	(end_statement
+	  (end_sub))))

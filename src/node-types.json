@@ -452,6 +452,10 @@
           "named": true
         },
         {
+          "type": "conditional_compl",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -682,6 +686,126 @@
     }
   },
   {
+    "type": "conditional_compl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "annonymous_function",
+          "named": true
+        },
+        {
+          "type": "annonymous_sub",
+          "named": true
+        },
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "conditional_compl",
+          "named": true
+        },
+        {
+          "type": "continue_for_statement",
+          "named": true
+        },
+        {
+          "type": "continue_while_statement",
+          "named": true
+        },
+        {
+          "type": "else",
+          "named": true
+        },
+        {
+          "type": "else_if",
+          "named": true
+        },
+        {
+          "type": "exit_for_statement",
+          "named": true
+        },
+        {
+          "type": "exit_while_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "function_statement",
+          "named": true
+        },
+        {
+          "type": "if_start",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "increment_decrement_statement",
+          "named": true
+        },
+        {
+          "type": "library_statement",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "prefix_exp",
+          "named": true
+        },
+        {
+          "type": "print_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "sub_statement",
+          "named": true
+        },
+        {
+          "type": "try_statement",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "continue_for_statement",
     "named": true,
     "fields": {}
@@ -701,6 +825,10 @@
         "types": [
           {
             "type": "assignment_statement",
+            "named": true
+          },
+          {
+            "type": "conditional_compl",
             "named": true
           },
           {
@@ -807,6 +935,10 @@
         "types": [
           {
             "type": "assignment_statement",
+            "named": true
+          },
+          {
+            "type": "conditional_compl",
             "named": true
           },
           {
@@ -1200,6 +1332,10 @@
       "types": [
         {
           "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "conditional_compl",
           "named": true
         },
         {
@@ -2144,6 +2280,10 @@
           "named": true
         },
         {
+          "type": "conditional_compl",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -2452,6 +2592,14 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "#end if",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -2580,12 +2728,24 @@
     "named": false
   },
   {
+    "type": "const",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": true
+  },
+  {
     "type": "else",
     "named": false
   },
   {
     "type": "else if",
     "named": false
+  },
+  {
+    "type": "else_if",
+    "named": true
   },
   {
     "type": "end_for",
