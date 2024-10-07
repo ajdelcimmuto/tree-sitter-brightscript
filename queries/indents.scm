@@ -30,6 +30,8 @@
 [
   (else_if_clause)
   (else_clause)
+  (conditional_compl_else_if_clause)
+  (conditional_compl_else_clause)
   (catch_clause)
 ] @indent.branch
 

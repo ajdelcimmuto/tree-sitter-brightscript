@@ -120,16 +120,22 @@ module.exports = grammar({
       $._expression,
       $._new_line,
       repeat($._statement),
-      optional(seq(
-        alias('#else if', $.else_if),
-        $._expression,
-        repeat($._statement)
-      )),
-      optional(seq(
-        alias('#else', $.else),
-        repeat($._statement)
-      )),
+      optional($.conditional_compl_else_if_clause),
+      optional($.conditional_compl_else_clause),
       $.end_statement
+    ),
+
+    conditional_compl_else_if_clause : $ => seq(
+        '#else if',
+        $._expression,
+        $._new_line,
+        repeat($._statement)
+    ),
+
+    conditional_compl_else_clause : $ => seq(
+        '#else',
+        $._new_line,
+        repeat($._statement)
     ),
 
     // The main entry point for if statements
