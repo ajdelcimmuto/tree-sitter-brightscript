@@ -269,6 +269,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "conditional_compl"
+          },
+          {
+            "type": "SYMBOL",
             "name": "while_statement"
           },
           {
@@ -357,6 +361,107 @@
         {
           "type": "SYMBOL",
           "name": "annonymous_function"
+        }
+      ]
+    },
+    "conditional_compl": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "#if"
+          },
+          "named": true,
+          "value": "if_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "conditional_compl_else_if_clause"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "conditional_compl_else_clause"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "end_statement"
+        }
+      ]
+    },
+    "conditional_compl_else_if_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#else if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        }
+      ]
+    },
+    "conditional_compl_else_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#else"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
         }
       ]
     },
@@ -2235,6 +2340,23 @@
         }
       ]
     },
+    "constant": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "STRING",
+          "value": "const"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".*"
+        }
+      ]
+    },
     "literal": {
       "type": "CHOICE",
       "members": [
@@ -2508,6 +2630,11 @@
       "value": "end\\s+try",
       "flags": "i"
     },
+    "conditional_compl_end_if": {
+      "type": "PATTERN",
+      "value": "#end\\s+if",
+      "flags": "i"
+    },
     "end_statement": {
       "type": "CHOICE",
       "members": [
@@ -2522,6 +2649,10 @@
         {
           "type": "SYMBOL",
           "name": "end_if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "conditional_compl_end_if"
         },
         {
           "type": "SYMBOL",
@@ -2550,6 +2681,10 @@
     {
       "type": "SYMBOL",
       "name": "comment"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "constant"
     }
   ],
   "conflicts": [

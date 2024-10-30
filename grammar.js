@@ -17,7 +17,7 @@ const PREC = {
 module.exports = grammar({
   name: 'brightscript',
 
-  extras: ($) => [/[\n]/, /\s/, $.comment],
+  extras: ($) => [/[\n]/, /\s/, $.comment, $.constant],
 
   inline: ($) => [
     $.function_impl,
@@ -86,6 +86,7 @@ module.exports = grammar({
       $.function_statement,
       $.library_statement,
       $.if_statement,
+      $.conditional_compl,
       $.while_statement,
       $.for_statement,
       $.try_statement,
@@ -112,6 +113,29 @@ module.exports = grammar({
       $.unary_expression,
       $.annonymous_sub,
       $.annonymous_function
+    ),
+
+    conditional_compl: $ => seq(
+      alias('#if', $.if_start),
+      $._expression,
+      $._new_line,
+      repeat($._statement),
+      optional($.conditional_compl_else_if_clause),
+      optional($.conditional_compl_else_clause),
+      $.end_statement
+    ),
+
+    conditional_compl_else_if_clause : $ => seq(
+        '#else if',
+        $._expression,
+        $._new_line,
+        repeat($._statement)
+    ),
+
+    conditional_compl_else_clause : $ => seq(
+        '#else',
+        $._new_line,
+        repeat($._statement)
     ),
 
     // The main entry point for if statements
@@ -406,6 +430,7 @@ module.exports = grammar({
     )),
 
     comment: $ => seq("'", /.*/),
+    constant: $ => seq("#", "const", /.*/),
 
     // Literals
     literal: $ => choice(
@@ -466,11 +491,13 @@ module.exports = grammar({
     end_for: $ => /end\s+for/i,
     end_while: $ => /end\s+while/i,
     end_try: $ => /end\s+try/i,
+    conditional_compl_end_if: $ => /#end\s+if/i,
 
     end_statement: $ => choice(
       $.end_sub,
       $.end_function,
       $.end_if,
+      $.conditional_compl_end_if,
       $.end_for,
       $.end_while,
       $.end_try
