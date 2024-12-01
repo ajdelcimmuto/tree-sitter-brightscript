@@ -508,6 +508,10 @@
           "named": true
         },
         {
+          "type": "throw_statement",
+          "named": true
+        },
+        {
           "type": "try_statement",
           "named": true
         },
@@ -790,6 +794,10 @@
           "named": true
         },
         {
+          "type": "throw_statement",
+          "named": true
+        },
+        {
           "type": "try_statement",
           "named": true
         },
@@ -870,6 +878,10 @@
         },
         {
           "type": "sub_statement",
+          "named": true
+        },
+        {
+          "type": "throw_statement",
           "named": true
         },
         {
@@ -972,6 +984,10 @@
           "named": true
         },
         {
+          "type": "throw_statement",
+          "named": true
+        },
+        {
           "type": "try_statement",
           "named": true
         },
@@ -1067,6 +1083,10 @@
           },
           {
             "type": "sub_statement",
+            "named": true
+          },
+          {
+            "type": "throw_statement",
             "named": true
           },
           {
@@ -1177,6 +1197,10 @@
           },
           {
             "type": "sub_statement",
+            "named": true
+          },
+          {
+            "type": "throw_statement",
             "named": true
           },
           {
@@ -1590,6 +1614,10 @@
         },
         {
           "type": "sub_statement",
+          "named": true
+        },
+        {
+          "type": "throw_statement",
           "named": true
         },
         {
@@ -2451,6 +2479,10 @@
           "named": true
         },
         {
+          "type": "throw_statement",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         }
@@ -2523,6 +2555,10 @@
         },
         {
           "type": "sub_statement",
+          "named": true
+        },
+        {
+          "type": "throw_statement",
           "named": true
         },
         {
@@ -2600,6 +2636,42 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "throw_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "annonymous_function",
+            "named": true
+          },
+          {
+            "type": "annonymous_sub",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "prefix_exp",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

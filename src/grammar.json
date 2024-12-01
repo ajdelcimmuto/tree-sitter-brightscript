@@ -330,6 +330,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "throw_statement"
+          },
+          {
+            "type": "SYMBOL",
             "name": "increment_decrement_statement"
           }
         ]
@@ -1232,6 +1236,36 @@
           }
         }
       ]
+    },
+    "throw_statement": {
+      "type": "PREC_RIGHT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "throw",
+            "flags": "i"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "value",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
+                }
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "increment_decrement_statement": {
       "type": "CHOICE",
