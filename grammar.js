@@ -2,6 +2,7 @@ const PREC = {
   ASSIGNMENT: 1,
   LOGICAL: 2,
   RETURN: 2,
+  THROW: 2,
   IF: 2,
   COMPARISON: 3,
   ADDITIVE: 4,
@@ -103,6 +104,7 @@ module.exports = grammar({
       $.exit_for_statement,
       $.function_call,
       $.print_statement,
+      $.throw_statement,
       $.increment_decrement_statement,
     )),
 
@@ -269,6 +271,11 @@ module.exports = grammar({
       choice(/print/i, '?'),
       field('arguments', seq($._expression, repeat(seq(choice(',', ';'), $._expression)))),
     ),
+
+    throw_statement: $ => prec.right(PREC.THROW, seq(
+      /throw/i,
+      optional(field('value', $._expression))
+    )),
 
     increment_decrement_statement: $ => choice(
       $.prefix_increment_expression,
@@ -540,4 +547,3 @@ function commaSep1(rule) {
 function any_amount_of() {
   return repeat(seq(...arguments));
 }
-
