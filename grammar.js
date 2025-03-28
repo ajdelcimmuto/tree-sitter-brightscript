@@ -458,7 +458,10 @@ module.exports = grammar({
 
     string: $ => seq(
       '"',
-      field('value', $.string_contents),
+      repeat(choice(
+        alias(/[^"]+/, $.string_contents),
+        alias(seq('""'), $.escaped_quote)
+      )),
       '"'
     ),
 

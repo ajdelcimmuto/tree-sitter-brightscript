@@ -1,5 +1,3 @@
-sub bruh(bruhqwqw as object)
+sub bruh()
+    UTF_fail("Failed to execute test """ + testCase.Name + """ function pointer not found")
 end sub
-
-function bruh(bruhqwqw as object) as object
-end function

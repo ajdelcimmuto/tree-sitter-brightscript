@@ -341,8 +341,7 @@ end sub
                   (identifier))
                 (identifier))
               (literal
-                (string
-                  (string_contents)))))
+                (string))))
           (function_call
             (prefix_exp
               (prefix_exp

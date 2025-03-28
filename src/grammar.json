@@ -2434,11 +2434,34 @@
           "value": "\""
         },
         {
-          "type": "FIELD",
-          "name": "value",
+          "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "string_contents"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\"]+"
+                },
+                "named": true,
+                "value": "string_contents"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "\"\""
+                    }
+                  ]
+                },
+                "named": true,
+                "value": "escaped_quote"
+              }
+            ]
           }
         },
         {

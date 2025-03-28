@@ -2638,17 +2638,20 @@
   {
     "type": "string",
     "named": true,
-    "fields": {
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "string_contents",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escaped_quote",
+          "named": true
+        },
+        {
+          "type": "string_contents",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3104,6 +3107,10 @@
   },
   {
     "type": "end_while",
+    "named": true
+  },
+  {
+    "type": "escaped_quote",
     "named": true
   },
   {
