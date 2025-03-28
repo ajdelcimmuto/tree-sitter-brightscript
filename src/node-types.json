@@ -2854,7 +2854,7 @@
     "named": false
   },
   {
-    "type": "#",
+    "type": "#const",
     "named": false
   },
   {
@@ -2996,10 +2996,6 @@
   {
     "type": "conditional_compl_end_if",
     "named": true
-  },
-  {
-    "type": "const",
-    "named": false
   },
   {
     "type": "else",

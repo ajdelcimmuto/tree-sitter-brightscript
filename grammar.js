@@ -437,7 +437,7 @@ module.exports = grammar({
     )),
 
     comment: $ => seq("'", /.*/),
-    constant: $ => seq("#", "const", /.*/),
+    constant: $ => seq("#const", /.*/),
 
     // Literals
     literal: $ => choice(

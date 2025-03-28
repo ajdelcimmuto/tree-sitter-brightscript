@@ -2379,11 +2379,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "#"
-        },
-        {
-          "type": "STRING",
-          "value": "const"
+          "value": "#const"
         },
         {
           "type": "PATTERN",
