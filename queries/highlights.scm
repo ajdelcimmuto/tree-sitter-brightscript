@@ -47,6 +47,7 @@
 (throw_statement) @keyword.throw
 (assignment_statement) @operator
 (print_statement) @function.builtin
+(constant) @constant
 
 ; Keywords
 [
