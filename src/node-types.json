@@ -456,6 +456,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -726,6 +730,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -829,6 +837,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -924,6 +936,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -1005,7 +1021,17 @@
   {
     "type": "constant",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "continue_for_statement",
@@ -1031,6 +1057,10 @@
           },
           {
             "type": "conditional_compl",
+            "named": true
+          },
+          {
+            "type": "constant",
             "named": true
           },
           {
@@ -1145,6 +1175,10 @@
           },
           {
             "type": "conditional_compl",
+            "named": true
+          },
+          {
+            "type": "constant",
             "named": true
           },
           {
@@ -1550,6 +1584,10 @@
         },
         {
           "type": "conditional_compl",
+          "named": true
+        },
+        {
+          "type": "constant",
           "named": true
         },
         {
@@ -2503,6 +2541,10 @@
         },
         {
           "type": "conditional_compl",
+          "named": true
+        },
+        {
+          "type": "constant",
           "named": true
         },
         {

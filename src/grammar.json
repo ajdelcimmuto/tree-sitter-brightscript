@@ -265,6 +265,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "constant"
+          },
+          {
+            "type": "SYMBOL",
             "name": "if_statement"
           },
           {
@@ -2382,8 +2386,8 @@
           "value": "#const"
         },
         {
-          "type": "PATTERN",
-          "value": ".*"
+          "type": "SYMBOL",
+          "name": "assignment_statement"
         }
       ]
     },
@@ -2711,10 +2715,6 @@
     {
       "type": "SYMBOL",
       "name": "comment"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "constant"
     }
   ],
   "conflicts": [

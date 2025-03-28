@@ -18,12 +18,12 @@ const PREC = {
 module.exports = grammar({
   name: 'brightscript',
 
-  extras: ($) => [/[\n]/, /\s/, $.comment, $.constant],
+  extras: ($) => [/[\n]/, /\s/, $.comment],
 
   inline: ($) => [
     $.function_impl,
     $.sub_impl,
-    $.comment,
+    $.comment
   ],
 
   conflicts: ($) => [
@@ -86,6 +86,7 @@ module.exports = grammar({
       $.sub_statement,
       $.function_statement,
       $.library_statement,
+      $.constant,
       $.if_statement,
       $.conditional_compl,
       $.while_statement,
@@ -437,7 +438,7 @@ module.exports = grammar({
     )),
 
     comment: $ => seq("'", /.*/),
-    constant: $ => seq("#const", /.*/),
+    constant: $ => seq("#const", $.assignment_statement),
 
     // Literals
     literal: $ => choice(
