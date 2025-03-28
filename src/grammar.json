@@ -1465,21 +1465,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "as"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "type",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "type_specifier"
-                  }
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "type_specifier"
             },
             {
               "type": "BLANK"
@@ -1489,64 +1476,64 @@
       ]
     },
     "return_type": {
+      "type": "SYMBOL",
+      "name": "type_specifier"
+    },
+    "type_specifier": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "as"
+          "type": "SYMBOL",
+          "name": "as"
         },
         {
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "SYMBOL",
-            "name": "type_specifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "boolean",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "integer",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "float",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "double",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "string",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "object",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "dynamic",
+                "flags": "i"
+              },
+              {
+                "type": "PATTERN",
+                "value": "void",
+                "flags": "i"
+              }
+            ]
           }
-        }
-      ]
-    },
-    "type_specifier": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "boolean",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "integer",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "float",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "double",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "string",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "object",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "dynamic",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": "void",
-          "flags": "i"
         }
       ]
     },
@@ -2637,6 +2624,11 @@
     "mod": {
       "type": "PATTERN",
       "value": "mod",
+      "flags": "i"
+    },
+    "as": {
+      "type": "PATTERN",
+      "value": "as",
       "flags": "i"
     },
     "end_sub": {

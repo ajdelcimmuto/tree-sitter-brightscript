@@ -39,7 +39,8 @@ end sub
     (parameter_list
       (parameter
         (identifier)
-        (type_specifier)))
+        (type_specifier
+          (as))))
     (block
       (print_statement
         (prefix_exp
@@ -66,10 +67,12 @@ end sub
     (parameter_list
       (parameter
         (identifier)
-        (type_specifier))
+        (type_specifier
+          (as)))
       (parameter
         (identifier)
-        (type_specifier)))
+        (type_specifier
+          (as))))
     (block
       (print_statement
         (prefix_exp
@@ -95,7 +98,8 @@ end function
     (identifier)
     (parameter_list)
     (return_type
-      (type_specifier))
+      (type_specifier
+        (as)))
     (block
       (return_statement
         (literal
@@ -147,7 +151,8 @@ end function
     (identifier)
     (parameter_list)
     (return_type
-      (type_specifier))
+      (type_specifier
+        (as)))
     (block
       (return_statement
         (literal

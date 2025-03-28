@@ -1,3 +1,5 @@
-sub bruh()
-    bruh = 5 mod 6
+sub bruh(bruhqwqw as object)
 end sub
+
+function bruh(bruhqwqw as object) as object
+end function

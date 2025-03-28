@@ -23,7 +23,7 @@
 
 ; Parameters
 (parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 ; Types
 (type_specifier) @type
@@ -73,6 +73,7 @@
   (while_start)
   (try_start)
   (try_catch)
+  (as)
 ] @keyword
 
 ; Operators

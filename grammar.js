@@ -303,26 +303,25 @@ module.exports = grammar({
     parameter: $ => seq(
       field('name', $.identifier),
       optional(seq('=', $._expression)),
-      optional(seq(
-        'as',
-        field('type', $.type_specifier)
+      optional(
+        $.type_specifier
+      )
+    ),
+
+    return_type: $ => $.type_specifier,
+
+    type_specifier: $ => seq(
+      $.as,
+      field('type', choice(
+        /boolean/i,
+        /integer/i,
+        /float/i,
+        /double/i,
+        /string/i,
+        /object/i,
+        /dynamic/i,
+        /void/i
       ))
-    ),
-
-    return_type: $ => seq(
-      'as',
-      field('type', $.type_specifier)
-    ),
-
-    type_specifier: $ => choice(
-      /boolean/i,
-      /integer/i,
-      /float/i,
-      /double/i,
-      /string/i,
-      /object/i,
-      /dynamic/i,
-      /void/i
     ),
 
     _prefix_exp: ($) =>
@@ -492,6 +491,7 @@ module.exports = grammar({
     and: $ => /and/i,
     or: $ => /or/i,
     mod: $ => /mod/i,
+    as: $ => /as/i,
 
     end_sub: $ => /end\s+sub/i,
     end_function: $ => /end\s+function/i,
