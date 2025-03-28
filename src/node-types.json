@@ -1805,6 +1805,20 @@
           }
         ]
       },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "and",
+            "named": true
+          },
+          {
+            "type": "or",
+            "named": true
+          }
+        ]
+      },
       "right": {
         "multiple": false,
         "required": true,
@@ -1867,6 +1881,16 @@
           },
           {
             "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "not",
             "named": true
           }
         ]
@@ -1961,6 +1985,10 @@
           {
             "type": "/",
             "named": false
+          },
+          {
+            "type": "mod",
+            "named": true
           }
         ]
       },
@@ -3032,6 +3060,10 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": true
+  },
+  {
     "type": "as",
     "named": false
   },
@@ -3116,7 +3148,19 @@
     "named": true
   },
   {
+    "type": "mod",
+    "named": true
+  },
+  {
+    "type": "not",
+    "named": true
+  },
+  {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "or",
     "named": true
   },
   {

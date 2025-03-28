@@ -367,8 +367,8 @@ module.exports = grammar({
     ),
 
     logical_expression: $ => prec.left(PREC.LOGICAL, choice(
-      seq(field('left', $._expression), field('operator', /and/i), field('right', $._expression)),
-      seq(field('left', $._expression), field('operator', /or/i),  field('right', $._expression))
+      seq(field('left', $._expression), field('operator', $.and), field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', $.or),  field('right', $._expression))
     )),
 
     comparison_expression: $ => prec.left(PREC.COMPARISON, choice(
@@ -393,7 +393,7 @@ module.exports = grammar({
     multiplicative_expression: $ => prec.left(PREC.MULTIPLICATIVE, choice(
       seq(field('left', $._expression), field('operator', '*'),  field('right', $._expression)),
       seq(field('left', $._expression), field('operator', '/'),  field('right', $._expression)),
-      seq(field('left', $._expression), field('operator', /mod/i), field('right', $._expression))
+      seq(field('left', $._expression), field('operator', $.mod), field('right', $._expression))
     )),
 
     unary_expression: $ => prec.right(PREC.UNARY, choice(
@@ -401,7 +401,7 @@ module.exports = grammar({
     )),
 
     logical_not_expression: $ => prec.right(PREC.LOGICAL_NOT, seq(
-      /not/i,
+      field('operator', $.not),
       field('argument', $._expression)
     )),
 
@@ -488,10 +488,10 @@ module.exports = grammar({
       field('value', $._expression)
     ),
 
-    _new_line: $ => /\r?\n/,
-
-    // Miscellaneous
-    identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/)),
+    not: $ => /not/i,
+    and: $ => /and/i,
+    or: $ => /or/i,
+    mod: $ => /mod/i,
 
     end_sub: $ => /end\s+sub/i,
     end_function: $ => /end\s+function/i,
@@ -509,7 +509,12 @@ module.exports = grammar({
       $.end_for,
       $.end_while,
       $.end_try
-    )
+    ),
+
+    _new_line: $ => /\r?\n/,
+
+    // Miscellaneous
+    identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/))
   }
 });
 

@@ -31,6 +31,15 @@
 ; Variables
 (variable_declarator) @variable
 
+(multiplicative_expression
+  operator: (_) @keyword.operator)
+
+(logical_not_expression
+  operator: (_) @keyword.operator)
+
+(logical_expression
+  operator: (_) @keyword.operator)
+
 ; Property access
 (prefix_exp
   (prefix_exp

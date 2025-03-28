@@ -63,6 +63,7 @@ end sub
                     (number))
                   (literal
                     (number))))
+              (and)
               (binary_expression
                 (comparison_expression
                   (binary_expression
@@ -418,6 +419,7 @@ end sub
         (conditional_compl_else_if_clause
           (unary_expression
             (logical_not_expression
+              (not)
               (prefix_exp
                 (identifier))))
           (print_statement

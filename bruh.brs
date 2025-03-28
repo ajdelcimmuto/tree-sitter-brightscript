@@ -1,5 +1,3 @@
-#const bruh=true
-
 sub bruh()
-    ?" yooooo "
+    bruh = 5 mod 6
 end sub

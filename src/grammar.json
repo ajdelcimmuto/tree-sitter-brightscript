@@ -1762,9 +1762,8 @@
                 "type": "FIELD",
                 "name": "operator",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "and",
-                  "flags": "i"
+                  "type": "SYMBOL",
+                  "name": "and"
                 }
               },
               {
@@ -1792,9 +1791,8 @@
                 "type": "FIELD",
                 "name": "operator",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "or",
-                  "flags": "i"
+                  "type": "SYMBOL",
+                  "name": "or"
                 }
               },
               {
@@ -2152,9 +2150,8 @@
                 "type": "FIELD",
                 "name": "operator",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "mod",
-                  "flags": "i"
+                  "type": "SYMBOL",
+                  "name": "mod"
                 }
               },
               {
@@ -2190,9 +2187,12 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "not",
-            "flags": "i"
+            "type": "FIELD",
+            "name": "operator",
+            "content": {
+              "type": "SYMBOL",
+              "name": "not"
+            }
           },
           {
             "type": "FIELD",
@@ -2619,20 +2619,25 @@
         }
       ]
     },
-    "_new_line": {
+    "not": {
       "type": "PATTERN",
-      "value": "\\r?\\n"
+      "value": "not",
+      "flags": "i"
     },
-    "identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 0,
-        "content": {
-          "type": "PATTERN",
-          "value": "[a-zA-Z_][a-zA-Z0-9_]*"
-        }
-      }
+    "and": {
+      "type": "PATTERN",
+      "value": "and",
+      "flags": "i"
+    },
+    "or": {
+      "type": "PATTERN",
+      "value": "or",
+      "flags": "i"
+    },
+    "mod": {
+      "type": "PATTERN",
+      "value": "mod",
+      "flags": "i"
     },
     "end_sub": {
       "type": "PATTERN",
@@ -2701,6 +2706,21 @@
           "name": "end_try"
         }
       ]
+    },
+    "_new_line": {
+      "type": "PATTERN",
+      "value": "\\r?\\n"
+    },
+    "identifier": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 0,
+        "content": {
+          "type": "PATTERN",
+          "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      }
     }
   },
   "extras": [
