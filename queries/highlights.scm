@@ -12,15 +12,6 @@
   function: (prefix_exp
     (identifier) @function.call))
 
-; Nested function calls in property access
-; (function_call
-;   function: (prefix_exp
-;     (prefix_exp
-;       (prefix_exp
-;         (identifier) @variable)
-;       (identifier) @property)
-;     (identifier) @function.call))
-
 ; Parameters
 (parameter
   name: (identifier) @variable.parameter)
