@@ -18,12 +18,12 @@ const PREC = {
 module.exports = grammar({
   name: 'brightscript',
 
-  extras: ($) => [/[\n]/, /\s/, $.comment, $.constant],
+  extras: ($) => [/[\n]/, /\s/, $.comment],
 
   inline: ($) => [
     $.function_impl,
     $.sub_impl,
-    $.comment,
+    $.comment
   ],
 
   conflicts: ($) => [
@@ -86,6 +86,7 @@ module.exports = grammar({
       $.sub_statement,
       $.function_statement,
       $.library_statement,
+      $.constant,
       $.if_statement,
       $.conditional_compl,
       $.while_statement,
@@ -302,26 +303,25 @@ module.exports = grammar({
     parameter: $ => seq(
       field('name', $.identifier),
       optional(seq('=', $._expression)),
-      optional(seq(
-        'as',
-        field('type', $.type_specifier)
+      optional(
+        $.type_specifier
+      )
+    ),
+
+    return_type: $ => $.type_specifier,
+
+    type_specifier: $ => seq(
+      $.as,
+      field('type', choice(
+        /boolean/i,
+        /integer/i,
+        /float/i,
+        /double/i,
+        /string/i,
+        /object/i,
+        /dynamic/i,
+        /void/i
       ))
-    ),
-
-    return_type: $ => seq(
-      'as',
-      field('type', $.type_specifier)
-    ),
-
-    type_specifier: $ => choice(
-      /boolean/i,
-      /integer/i,
-      /float/i,
-      /double/i,
-      /string/i,
-      /object/i,
-      /dynamic/i,
-      /void/i
     ),
 
     _prefix_exp: ($) =>
@@ -366,8 +366,8 @@ module.exports = grammar({
     ),
 
     logical_expression: $ => prec.left(PREC.LOGICAL, choice(
-      seq(field('left', $._expression), field('operator', /and/i), field('right', $._expression)),
-      seq(field('left', $._expression), field('operator', /or/i),  field('right', $._expression))
+      seq(field('left', $._expression), field('operator', $.and), field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', $.or),  field('right', $._expression))
     )),
 
     comparison_expression: $ => prec.left(PREC.COMPARISON, choice(
@@ -392,7 +392,7 @@ module.exports = grammar({
     multiplicative_expression: $ => prec.left(PREC.MULTIPLICATIVE, choice(
       seq(field('left', $._expression), field('operator', '*'),  field('right', $._expression)),
       seq(field('left', $._expression), field('operator', '/'),  field('right', $._expression)),
-      seq(field('left', $._expression), field('operator', /mod/i), field('right', $._expression))
+      seq(field('left', $._expression), field('operator', $.mod), field('right', $._expression))
     )),
 
     unary_expression: $ => prec.right(PREC.UNARY, choice(
@@ -400,7 +400,7 @@ module.exports = grammar({
     )),
 
     logical_not_expression: $ => prec.right(PREC.LOGICAL_NOT, seq(
-      /not/i,
+      field('operator', $.not),
       field('argument', $._expression)
     )),
 
@@ -437,7 +437,7 @@ module.exports = grammar({
     )),
 
     comment: $ => seq("'", /.*/),
-    constant: $ => seq("#", "const", /.*/),
+    constant: $ => seq("#const", $.assignment_statement),
 
     // Literals
     literal: $ => choice(
@@ -458,7 +458,10 @@ module.exports = grammar({
 
     string: $ => seq(
       '"',
-      field('value', $.string_contents),
+      repeat(choice(
+        alias(/[^"]+/, $.string_contents),
+        alias(seq('""'), $.escaped_quote)
+      )),
       '"'
     ),
 
@@ -487,10 +490,11 @@ module.exports = grammar({
       field('value', $._expression)
     ),
 
-    _new_line: $ => /\r?\n/,
-
-    // Miscellaneous
-    identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/)),
+    not: $ => /not/i,
+    and: $ => /and/i,
+    or: $ => /or/i,
+    mod: $ => /mod/i,
+    as: $ => /as/i,
 
     end_sub: $ => /end\s+sub/i,
     end_function: $ => /end\s+function/i,
@@ -508,7 +512,12 @@ module.exports = grammar({
       $.end_for,
       $.end_while,
       $.end_try
-    )
+    ),
+
+    _new_line: $ => /\r?\n/,
+
+    // Miscellaneous
+    identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/))
   }
 });
 

@@ -23,13 +23,22 @@
 
 ; Parameters
 (parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 ; Types
 (type_specifier) @type
 
 ; Variables
 (variable_declarator) @variable
+
+(multiplicative_expression
+  operator: (_) @keyword.operator)
+
+(logical_not_expression
+  operator: (_) @keyword.operator)
+
+(logical_expression
+  operator: (_) @keyword.operator)
 
 ; Property access
 (prefix_exp
@@ -47,6 +56,7 @@
 (throw_statement) @keyword.throw
 (assignment_statement) @operator
 (print_statement) @function.builtin
+(constant) @constant
 
 ; Keywords
 [
@@ -63,6 +73,7 @@
   (while_start)
   (try_start)
   (try_catch)
+  (as)
 ] @keyword
 
 ; Operators

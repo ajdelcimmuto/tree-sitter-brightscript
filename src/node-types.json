@@ -456,6 +456,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -726,6 +730,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -829,6 +837,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -924,6 +936,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -1005,7 +1021,17 @@
   {
     "type": "constant",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "continue_for_statement",
@@ -1031,6 +1057,10 @@
           },
           {
             "type": "conditional_compl",
+            "named": true
+          },
+          {
+            "type": "constant",
             "named": true
           },
           {
@@ -1145,6 +1175,10 @@
           },
           {
             "type": "conditional_compl",
+            "named": true
+          },
+          {
+            "type": "constant",
             "named": true
           },
           {
@@ -1553,6 +1587,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -1767,6 +1805,20 @@
           }
         ]
       },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "and",
+            "named": true
+          },
+          {
+            "type": "or",
+            "named": true
+          }
+        ]
+      },
       "right": {
         "multiple": false,
         "required": true,
@@ -1829,6 +1881,16 @@
           },
           {
             "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "not",
             "named": true
           }
         ]
@@ -1923,6 +1985,10 @@
           {
             "type": "/",
             "named": false
+          },
+          {
+            "type": "mod",
+            "named": true
           }
         ]
       },
@@ -1971,20 +2037,10 @@
             "named": true
           }
         ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_specifier",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -2005,6 +2061,10 @@
         },
         {
           "type": "prefix_exp",
+          "named": true
+        },
+        {
+          "type": "type_specifier",
           "named": true
         },
         {
@@ -2388,17 +2448,16 @@
   {
     "type": "return_type",
     "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_specifier",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type_specifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2506,6 +2565,10 @@
           "named": true
         },
         {
+          "type": "constant",
+          "named": true
+        },
+        {
           "type": "continue_for_statement",
           "named": true
         },
@@ -2575,17 +2638,20 @@
   {
     "type": "string",
     "named": true,
-    "fields": {
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "string_contents",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escaped_quote",
+          "named": true
+        },
+        {
+          "type": "string_contents",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2717,7 +2783,17 @@
   {
     "type": "type_specifier",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "as",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "unary_expression",
@@ -2854,7 +2930,7 @@
     "named": false
   },
   {
-    "type": "#",
+    "type": "#const",
     "named": false
   },
   {
@@ -2990,16 +3066,16 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": true
+  },
+  {
     "type": "as",
-    "named": false
+    "named": true
   },
   {
     "type": "conditional_compl_end_if",
     "named": true
-  },
-  {
-    "type": "const",
-    "named": false
   },
   {
     "type": "else",
@@ -3031,6 +3107,10 @@
   },
   {
     "type": "end_while",
+    "named": true
+  },
+  {
+    "type": "escaped_quote",
     "named": true
   },
   {
@@ -3078,7 +3158,19 @@
     "named": true
   },
   {
+    "type": "mod",
+    "named": true
+  },
+  {
+    "type": "not",
+    "named": true
+  },
+  {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "or",
     "named": true
   },
   {
