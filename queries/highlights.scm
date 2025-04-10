@@ -9,11 +9,6 @@
 (sub_statement
   name: (identifier) @function)
 
-; Function calls
-(function_call
-  function: (prefix_exp
-    (identifier) @function.call))
-
 ; Parameters
 (parameter
   name: (identifier) @variable.parameter)
@@ -22,7 +17,16 @@
 (type_specifier) @type
 
 ; Variables
-(variable_declarator) @variable
+; Base variable in variable declarator (immediate child of prefix_exp)
+(variable_declarator
+  (prefix_exp
+    (identifier) @variable
+    (#not-has-ancestor? @variable prefix_exp)))
+
+; Properties in variable declarator
+(variable_declarator
+  (prefix_exp)
+  (identifier) @property)
 
 (multiplicative_expression
   operator: (_) @keyword.operator)
@@ -34,10 +38,21 @@
   operator: (_) @keyword.operator)
 
 ; Property access
+; First identifier in a chain (base variable)
 (prefix_exp
-  (prefix_exp
-    (identifier) @variable)
+  .
+  (identifier) @variable
+  (#not-has-ancestor? @variable prefix_exp))
+
+; All other identifiers in a chain (properties)
+(prefix_exp
+  (prefix_exp)
   (identifier) @property)
+
+; Function calls
+(function_call
+  function: (prefix_exp
+    (identifier) @function.call))
 
 ; Statements
 (if_statement) @keyword.conditional
