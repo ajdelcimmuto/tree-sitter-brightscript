@@ -1301,9 +1301,14 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "throw",
-            "flags": "i"
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": "throw",
+              "flags": "i"
+            },
+            "named": true,
+            "value": "throw"
           },
           {
             "type": "CHOICE",

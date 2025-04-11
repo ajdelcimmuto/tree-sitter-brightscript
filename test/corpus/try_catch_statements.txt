@@ -69,6 +69,7 @@ end sub
     (parameter_list)
     (block
       (throw_statement
+        (throw)
         (literal
           (string
             (string_contents)))))

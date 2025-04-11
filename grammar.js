@@ -274,7 +274,7 @@ module.exports = grammar({
     ),
 
     throw_statement: $ => prec.right(PREC.THROW, seq(
-      /throw/i,
+      alias(/throw/i, $.throw),
       optional(field('value', $._expression))
     )),
 

@@ -9,6 +9,13 @@
 (sub_statement
   name: (identifier) @function)
 
+[
+  (sub_start)
+  (function_start)
+  (end_sub)
+  (end_function)
+] @keyword.function
+
 ; Parameters
 (parameter
   name: (identifier) @variable.parameter)
@@ -61,6 +68,7 @@
   (else_if)
   (end_if)
   (then)
+  (conditional_compl_end_if)
 ] @keyword.conditional
 
 [
@@ -68,6 +76,7 @@
   (while_start)
   (for_each)
   (for_in)
+  (for_to)
   (for_step)
   (end_for)
   (end_while)
@@ -77,30 +86,18 @@
 [
   (try_start)
   (try_catch)
+  (throw)
+  (end_try)
 ] @keyword.exception
 
 (return) @keyword.return
-
-(throw_statement) @keyword.exception
 
 (print) @function.builtin
 
 (constant) @constant
 
 ; Keywords
-[
-  (function_start)
-  (sub_start)
-  (for_start)
-  (for_to)
-  (for_step)
-  (for_each)
-  (for_in)
-  (while_start)
-  (try_start)
-  (try_catch)
-  (as)
-] @keyword
+(as) @keyword
 
 ; Operators
 [
@@ -175,16 +172,7 @@
     ">="
   ] @operator)
 
-; End statements
-[
-  (end_sub)
-  (end_function)
-  (end_if)
-  (end_for)
-  (end_while)
-  (end_try)
-  (conditional_compl_end_if)
-] @keyword
+(as) @keyword
 
 ; Exit statements
 [

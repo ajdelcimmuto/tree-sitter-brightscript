@@ -234,7 +234,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_QMARK] = "print",
   [anon_sym_COMMA] = ",",
   [anon_sym_SEMI] = ";",
-  [aux_sym_throw_statement_token1] = "throw_statement_token1",
+  [aux_sym_throw_statement_token1] = "throw",
   [anon_sym_PLUS_PLUS] = "++",
   [anon_sym_DASH_DASH] = "--",
   [anon_sym_LPAREN] = "(",
@@ -696,8 +696,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_throw_statement_token1] = {
-    .visible = false,
-    .named = false,
+    .visible = true,
+    .named = true,
   },
   [anon_sym_PLUS_PLUS] = {
     .visible = true,

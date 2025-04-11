@@ -2788,6 +2788,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "throw",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3221,6 +3231,10 @@
   },
   {
     "type": "then",
+    "named": true
+  },
+  {
+    "type": "throw",
     "named": true
   },
   {
