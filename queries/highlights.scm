@@ -55,23 +55,35 @@
     (identifier) @function.call))
 
 ; Statements
-(if_statement) @keyword.conditional
+[
+  (if_start)
+  (else)
+  (else_if)
+  (end_if)
+  (then)
+] @keyword.conditional
 
-(conditional_compl) @keyword.conditional
+[
+  (for_start)
+  (while_start)
+  (for_each)
+  (for_in)
+  (for_step)
+  (end_for)
+  (end_while)
+] @keyword.repeat
 
-(for_statement) @keyword.repeat
+; Statements
+[
+  (try_start)
+  (try_catch)
+] @keyword.exception
 
-(while_statement) @keyword.repeat
-
-(try_statement) @keyword.exception
-
-(return_statement) @keyword.return
+(return) @keyword.return
 
 (throw_statement) @keyword.exception
 
-(assignment_statement) @operator
-
-(print_statement) @function.builtin
+(print) @function.builtin
 
 (constant) @constant
 
@@ -79,9 +91,6 @@
 [
   (function_start)
   (sub_start)
-  (if_start)
-  (if_then)
-  (if_else)
   (for_start)
   (for_to)
   (for_step)
@@ -175,15 +184,6 @@
   (end_while)
   (end_try)
   (conditional_compl_end_if)
-] @keyword
-
-; Special keywords (these might still need to be strings if not defined as separate nodes)
-[
-  "then"
-  "else"
-  "else if"
-  "#else"
-  "#else if"
 ] @keyword
 
 ; Exit statements

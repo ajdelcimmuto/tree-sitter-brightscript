@@ -89,6 +89,7 @@ end sub
             (literal
               (number)))))
       (print_statement
+        (print)
         (prefix_exp
           (prefix_exp
             (identifier))
@@ -392,6 +393,7 @@ end sub
         (identifier)))
     (block
       (print_statement
+        (print)
         (prefix_exp
           (identifier))))
     (end_statement
@@ -431,6 +433,7 @@ end sub
               (literal
                 (string
                   (string_contents)))))
+          (then)
           (if_block
             (end_statement
               (end_if))))))

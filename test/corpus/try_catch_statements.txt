@@ -36,6 +36,7 @@ end sub
           (identifier)
           (block
             (print_statement
+              (print)
               (binary_expression
                 (arithmetic_expression
                   (additive_expression
@@ -69,7 +70,7 @@ end sub
     (block
       (throw_statement
         (literal
-		  (string
-		    (string_contents)))))
+          (string
+            (string_contents)))))
     (end_statement
       (end_sub))))

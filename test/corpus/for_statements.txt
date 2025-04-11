@@ -61,6 +61,7 @@ end sub
           (number))
         (block
           (print_statement
+            (print)
             (prefix_exp
               (left_paren)
               (literal
@@ -115,6 +116,7 @@ end sub
           (identifier))
         (block
           (print_statement
+            (print)
             (prefix_exp
               (left_paren)
               (prefix_exp
@@ -158,6 +160,7 @@ end sub
           (number))
         (block
           (print_statement
+            (print)
             (prefix_exp
               (left_paren)
               (prefix_exp
@@ -212,6 +215,7 @@ end sub
           (identifier))
         (block
           (print_statement
+            (print)
             (prefix_exp
               (left_paren)
               (prefix_exp
@@ -265,6 +269,7 @@ end sub
               (number))
             (block
               (print_statement
+                (print)
                 (prefix_exp
                   (left_paren)
                   (binary_expression

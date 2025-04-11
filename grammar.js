@@ -119,7 +119,7 @@ module.exports = grammar({
     ),
 
     conditional_compl: $ => seq(
-      alias('#if', $.if_start),
+      alias(/#if/, $.if_start),
       $._expression,
       $._new_line,
       repeat($._statement),
@@ -129,14 +129,14 @@ module.exports = grammar({
     ),
 
     conditional_compl_else_if_clause : $ => seq(
-        '#else if',
+        alias(/#else if/, $.else_if),
         $._expression,
         $._new_line,
         repeat($._statement)
     ),
 
     conditional_compl_else_clause : $ => seq(
-        '#else',
+        alias(/#else/, $.else),
         $._new_line,
         repeat($._statement)
     ),
@@ -149,12 +149,12 @@ module.exports = grammar({
       ),
 
     single_line_if: $ => prec.right(seq(
-      alias('if', $.if_start),
+      alias(/if/i, $.if_start),
       $._expression,
-      optional('then'),
+      optional(alias(/then/i, $.then)),
       $._single_line_statement,
       optional(seq(
-        alias('else', $.if_else),
+        alias(/else/i, $.else),
         $._single_line_statement
       )),
       choice(
@@ -166,9 +166,9 @@ module.exports = grammar({
 
     // Multi-line if statement
     multi_line_if: $ => seq(
-      alias('if', $.if_start),
+      alias(/if/i, $.if_start),
       $._expression,
-      optional('then'),
+      optional(alias(/then/i, $.then)),
       $.if_block,
     ),
 
@@ -182,18 +182,18 @@ module.exports = grammar({
 
     single_line_if_block: $ => seq(
       $._statement,
-      optional(seq('else', $._statement)),
+      optional(seq(alias(/else/i, $.else), $._statement)),
     ),
 
     else_if_clause: $ => seq(
-      'else if',
+      alias(/else if/i, $.else_if),
       field('condition', $._expression),
-      optional(alias(/then/i, $.if_then)),
+      optional(alias(/then/i, $.then)),
       optional(field('consequence', repeat1($._statement)))
     ),
 
     else_clause: $ => seq(
-      'else',
+      alias(/else/i, $.else),
       optional(field('consequence', repeat1($._statement)))
     ),
 
@@ -258,7 +258,7 @@ module.exports = grammar({
     ),
 
     return_statement: $ => prec.right(PREC.RETURN, seq(
-      /return/i,
+      alias(/return/i, $.return),
       optional(field('value', $._expression))
     )),
 
@@ -269,7 +269,7 @@ module.exports = grammar({
     )),
 
     print_statement: $ => seq(
-      choice(/print/i, '?'),
+      alias(choice(/print/i, '?'), $.print),
       field('arguments', seq($._expression, repeat(seq(choice(',', ';'), $._expression)))),
     ),
 

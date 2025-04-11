@@ -826,7 +826,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "assignment_statement",
@@ -846,6 +846,10 @@
         },
         {
           "type": "continue_while_statement",
+          "named": true
+        },
+        {
+          "type": "else",
           "named": true
         },
         {
@@ -945,6 +949,10 @@
         },
         {
           "type": "continue_while_statement",
+          "named": true
+        },
+        {
+          "type": "else_if",
           "named": true
         },
         {
@@ -1129,6 +1137,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "else",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1249,11 +1267,15 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
-          "type": "if_then",
+          "type": "else_if",
+          "named": true
+        },
+        {
+          "type": "then",
           "named": true
         }
       ]
@@ -1934,6 +1956,10 @@
           "named": true
         },
         {
+          "type": "then",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         }
@@ -2361,6 +2387,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "print",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2443,6 +2479,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "return",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2498,6 +2544,10 @@
           "named": true
         },
         {
+          "type": "else",
+          "named": true
+        },
+        {
           "type": "exit_for_statement",
           "named": true
         },
@@ -2507,10 +2557,6 @@
         },
         {
           "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "if_else",
           "named": true
         },
         {
@@ -2535,6 +2581,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "then",
           "named": true
         },
         {
@@ -2934,14 +2984,6 @@
     "named": false
   },
   {
-    "type": "#else",
-    "named": false
-  },
-  {
-    "type": "#else if",
-    "named": false
-  },
-  {
     "type": "'",
     "named": false
   },
@@ -3042,10 +3084,6 @@
     "named": false
   },
   {
-    "type": "?",
-    "named": false
-  },
-  {
     "type": "?.",
     "named": false
   },
@@ -3079,11 +3117,11 @@
   },
   {
     "type": "else",
-    "named": false
+    "named": true
   },
   {
-    "type": "else if",
-    "named": false
+    "type": "else_if",
+    "named": true
   },
   {
     "type": "end_for",
@@ -3142,15 +3180,7 @@
     "named": true
   },
   {
-    "type": "if_else",
-    "named": true
-  },
-  {
     "type": "if_start",
-    "named": true
-  },
-  {
-    "type": "if_then",
     "named": true
   },
   {
@@ -3174,6 +3204,14 @@
     "named": true
   },
   {
+    "type": "print",
+    "named": true
+  },
+  {
+    "type": "return",
+    "named": true
+  },
+  {
     "type": "string_contents",
     "named": true
   },
@@ -3183,7 +3221,7 @@
   },
   {
     "type": "then",
-    "named": false
+    "named": true
   },
   {
     "type": "try_catch",
