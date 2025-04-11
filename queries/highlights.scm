@@ -80,6 +80,8 @@
   (for_step)
   (end_for)
   (end_while)
+  (exit_while_statement)
+  (exit_for_statement)
 ] @keyword.repeat
 
 ; Statements
@@ -173,9 +175,3 @@
   ] @operator)
 
 (as) @keyword
-
-; Exit statements
-[
-  (exit_while_statement)
-  (exit_for_statement)
-] @keyword
