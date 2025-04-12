@@ -128,6 +128,7 @@
 (comment) @comment
 
 ; Punctuation
+
 [
   "("
   ")"
@@ -135,10 +136,11 @@
   "]"
   "{"
   "}"
+ ] @punctuation.bracket
+[
   "."
   ","
   "?."
-  "?["
  ] @punctuation.delimiter
 
 ; Special highlights for library statements
@@ -175,3 +177,4 @@
   ] @operator)
 
 (as) @keyword
+(m) @keyword

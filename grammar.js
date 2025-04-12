@@ -517,7 +517,9 @@ module.exports = grammar({
     _new_line: $ => /\r?\n/,
 
     // Miscellaneous
-    identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/))
+    identifier: $ => choice($.m, $.regular_identifier),
+    m: $ => /m/i,
+    regular_identifier: $ => token(prec(0, /[a-zA-Z_][a-zA-Z0-9_]*/)),
   }
 });
 
