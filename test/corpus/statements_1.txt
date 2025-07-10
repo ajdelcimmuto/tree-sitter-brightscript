@@ -75,3 +75,31 @@ end sub
             (string_contents)))))
     (end_statement
       (end_sub))))
+
+==================
+Multiplicitive expression
+==================
+
+sub init()
+    test = 5 \ 4
+end sub
+---
+
+(source_file
+  (sub_statement
+    (sub_start)
+    (identifier)
+    (parameter_list)
+    (block
+      (assignment_statement
+        (variable_declarator
+          (identifier))
+        (binary_expression
+          (arithmetic_expression
+            (multiplicative_expression
+              (literal
+               (number))
+              (literal
+               (number)))))))
+    (end_statement
+      (end_sub))))
