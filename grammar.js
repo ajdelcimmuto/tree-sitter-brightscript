@@ -392,6 +392,7 @@ module.exports = grammar({
     multiplicative_expression: $ => prec.left(PREC.MULTIPLICATIVE, choice(
       seq(field('left', $._expression), field('operator', '*'),  field('right', $._expression)),
       seq(field('left', $._expression), field('operator', '/'),  field('right', $._expression)),
+      seq(field('left', $._expression), field('operator', '\\'),  field('right', $._expression)),
       seq(field('left', $._expression), field('operator', $.mod), field('right', $._expression))
     )),
 
