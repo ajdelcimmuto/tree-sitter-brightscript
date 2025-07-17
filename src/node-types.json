@@ -1282,6 +1282,11 @@
     }
   },
   {
+    "type": "end_for",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "end_statement",
     "named": true,
     "fields": {},
@@ -3139,10 +3144,6 @@
   },
   {
     "type": "else_if",
-    "named": true
-  },
-  {
-    "type": "end_for",
     "named": true
   },
   {
