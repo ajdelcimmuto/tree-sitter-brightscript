@@ -2728,9 +2728,19 @@
       "flags": "i"
     },
     "end_for": {
-      "type": "PATTERN",
-      "value": "end\\s+for",
-      "flags": "i"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "end\\s+for",
+          "flags": "i"
+        },
+        {
+          "type": "PATTERN",
+          "value": "next",
+          "flags": "i"
+        }
+      ]
     },
     "end_while": {
       "type": "PATTERN",
