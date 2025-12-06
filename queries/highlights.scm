@@ -175,3 +175,4 @@
   ] @operator)
 
 (as) @keyword.operator
+(m) @keyword
