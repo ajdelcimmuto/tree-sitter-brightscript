@@ -10,7 +10,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (print_statement
@@ -36,10 +37,12 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list
       (parameter
-        (identifier)
+        (identifier
+          (regular_identifier))
         (type_specifier
           (as))))
     (block
@@ -48,7 +51,8 @@ end sub
         (prefix_exp
           (left_paren)
           (prefix_exp
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (right_paren))))
     (end_statement
       (end_sub))))
@@ -65,14 +69,17 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list
       (parameter
-        (identifier)
+        (identifier
+          (regular_identifier))
         (type_specifier
           (as)))
       (parameter
-        (identifier)
+        (identifier
+          (regular_identifier))
         (type_specifier
           (as))))
     (block
@@ -81,7 +88,8 @@ end sub
         (prefix_exp
           (left_paren)
           (prefix_exp
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (right_paren))))
     (end_statement
       (end_sub))))
@@ -98,7 +106,8 @@ end function
 (source_file
   (function_statement
     (function_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (return_type
       (type_specifier
@@ -128,7 +137,8 @@ end sub
       (string_contents)))
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (print_statement
@@ -153,7 +163,8 @@ end function
 (source_file
   (function_statement
     (function_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (return_type
       (type_specifier
@@ -178,7 +189,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (print_statement

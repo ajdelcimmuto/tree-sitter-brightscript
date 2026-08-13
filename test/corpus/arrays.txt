@@ -11,12 +11,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array))))
     (end_statement
@@ -35,12 +37,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -70,12 +74,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -92,7 +98,8 @@ end sub
         (print)
         (prefix_exp
           (prefix_exp
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))))
     (end_statement
@@ -112,12 +119,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -133,7 +142,8 @@ end sub
       (assignment_statement
         (variable_declarator
           (prefix_exp
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (literal
@@ -154,12 +164,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -187,12 +199,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (binary_expression
@@ -232,12 +246,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -274,18 +290,21 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (prefix_exp
               (function_call
                 (prefix_exp
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (parenthesized_expression
                   (literal
                     (string
@@ -293,7 +312,8 @@ end sub
             (prefix_exp
               (function_call
                 (prefix_exp
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (parenthesized_expression
                   (literal
                     (string
@@ -315,12 +335,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -335,9 +357,11 @@ end sub
               (number)))))
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (prefix_exp
-          (identifier))))
+          (identifier
+            (regular_identifier)))))
     (end_statement
       (end_sub))))
 
@@ -359,12 +383,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -379,23 +405,28 @@ end sub
               (number)))))
       (function_call
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (parenthesized_expression
           (prefix_exp
-            (identifier)))))
+            (identifier
+              (regular_identifier))))))
     (end_statement
       (end_sub)))
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list
       (parameter
-        (identifier)))
+        (identifier
+          (regular_identifier))))
     (block
       (print_statement
         (print)
         (prefix_exp
-          (identifier))))
+          (identifier
+            (regular_identifier)))))
     (end_statement
       (end_sub))))
 
@@ -412,7 +443,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -424,10 +456,12 @@ end sub
                 (prefix_exp
                   (prefix_exp
                     (prefix_exp
-                      (identifier))
+                      (identifier
+                        (regular_identifier)))
                     (literal
                       (number)))
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (literal
                   (number)))
               (literal

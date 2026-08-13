@@ -15,7 +15,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (try_statement
@@ -23,7 +24,8 @@ end sub
         (block
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (multiplicative_expression
@@ -33,7 +35,8 @@ end sub
                     (number)))))))
         (catch_clause
           (try_catch)
-          (identifier)
+          (identifier
+            (regular_identifier))
           (block
             (print_statement
               (print)
@@ -45,8 +48,10 @@ end sub
                         (string_contents)))
                     (prefix_exp
                       (prefix_exp
-                        (identifier))
-                      (identifier))))))))
+                        (identifier
+                          (regular_identifier)))
+                      (identifier
+                        (regular_identifier)))))))))
         (end_statement
           (end_try))))
     (end_statement
@@ -65,7 +70,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (throw_statement

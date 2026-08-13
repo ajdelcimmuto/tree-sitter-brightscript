@@ -11,14 +11,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)
@@ -43,14 +45,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)
@@ -88,21 +92,25 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (assoc_array
             (assoc_array_element
-              (identifier)
+              (identifier
+                (regular_identifier))
               (literal
                 (string
                   (string_contents))))
             (assoc_array_element
-              (identifier)
+              (identifier
+                (regular_identifier))
               (literal
                 (string
                   (string_contents)))))))
@@ -110,17 +118,20 @@ end sub
         (for_start)
         (for_each)
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (for_in)
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (block
           (print_statement
             (print)
             (prefix_exp
               (left_paren)
               (prefix_exp
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (right_paren))))
         (end_statement
           (end_for))))
@@ -142,14 +153,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)
@@ -164,7 +177,8 @@ end sub
             (prefix_exp
               (left_paren)
               (prefix_exp
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (right_paren))))
         (end_statement
           (end_for))))
@@ -187,12 +201,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (array
             (literal
@@ -209,17 +225,20 @@ end sub
         (for_start)
         (for_each)
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (for_in)
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (block
           (print_statement
             (print)
             (prefix_exp
               (left_paren)
               (prefix_exp
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (right_paren))))
         (end_statement
           (end_for))))
@@ -243,14 +262,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)
@@ -261,7 +282,8 @@ end sub
             (for_start)
             (assignment_statement
               (variable_declarator
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number)))
             (for_to)
@@ -276,9 +298,11 @@ end sub
                     (arithmetic_expression
                       (additive_expression
                         (prefix_exp
-                          (identifier))
+                          (identifier
+                            (regular_identifier)))
                         (prefix_exp
-                          (identifier)))))
+                          (identifier
+                            (regular_identifier))))))
                   (right_paren))))
             (end_statement
               (end_for))))
@@ -301,14 +325,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)
@@ -335,14 +361,16 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (for_statement
         (for_start)
         (assignment_statement
           (variable_declarator
-            (identifier))
+            (identifier
+              (regular_identifier)))
           (literal
             (number)))
         (for_to)

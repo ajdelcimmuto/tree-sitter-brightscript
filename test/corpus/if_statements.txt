@@ -12,7 +12,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -28,7 +29,8 @@ end sub
           (if_block
             (assignment_statement
               (variable_declarator
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number)))
             (end_statement
@@ -50,7 +52,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -80,7 +83,8 @@ end sub
           (if_block
             (assignment_statement
               (variable_declarator
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number)))
             (end_statement
@@ -105,7 +109,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -121,14 +126,16 @@ end sub
           (if_block
             (assignment_statement
               (variable_declarator
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number)))
             (else_clause
               (else)
               (assignment_statement
                 (variable_declarator
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (literal
                   (number))))
             (end_statement
@@ -155,7 +162,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -164,7 +172,8 @@ end sub
           (binary_expression
             (comparison_expression
               (prefix_exp
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number))))
           (then)
@@ -179,7 +188,8 @@ end sub
               (binary_expression
                 (comparison_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number))))
               (then)
@@ -221,7 +231,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -230,7 +241,8 @@ end sub
           (binary_expression
             (comparison_expression
               (prefix_exp
-                (identifier))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (number))))
           (then)
@@ -241,7 +253,8 @@ end sub
                 (binary_expression
                   (comparison_expression
                     (prefix_exp
-                      (identifier))
+                      (identifier
+                        (regular_identifier)))
                     (literal
                       (number))))
                 (then)
@@ -290,7 +303,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -353,7 +367,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -363,16 +378,20 @@ end sub
             (comparison_expression
               (prefix_exp
                 (prefix_exp
-                  (identifier))
-                (identifier))
+                  (identifier
+                    (m)))
+                (identifier
+                  (regular_identifier)))
               (literal
                 (string))))
           (then)
           (function_call
             (prefix_exp
               (prefix_exp
-                (identifier))
-              (identifier))
+                (identifier
+                  (m)))
+              (identifier
+                (regular_identifier)))
             (parenthesized_expression)))))
     (end_statement
       (end_sub))))
@@ -388,7 +407,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (if_statement
@@ -424,18 +444,21 @@ end sub
   (constant
     (assignment_statement
       (variable_declarator
-        (identifier))
+        (identifier
+          (regular_identifier)))
       (literal
         (boolean))))
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (conditional_compl
         (if_start)
         (prefix_exp
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (print_statement
           (print)
           (prefix_exp
@@ -450,7 +473,8 @@ end sub
             (logical_not_expression
               (not)
               (prefix_exp
-                (identifier))))
+                (identifier
+                  (regular_identifier)))))
           (print_statement
             (print)
             (prefix_exp

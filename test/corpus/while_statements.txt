@@ -13,12 +13,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (while_statement
@@ -28,12 +30,14 @@ end sub
         (block
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (additive_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number)))))))
         (end_statement
@@ -56,12 +60,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (while_statement
@@ -71,25 +77,29 @@ end sub
             (binary_expression
               (comparison_expression
                 (prefix_exp
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (literal
                   (number))))
             (and)
             (binary_expression
               (comparison_expression
                 (prefix_exp
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (literal
                   (number))))))
         (block
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (additive_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number)))))))
         (end_statement
@@ -113,12 +123,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (while_statement
@@ -126,19 +138,23 @@ end sub
         (prefix_exp
           (function_call
             (prefix_exp
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (parenthesized_expression
               (prefix_exp
-                (identifier)))))
+                (identifier
+                  (regular_identifier))))))
         (block
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (additive_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number)))))))
         (end_statement
@@ -162,12 +178,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (while_statement
@@ -180,19 +198,22 @@ end sub
               (binary_expression
                 (comparison_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number))))
               (right_paren))))
         (block
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (additive_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number)))))))
         (end_statement
@@ -221,17 +242,20 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (number)))
       (while_statement
@@ -239,7 +263,8 @@ end sub
         (binary_expression
           (comparison_expression
             (prefix_exp
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (literal
               (number))))
         (block
@@ -248,7 +273,8 @@ end sub
             (binary_expression
               (comparison_expression
                 (prefix_exp
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (literal
                   (number))))
             (block
@@ -260,30 +286,36 @@ end sub
                     (arithmetic_expression
                       (additive_expression
                         (prefix_exp
-                          (identifier))
+                          (identifier
+                            (regular_identifier)))
                         (prefix_exp
-                          (identifier)))))
+                          (identifier
+                            (regular_identifier))))))
                   (right_paren)))
               (assignment_statement
                 (variable_declarator
-                  (identifier))
+                  (identifier
+                    (regular_identifier)))
                 (binary_expression
                   (arithmetic_expression
                     (additive_expression
                       (prefix_exp
-                        (identifier))
+                        (identifier
+                          (regular_identifier)))
                       (literal
                         (number)))))))
             (end_statement
               (end_while)))
           (assignment_statement
             (variable_declarator
-              (identifier))
+              (identifier
+                (regular_identifier)))
             (binary_expression
               (arithmetic_expression
                 (additive_expression
                   (prefix_exp
-                    (identifier))
+                    (identifier
+                      (regular_identifier)))
                   (literal
                     (number)))))))
         (end_statement
@@ -305,7 +337,8 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (while_statement

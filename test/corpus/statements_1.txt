@@ -10,12 +10,14 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (literal
           (string
             (string_contents)))))
@@ -34,14 +36,17 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
           (prefix_exp
-            (identifier))
-          (identifier))
+            (identifier
+              (m)))
+          (identifier
+            (regular_identifier)))
         (literal
           (string
             (string_contents)))))
@@ -60,16 +65,20 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
           (prefix_exp
             (prefix_exp
-              (identifier))
-            (identifier))
-          (identifier))
+              (identifier
+                (m)))
+            (identifier
+              (regular_identifier)))
+          (identifier
+            (regular_identifier)))
         (literal
           (string
             (string_contents)))))
@@ -88,18 +97,20 @@ end sub
 (source_file
   (sub_statement
     (sub_start)
-    (identifier)
+    (identifier
+      (regular_identifier))
     (parameter_list)
     (block
       (assignment_statement
         (variable_declarator
-          (identifier))
+          (identifier
+            (regular_identifier)))
         (binary_expression
           (arithmetic_expression
             (multiplicative_expression
               (literal
-               (number))
+                (number))
               (literal
-               (number)))))))
+                (number)))))))
     (end_statement
       (end_sub))))

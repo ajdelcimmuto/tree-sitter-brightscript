@@ -2824,6 +2824,24 @@
       "value": "\\r?\\n"
     },
     "identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "m"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "regular_identifier"
+        }
+      ]
+    },
+    "m": {
+      "type": "PATTERN",
+      "value": "m",
+      "flags": "i"
+    },
+    "regular_identifier": {
       "type": "TOKEN",
       "content": {
         "type": "PREC",
